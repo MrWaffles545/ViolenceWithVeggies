@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     public string itemName = "Hands";
     public GameObject holdingItem;
     private GameObject otherItem;
+    public bool playerOne;
+    public Camera cam;
     
     void Start()
     {
@@ -21,41 +23,21 @@ public class PlayerController : MonoBehaviour
     
     void Update()
     {
-        Vector2 temp = myRb.velocity;
-        temp.x = Input.GetAxisRaw("Horizontal") * speed;
-        temp.y = Input.GetAxisRaw("Vertical") * speed;
-        myRb.velocity = temp;
-
-        if (Input.GetMouseButtonDown(0) && isTouching && holdingItem != null && !isTouchingOther)
+        if (playerOne)
         {
-            if (!isHolding)
-            {
-                holdingItem.transform.position = objectPickupPos.position;
-                holdingItem.transform.SetParent(gameObject.transform);
-                itemName = holdingItem.name;
-                isHolding = true;
-            }
-            else
-            {
-                holdingItem.transform.SetParent(null);
-                holdingItem = null;
-                itemName = "Hands";
-                isHolding = false;
-            }
+            Vector2 temp = myRb.velocity;
+            temp.x = Input.GetAxisRaw("Horizontal") * speed;
+            temp.y = Input.GetAxisRaw("Vertical") * speed;
+            Pickup(Input.GetMouseButtonDown(0));
+            myRb.velocity = temp;
         }
 
-        else if (Input.GetMouseButtonDown(0) && holdingItem != null && isTouchingOther)
+        else
         {
-            GameObject tempGameObject = holdingItem;
-            holdingItem.transform.SetParent(null);
-            holdingItem = otherItem;
-            otherItem = tempGameObject;
-            holdingItem.transform.position = objectPickupPos.position;
-            holdingItem.transform.SetParent(gameObject.transform);
-            itemName = holdingItem.name;
-            isHolding = true;
-            isTouchingOther = true;
-            isTouching = true;
+            Vector2 mousePos = Input.mousePosition;
+            mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+            transform.position = mousePos;
+            //Pickup(Input.GetButtonDown(Q));
         }
     }
     
@@ -85,6 +67,41 @@ public class PlayerController : MonoBehaviour
         {
             otherItem = null;
             isTouchingOther = false;
+        }
+    }
+
+    void Pickup(bool click)
+    {
+        if (click && isTouching && holdingItem != null && !isTouchingOther)
+        {
+            if (!isHolding)
+            {
+                holdingItem.transform.position = objectPickupPos.position;
+                holdingItem.transform.SetParent(gameObject.transform);
+                itemName = holdingItem.name;
+                isHolding = true;
+            }
+            else
+            {
+                holdingItem.transform.SetParent(null);
+                holdingItem = null;
+                itemName = "Hands";
+                isHolding = false;
+            }
+        }
+
+        else if (click && holdingItem != null && isTouchingOther)
+        {
+            GameObject tempGameObject = holdingItem;
+            holdingItem.transform.SetParent(null);
+            holdingItem = otherItem;
+            otherItem = tempGameObject;
+            holdingItem.transform.position = objectPickupPos.position;
+            holdingItem.transform.SetParent(gameObject.transform);
+            itemName = holdingItem.name;
+            isHolding = true;
+            isTouchingOther = true;
+            isTouching = true;
         }
     }
 }
