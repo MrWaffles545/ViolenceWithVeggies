@@ -8,6 +8,7 @@ public class BoxController : MonoBehaviour
     public int veggieScore;
     public GameObject player;
     public string playerItem;
+    public bool isTouching;
 
 
     // Start is called before the first frame update
@@ -22,7 +23,36 @@ public class BoxController : MonoBehaviour
         if (player != null)
             playerItem = player.GetComponent<PlayerController>().itemName;
         else
-            playerItem = null; 
+            playerItem = null;
+
+        if (isTouching && Input.GetMouseButtonDown(1) && sellBox == true)
+        {
+            if (playerItem == "Wheat(Clone)")
+                veggieScore++;
+
+            if (playerItem == "Carrot(Clone)")
+                veggieScore += 2;
+
+            if (playerItem == "Potato(Clone)")
+                veggieScore += 2;
+
+            if (playerItem == "Turnip(Clone)")
+                veggieScore += 3;
+
+            if (playerItem == "Artichoke(Clone)")
+                veggieScore += 4;
+
+            if (playerItem == "Carrot(Clone)" || playerItem == "Wheat(Clone)" || playerItem == "Potato(Clone)" || playerItem == "Turnip(Clone)" || playerItem == "Artichoke(Clone)")
+            {
+                Destroy(player.GetComponent<PlayerController>().holdingItem);
+                player.GetComponent<PlayerController>().holdingItem = null;
+                player.GetComponent<PlayerController>().itemName = "Hands";
+                player.GetComponent<PlayerController>().isTouching = false;
+                player.GetComponent<PlayerController>().isHolding = false;
+            }
+
+
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -30,31 +60,8 @@ public class BoxController : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             player = collision.gameObject;
+            isTouching = true;
         }
-
-        if ((playerItem == "Carrot(Clone)" || playerItem == "Wheat(Clone)" || playerItem == "Potato(Clone)" || playerItem == "Turnip(Clone)" || playerItem == "Artichoke(Clone)") && Input.GetMouseButtonDown(1))
-        {
-            Destroy(player.GetComponent<PlayerController>().holdingItem);
-            player.GetComponent<PlayerController>().holdingItem = null;
-            player.GetComponent<PlayerController>().itemName = "Hands";
-            player.GetComponent<PlayerController>().isTouching = false;
-            player.GetComponent<PlayerController>().isHolding = false;
-        }
-
-        if (collision.gameObject.name == "Wheat(Clone)" && Input.GetMouseButtonDown(1) && sellBox == true)
-            veggieScore++;
-
-        if (collision.gameObject.name == "Carrot(Clone)" && Input.GetMouseButtonDown(0) && sellBox == true)
-            veggieScore += 2;
-
-        if (collision.gameObject.name == "Potato(Clone)" && Input.GetMouseButtonDown(0) && sellBox == true)
-            veggieScore += 2;
-
-        if (collision.gameObject.name == "Turnip(Clone)" && Input.GetMouseButtonDown(0) && sellBox == true)
-            veggieScore += 3;
-
-        if (collision.gameObject.name == "Artichoke(Clone)" && Input.GetMouseButtonDown(0) && sellBox == true)
-            veggieScore += 4;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -62,6 +69,7 @@ public class BoxController : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             player = null;
+            isTouching = false;
         }
     }
 
