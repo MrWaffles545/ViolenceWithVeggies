@@ -1,18 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class SoilController : MonoBehaviour
 {
     public GameObject player;
+    public string playerItem;
+
     public bool isTouching;
     public int stage;
-    public string playerItem;
+
+    public GameObject bar;
+
     public int crop;
     public float cropTime;
     public float cropReady;
-
-    public GameObject bar;
 
     public GameObject carrot;
     public GameObject wheat;
@@ -24,11 +27,29 @@ public class SoilController : MonoBehaviour
     {
         player = null;
     }
-    
+
     void Update()
     {
+        var gamepad = Gamepad.current;
+
         if (player != null)
+        {
             playerItem = player.GetComponent<PlayerController>().itemName;
+            if (gamepad == null)
+            {
+                if (player.GetComponent<PlayerController>().playerOne)
+                    Interact(Input.GetMouseButtonDown(1));
+                else
+                    Interact(Input.GetKeyDown(KeyCode.E));
+            }
+            else
+            {
+                if (player.GetComponent<PlayerController>().playerOne)
+                    Interact(gamepad.leftShoulder.wasPressedThisFrame);
+                else
+                    Interact(gamepad.rightShoulder.wasPressedThisFrame);
+            }
+        }
         else
             playerItem = null;
 
@@ -37,8 +58,43 @@ public class SoilController : MonoBehaviour
             cropTime += Time.deltaTime;
             bar.GetComponent<Transform>().localScale = new Vector2(cropTime / cropReady * 1, .15f);
         }
+    }
 
-        if (Input.GetMouseButtonDown(1) && isTouching)
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            isTouching = false;
+            bar.GetComponent<SpriteRenderer>().enabled = false;
+            player = null;
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            if (stage == 3)
+                bar.GetComponent<SpriteRenderer>().enabled = true;
+            isTouching = true;
+            player = collision.gameObject;
+        }
+    }
+
+    void Harvest(GameObject crop)
+    {
+        GameObject c = Instantiate(crop);
+        c.transform.position = player.GetComponent<PlayerController>().objectPickupPos.position;
+        c.transform.SetParent(player.transform);
+        player.GetComponent<PlayerController>().holdingItem = c;
+        player.GetComponent<PlayerController>().itemName = c.name;
+        player.GetComponent<PlayerController>().isTouching = true;
+        player.GetComponent<PlayerController>().isHolding = true;
+    }
+
+    void Interact(bool input)
+    {
+        if (input && isTouching)
         {
             if (stage == 0 && playerItem == "Till")
             {
@@ -103,45 +159,5 @@ public class SoilController : MonoBehaviour
                 stage = 0;
             }
         }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            //player = collision.gameObject;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            isTouching = false;
-            bar.GetComponent<SpriteRenderer>().enabled = false;
-            player = null;
-        }
-    }
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            if (stage == 3)
-                bar.GetComponent<SpriteRenderer>().enabled = true;
-            isTouching = true;
-            player = collision.gameObject;
-        }
-    }
-
-    void Harvest(GameObject crop)
-    {
-        GameObject c = Instantiate(crop);
-        c.transform.position = player.GetComponent<PlayerController>().objectPickupPos.position;
-        c.transform.SetParent(player.transform);
-        player.GetComponent<PlayerController>().holdingItem = c;
-        player.GetComponent<PlayerController>().itemName = c.name;
-        player.GetComponent<PlayerController>().isTouching = true;
-        player.GetComponent<PlayerController>().isHolding = true;
     }
 }
