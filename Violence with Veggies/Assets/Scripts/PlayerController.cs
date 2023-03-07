@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
             Vector2 mousePos = Input.mousePosition;
             mousePos = Camera.main.ScreenToWorldPoint(mousePos);
             transform.position = mousePos;
-            //Pickup(Input.GetButtonDown(Q));
+            Pickup(Input.GetKeyDown(KeyCode.Q));
         }
     }
     
