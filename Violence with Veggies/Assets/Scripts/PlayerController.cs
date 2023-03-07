@@ -1,46 +1,76 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    public Transform objectPickupPos;
     private Rigidbody2D myRb;
     public float speed;
-    public Transform objectPickupPos;
+
     public bool isTouching = false;
     public bool isTouchingOther = false;
-    public bool isHolding = false;
-    public string itemName = "Hands";
+
     public GameObject holdingItem;
     private GameObject otherItem;
+    public bool isHolding = false;
+    public string itemName = "Hands";
+
     public bool playerOne;
     public Camera cam;
-    
+
+    private Vector2 move;
+
     void Start()
     {
         myRb = GetComponent<Rigidbody2D>();
     }
-    
+
     void Update()
     {
-        if (playerOne)
+        var gamepad = Gamepad.current;
+        if (gamepad == null)
         {
-            Vector2 temp = myRb.velocity;
-            temp.x = Input.GetAxisRaw("Horizontal") * speed;
-            temp.y = Input.GetAxisRaw("Vertical") * speed;
-            Pickup(Input.GetMouseButtonDown(0));
-            myRb.velocity = temp;
+            if (playerOne)
+            {
+                Vector2 temp = myRb.velocity;
+                temp.x = Input.GetAxisRaw("Horizontal") * speed;
+                temp.y = Input.GetAxisRaw("Vertical") * speed;
+                Pickup(Input.GetMouseButtonDown(0));
+                myRb.velocity = temp;
+            }
+            else
+            {
+                Vector2 mousePos = Input.mousePosition;
+                mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+                transform.position = mousePos;
+            }
         }
 
         else
         {
-            Vector2 mousePos = Input.mousePosition;
-            mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-            transform.position = mousePos;
-            Pickup(Input.GetKeyDown(KeyCode.Q));
+            if (playerOne)
+            {
+                if (gamepad.leftTrigger.wasPressedThisFrame)
+                    Pickup(gamepad.leftTrigger.wasPressedThisFrame);
+                move = gamepad.leftStick.ReadValue();
+            }
+
+            else
+            {
+                if (gamepad.rightTrigger.wasPressedThisFrame)
+                    Pickup(gamepad.rightTrigger.wasPressedThisFrame);
+                move = gamepad.rightStick.ReadValue();
+            }
+
+            Vector2 temp = myRb.velocity;
+            temp.x = move.x * speed;
+            temp.y = move.y * speed;
+            myRb.velocity = temp;
         }
     }
-    
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
