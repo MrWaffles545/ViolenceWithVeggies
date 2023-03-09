@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7083228993309340214}
   - component: {fileID: 7083228993309340215}
   - component: {fileID: 7083228993309340212}
+  - component: {fileID: 6711942032830814868}
   m_Layer: 0
   m_Name: SeedBox
   m_TagString: Untagged
@@ -101,3 +102,20 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1
+--- !u!114 &6711942032830814868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7083228993309340213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bffd960ef67d3c40b5e5065bb140063, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sellBox: 0
+  player: {fileID: 0}
+  playerItem: 
+  isTouching: 0
+  seeds: []

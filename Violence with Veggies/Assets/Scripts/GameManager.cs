@@ -24,7 +24,11 @@ public class GameManager : MonoBehaviour
     {
         score = player.GetComponent<PlayerController>().score;
         scoreText.text = score.ToString();
-        score2 = player2.GetComponent<PlayerController>().score;
-        scoreText2.text = score2.ToString();
+
+        if (player2 != null)
+        {
+            score2 = player2.GetComponent<PlayerController>().score;
+            scoreText2.text = score2.ToString();
+        }
     }
 }

@@ -8,12 +8,15 @@ public class BoxController : MonoBehaviour
     public GameObject player;
     public string playerItem;
     public bool isTouching;
+    public GameObject[] seeds;
+    public float seedTime;
+    public float seedReady;
+    public GameObject bar;
 
 
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     // Update is called once per frame
@@ -50,7 +53,33 @@ public class BoxController : MonoBehaviour
                 player.GetComponent<PlayerController>().isHolding = false;
             }
 
+   
+        }
 
+        else if (isTouching && Input.GetMouseButtonDown(1) && !sellBox && !player.GetComponent<PlayerController>().isHolding && seedTime >= seedReady)
+        {
+            GameObject temp = seeds[Random.Range(0, seeds.Length)];
+            //spawns the correct crop
+            GameObject c = Instantiate(temp);
+            //teleports the crop to the correct position
+            c.transform.position = player.GetComponent<PlayerController>().objectPickupPos.position;
+            //assigns the player as the crops parent
+            c.transform.SetParent(player.transform);
+            //renames the crop that spawned to the correct name instead of crop + "(Clone)"
+            c.name = temp.name;
+            //makes the player have the crop
+            player.GetComponent<PlayerController>().holdingItem = c;
+            player.GetComponent<PlayerController>().itemName = c.name;
+            player.GetComponent<PlayerController>().isTouching = true;
+            player.GetComponent<PlayerController>().isHolding = true;
+            seedTime = 0;
+
+        }
+
+        if (seedTime <= seedReady && !sellBox)
+        {
+            seedTime += Time.deltaTime;
+            bar.GetComponent<Transform>().localScale = new Vector2(seedTime / seedReady * 1, .15f);
         }
     }
 
