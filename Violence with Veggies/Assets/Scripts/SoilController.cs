@@ -5,18 +5,25 @@ using UnityEngine.InputSystem;
 
 public class SoilController : MonoBehaviour
 {
+    //variables for the player
     public GameObject player;
     public string playerItem;
-
     public bool isTouching;
+
+    //soil stage
     public int stage;
 
+    //growth bar
     public GameObject bar;
 
+    //the selector for the crop planted
     public int crop;
+
+    //variables for growing
     public float cropTime;
     public float cropReady;
 
+    //crop prefabs to spawn when harvested
     public GameObject carrot;
     public GameObject wheat;
     public GameObject potato;
@@ -25,34 +32,45 @@ public class SoilController : MonoBehaviour
 
     void Start()
     {
+        //makes the player target null at the start
         player = null;
     }
 
     void Update()
     {
+        //detects the input device
         var gamepad = Gamepad.current;
-
+        //checks if the soil is touching a player
         if (player != null)
         {
+            //assigns playerItem to what the player is holding
             playerItem = player.GetComponent<PlayerController>().itemName;
+            //if the player is using something other than a gamepad
             if (gamepad == null)
             {
+                //if its player one it uses right click to interact
                 if (player.GetComponent<PlayerController>().playerOne)
                     Interact(Input.GetMouseButtonDown(1));
+                //if it is player two it uses e to interact
                 else
                     Interact(Input.GetKeyDown(KeyCode.E));
             }
+            //if the player is using a gamepad
             else
             {
+                //if it is player one it uses left bumper to interact
                 if (player.GetComponent<PlayerController>().playerOne)
                     Interact(gamepad.leftShoulder.wasPressedThisFrame);
+                //if it is player two it uses right bumper to interact
                 else
                     Interact(gamepad.rightShoulder.wasPressedThisFrame);
             }
         }
+        //if there is no player it assigns playerItem to null
         else
             playerItem = null;
 
+        //timer for when the crop is growing in the soil
         if (stage == 3 && cropTime <= cropReady)
         {
             cropTime += Time.deltaTime;
@@ -62,6 +80,7 @@ public class SoilController : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        //flag for when the player exits contact
         if (collision.gameObject.tag == "Player")
         {
             isTouching = false;
@@ -72,6 +91,7 @@ public class SoilController : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
+        //flag for when the player comes in contact and assigns the player to the player variable
         if (collision.gameObject.tag == "Player")
         {
             if (stage == 3)
@@ -81,34 +101,29 @@ public class SoilController : MonoBehaviour
         }
     }
 
-    void Harvest(GameObject crop)
-    {
-        GameObject c = Instantiate(crop);
-        c.transform.position = player.GetComponent<PlayerController>().objectPickupPos.position;
-        c.transform.SetParent(player.transform);
-        player.GetComponent<PlayerController>().holdingItem = c;
-        player.GetComponent<PlayerController>().itemName = c.name;
-        player.GetComponent<PlayerController>().isTouching = true;
-        player.GetComponent<PlayerController>().isHolding = true;
-    }
 
     void Interact(bool input)
     {
+        //detects if the player hits the right button and is touching the player
         if (input && isTouching)
         {
+            //if the soil is stage 0 it tills it and adds 1 to stage
             if (stage == 0 && playerItem == "Till")
             {
                 Debug.Log("Tilled");
                 stage++;
             }
+            //if the soil is stage 1 it detects which seed the player interacted on it with and adds 1 to stage
             else if (stage == 1 && (playerItem == "Carrot Seed" || playerItem == "Wheat Seed" || playerItem == "Potato Seed" || playerItem == "Turnip Seed" || playerItem == "Artichoke Seed"))
             {
                 Debug.Log("Planted " + playerItem);
+                //gets rid of the item the player is holding
                 Destroy(player.GetComponent<PlayerController>().holdingItem);
                 player.GetComponent<PlayerController>().holdingItem = null;
                 player.GetComponent<PlayerController>().itemName = "Hands";
                 player.GetComponent<PlayerController>().isTouching = false;
                 player.GetComponent<PlayerController>().isHolding = false;
+                //assigns the crop correspondant to the seed and sets the timer number
                 if (playerItem == "Carrot Seed")
                 {
                     crop = 1;
@@ -136,14 +151,17 @@ public class SoilController : MonoBehaviour
                 }
                 stage++;
             }
+            //if the soil is stage 2 it waters it and adds 1 to stage
             else if (stage == 2 && playerItem == "WaterCan")
             {
                 Debug.Log("Watered");
                 stage++;
             }
+            //if the soil is stage 3 and the crop has grown it harvests it, gives the player the correct crop and adds 1 to stage
             else if (stage == 3 && playerItem == "Hands" && cropTime >= cropReady)
             {
                 Debug.Log("Harvested");
+                //harvests the selected crop
                 if (crop == 1)
                     Harvest(carrot);
                 else if (crop == 2)
@@ -155,9 +173,27 @@ public class SoilController : MonoBehaviour
                 else if (crop == 5)
                     Harvest(artichoke);
                 cropTime = 0;
+                //resets the bar and stage
                 bar.GetComponent<Transform>().localScale = new Vector2(0, .15f);
                 stage = 0;
             }
         }
+    }
+
+    void Harvest(GameObject crop)
+    {
+        //spawns the correct crop
+        GameObject c = Instantiate(crop);
+        //teleports the crop to the correct position
+        c.transform.position = player.GetComponent<PlayerController>().objectPickupPos.position;
+        //assigns the player as the crops parent
+        c.transform.SetParent(player.transform);
+        //renames the crop that spawned to the correct name instead of crop + "(Clone)"
+        c.name = crop.name;
+        //makes the player have the crop
+        player.GetComponent<PlayerController>().holdingItem = c;
+        player.GetComponent<PlayerController>().itemName = c.name;
+        player.GetComponent<PlayerController>().isTouching = true;
+        player.GetComponent<PlayerController>().isHolding = true;
     }
 }

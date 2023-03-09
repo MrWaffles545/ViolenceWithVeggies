@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7495777356422880050}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PickupPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 7495777357295568734}
   - component: {fileID: 7495777357295568735}
   - component: {fileID: 7495777357295568728}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -154,11 +154,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 7
   objectPickupPos: {fileID: 7495777356422880050}
-  isTouching: 0
-  isTouchingOther: 0
+  holdingItem: {fileID: 0}
   isHolding: 0
   itemName: Hands
-  holdingItem: {fileID: 0}
+  isTouching: 0
+  isTouchingOther: 0
   playerOne: 1
   cam: {fileID: 0}
 --- !u!70 &7495777357295568728
