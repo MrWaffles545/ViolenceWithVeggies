@@ -6,10 +6,10 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI scoreText, scoreText2;
     private GameObject box;
-    public int score;
-    private Component controllerScrpt;
+    public GameObject player, player2;
+    public int score, score2;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +22,9 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        score = box.GetComponent<BoxController>().veggieScore;
+        score = player.GetComponent<PlayerController>().score;
         scoreText.text = score.ToString();
+        score2 = player2.GetComponent<PlayerController>().score;
+        scoreText2.text = score2.ToString();
     }
 }

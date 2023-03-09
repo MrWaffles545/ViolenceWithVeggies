@@ -20,12 +20,15 @@ public class PlayerController : MonoBehaviour
     public bool isTouching = false;
     public bool isTouchingOther = false;
 
-    //2 player variables
+    //two player variables
     public bool playerOne;
     public Camera cam;
 
     //the variable to hold the gamepad input to move
     private Vector2 move;
+
+    //player score variable
+    public int score;
 
     void Start()
     {

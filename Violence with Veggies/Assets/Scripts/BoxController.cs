@@ -5,7 +5,6 @@ using UnityEngine;
 public class BoxController : MonoBehaviour
 {
     public bool sellBox;
-    public int veggieScore;
     public GameObject player;
     public string playerItem;
     public bool isTouching;
@@ -27,22 +26,22 @@ public class BoxController : MonoBehaviour
 
         if (isTouching && Input.GetMouseButtonDown(1) && sellBox == true)
         {
-            if (playerItem == "Wheat(Clone)")
-                veggieScore++;
+            if (playerItem == "Wheat")
+                player.GetComponent<PlayerController>().score++;
 
-            if (playerItem == "Carrot(Clone)")
-                veggieScore += 2;
+            if (playerItem == "Carrot")
+                player.GetComponent<PlayerController>().score += 2;
 
-            if (playerItem == "Potato(Clone)")
-                veggieScore += 2;
+            if (playerItem == "Potato")
+                player.GetComponent<PlayerController>().score += 2;
 
-            if (playerItem == "Turnip(Clone)")
-                veggieScore += 3;
+            if (playerItem == "Turnip")
+                player.GetComponent<PlayerController>().score += 3;
 
-            if (playerItem == "Artichoke(Clone)")
-                veggieScore += 4;
+            if (playerItem == "Artichoke")
+                player.GetComponent<PlayerController>().score += 4;
 
-            if (playerItem == "Carrot(Clone)" || playerItem == "Wheat(Clone)" || playerItem == "Potato(Clone)" || playerItem == "Turnip(Clone)" || playerItem == "Artichoke(Clone)")
+            if (playerItem == "Carrot" || playerItem == "Wheat" || playerItem == "Potato" || playerItem == "Turnip" || playerItem == "Artichoke")
             {
                 Destroy(player.GetComponent<PlayerController>().holdingItem);
                 player.GetComponent<PlayerController>().holdingItem = null;
