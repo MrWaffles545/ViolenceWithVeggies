@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     public Transform objectPickupPos;
     public GameObject holdingItem;
     public bool isHolding = false;
-    public string itemName = "Hands";
+    public string itemName;
 
     //variables for the other items the character can pick up while holding one already
     private GameObject otherItem;
@@ -31,6 +31,9 @@ public class PlayerController : MonoBehaviour
     {
         //assigns the rigidbody when the game starts
         myRb = GetComponent<Rigidbody2D>();
+
+        //makes the item the player is holding at the start "Hands"
+        itemName = "Hands";
     }
 
     void Update()
