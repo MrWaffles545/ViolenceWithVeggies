@@ -38,33 +38,12 @@ public class SoilController : MonoBehaviour
 
     void Update()
     {
-        //detects the input device
-        var gamepad = Gamepad.current;
         //checks if the soil is touching a player
         if (player != null)
         {
             //assigns playerItem to what the player is holding
             playerItem = player.GetComponent<PlayerController>().itemName;
-            //if the player is using something other than a gamepad
-            if (gamepad == null)
-            {
-                //if its player one it uses right click to interact
-                if (player.GetComponent<PlayerController>().playerOne)
-                    Interact(Input.GetMouseButtonDown(1));
-                //if it is player two it uses e to interact
-                else
-                    Interact(Input.GetKeyDown(KeyCode.E));
-            }
-            //if the player is using a gamepad
-            else
-            {
-                //if it is player one it uses left bumper to interact
-                if (player.GetComponent<PlayerController>().playerOne)
-                    Interact(gamepad.leftShoulder.wasPressedThisFrame);
-                //if it is player two it uses right bumper to interact
-                else
-                    Interact(gamepad.rightShoulder.wasPressedThisFrame);
-            }
+            Interact(player.GetComponent<PlayerController>().inputType);
         }
         //if there is no player it assigns playerItem to null
         else
