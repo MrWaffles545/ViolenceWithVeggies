@@ -27,7 +27,7 @@ public class BoxController : MonoBehaviour
         else
             playerItem = null;
 
-        if (isTouching && Input.GetMouseButtonDown(1) && sellBox == true)
+        if (isTouching && player.GetComponent<PlayerController>().inputType && sellBox == true)
         {
             if (playerItem == "Wheat")
                 player.GetComponent<PlayerController>().score++;
@@ -56,7 +56,7 @@ public class BoxController : MonoBehaviour
    
         }
 
-        else if (isTouching && Input.GetMouseButtonDown(1) && !sellBox && !player.GetComponent<PlayerController>().isHolding && seedTime >= seedReady)
+        else if (isTouching && player.GetComponent<PlayerController>().inputType && !sellBox && !player.GetComponent<PlayerController>().isHolding && seedTime >= seedReady)
         {
             GameObject temp = seeds[Random.Range(0, seeds.Length)];
             //spawns the correct crop
