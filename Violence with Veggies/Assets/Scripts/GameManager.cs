@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public GameObject player, player2;
     public GameObject endGameUI, pauseUI;
     public int score, score2;
-    public float gameTimer, gameTime;
+    public float gameTime;
     public bool paused;
 
     // Update is called once per frame
@@ -40,13 +40,13 @@ public class GameManager : MonoBehaviour
                 scoreText2.text = score2.ToString();
             }
 
-            if (gameTimer <= gameTime)
+            if (gameTime >= 0)
             {
-                gameTimer += Time.deltaTime;
-                gameTimeText.text = Mathf.RoundToInt(gameTimer).ToString();
+                gameTime -= Time.deltaTime;
+                gameTimeText.text = Mathf.RoundToInt(gameTime).ToString();
             }
 
-            if (gameTimer >= gameTime)
+            if (gameTime <= 0)
             {
                 Time.timeScale = 0f;
                 endGameUI.SetActive(true);
