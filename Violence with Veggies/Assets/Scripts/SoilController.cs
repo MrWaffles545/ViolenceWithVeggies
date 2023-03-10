@@ -39,10 +39,11 @@ public class SoilController : MonoBehaviour
 
     void Update()
     {
-        script = player.GetComponent<PlayerController>();
+        
         //checks if the soil is touching a player
         if (player != null)
         {
+            script = player.GetComponent<PlayerController>();
             //assigns playerItem to what the player is holding
             playerItem = script.itemName;
             Interact(script.inputType);

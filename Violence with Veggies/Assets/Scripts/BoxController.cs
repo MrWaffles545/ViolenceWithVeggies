@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class BoxController : MonoBehaviour
 {
+    //changes wether the box is for selling of spawning seeds
     public bool sellBox;
+
+    //player related variables
     public GameObject player;
     private PlayerController script;
     public string playerItem;
     public bool isTouching;
+
+    //array containg each different seeds
     public GameObject[] seeds;
+
     public float seedTime;
     public float seedReady;
     public GameObject bar;
@@ -23,9 +29,12 @@ public class BoxController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        script = player.GetComponent<PlayerController>();
+
         if (player != null)
+        {
+            script = player.GetComponent<PlayerController>();
             playerItem = script.itemName;
+        }
         else
             playerItem = null;
 
