@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     public bool playerOne;
     public Camera cam;
 
-    //input type int
+    //input type variable for other scripts
     public bool inputType;
 
     //the variable to hold the gamepad input to move
@@ -44,54 +44,57 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        //Gets the gamepad controller
-        var gamepad = Gamepad.current;
-        //if there isnt a gamepad it uses keyboard controls
-        Vector2 temp = myRb.velocity;
-        if (gamepad == null)
+        if (Time.timeScale != 0)
         {
-            //if it is player one it uses basic controls and left click to pickup/drop
-            if (playerOne)
+            //Gets the gamepad controller
+            var gamepad = Gamepad.current;
+            //if there isnt a gamepad it uses keyboard controls
+            Vector2 temp = myRb.velocity;
+            if (gamepad == null)
             {
-                move.x = Input.GetAxisRaw("Horizontal");
-                move.y = Input.GetAxisRaw("Vertical");
-                Pickup(Input.GetMouseButtonDown(0));
-                inputType = Input.GetMouseButtonDown(1);
+                //if it is player one it uses basic controls and left click to pickup/drop
+                if (playerOne)
+                {
+                    move.x = Input.GetAxisRaw("Horizontal");
+                    move.y = Input.GetAxisRaw("Vertical");
+                    Pickup(Input.GetMouseButtonDown(0));
+                    inputType = Input.GetMouseButtonDown(1);
+                }
+                //if it isnt player one it uses the mouses position to move and Q to pickup/drop
+                else
+                {
+                    Vector2 mousePos = Input.mousePosition;
+                    mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+                    transform.position = mousePos;
+                    Pickup(Input.GetKeyDown(KeyCode.Q));
+                    inputType = Input.GetKeyDown(KeyCode.E);
+                }
             }
-            //if it isnt player one it uses the mouses position to move and Q to pickup/drop
+            //if there is a gamepad controller it uses this
             else
             {
-                Vector2 mousePos = Input.mousePosition;
-                mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-                transform.position = mousePos;
-                Pickup(Input.GetKeyDown(KeyCode.Q));
-                inputType = Input.GetKeyDown(KeyCode.E);
+                //if player one it uses the left joystick to move and left trigger to pickup/drop
+                if (playerOne)
+                {
+                    if (gamepad.leftTrigger.wasPressedThisFrame)
+                        Pickup(gamepad.leftTrigger.wasPressedThisFrame);
+                    move = gamepad.leftStick.ReadValue();
+                    inputType = gamepad.leftShoulder.wasPressedThisFrame;
+                }
+                //if it isnt player one is uses right joystick to move and right trigger to pickup/drop
+                else
+                {
+                    if (gamepad.rightTrigger.wasPressedThisFrame)
+                        Pickup(gamepad.rightTrigger.wasPressedThisFrame);
+                    move = gamepad.rightStick.ReadValue();
+                    inputType = gamepad.rightShoulder.wasPressedThisFrame;
+                }
             }
+            //converts the gamepad input to velocity of the player
+            temp.x = move.x * speed;
+            temp.y = move.y * speed;
+            myRb.velocity = temp;
         }
-        //if there is a gamepad controller it uses this
-        else
-        {
-            //if player one it uses the left joystick to move and left trigger to pickup/drop
-            if (playerOne)
-            {
-                if (gamepad.leftTrigger.wasPressedThisFrame)
-                    Pickup(gamepad.leftTrigger.wasPressedThisFrame);
-                move = gamepad.leftStick.ReadValue();
-                inputType = gamepad.leftShoulder.wasPressedThisFrame;
-            }
-            //if it isnt player one is uses right joystick to move and right trigger to pickup/drop
-            else
-            {
-                if (gamepad.rightTrigger.wasPressedThisFrame)
-                    Pickup(gamepad.rightTrigger.wasPressedThisFrame);
-                move = gamepad.rightStick.ReadValue();
-                inputType = gamepad.rightShoulder.wasPressedThisFrame;
-            }
-        }
-        //converts the gamepad input to velocity of the player
-        temp.x = move.x * speed;
-        temp.y = move.y * speed;
-        myRb.velocity = temp;
     }
 
 

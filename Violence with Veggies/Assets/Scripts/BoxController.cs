@@ -6,6 +6,7 @@ public class BoxController : MonoBehaviour
 {
     public bool sellBox;
     public GameObject player;
+    private PlayerController script;
     public string playerItem;
     public bool isTouching;
     public GameObject[] seeds;
@@ -22,56 +23,55 @@ public class BoxController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        script = player.GetComponent<PlayerController>();
         if (player != null)
-            playerItem = player.GetComponent<PlayerController>().itemName;
+            playerItem = script.itemName;
         else
             playerItem = null;
 
-        if (isTouching && player.GetComponent<PlayerController>().inputType && sellBox == true)
+        if (isTouching && script.inputType && sellBox == true)
         {
             if (playerItem == "Wheat")
-                player.GetComponent<PlayerController>().score++;
+                script.score++;
 
             if (playerItem == "Carrot")
-                player.GetComponent<PlayerController>().score += 2;
+                script.score += 2;
 
             if (playerItem == "Potato")
-                player.GetComponent<PlayerController>().score += 2;
+                script.score += 2;
 
             if (playerItem == "Turnip")
-                player.GetComponent<PlayerController>().score += 3;
+                script.score += 3;
 
             if (playerItem == "Artichoke")
-                player.GetComponent<PlayerController>().score += 4;
+                script.score += 4;
 
             if (playerItem == "Carrot" || playerItem == "Wheat" || playerItem == "Potato" || playerItem == "Turnip" || playerItem == "Artichoke")
             {
-                Destroy(player.GetComponent<PlayerController>().holdingItem);
-                player.GetComponent<PlayerController>().holdingItem = null;
-                player.GetComponent<PlayerController>().itemName = "Hands";
-                player.GetComponent<PlayerController>().isTouching = false;
-                player.GetComponent<PlayerController>().isHolding = false;
+                Destroy(script.holdingItem);
+                script.holdingItem = null;
+                script.itemName = "Hands";
+                script.isTouching = false;
+                script.isHolding = false;
             }
-
-   
         }
 
-        else if (isTouching && player.GetComponent<PlayerController>().inputType && !sellBox && !player.GetComponent<PlayerController>().isHolding && seedTime >= seedReady)
+        else if (isTouching && script.inputType && !sellBox && !script.isHolding && seedTime >= seedReady)
         {
             GameObject temp = seeds[Random.Range(0, seeds.Length)];
             //spawns the correct crop
             GameObject c = Instantiate(temp);
             //teleports the crop to the correct position
-            c.transform.position = player.GetComponent<PlayerController>().objectPickupPos.position;
+            c.transform.position = script.objectPickupPos.position;
             //assigns the player as the crops parent
             c.transform.SetParent(player.transform);
             //renames the crop that spawned to the correct name instead of crop + "(Clone)"
             c.name = temp.name;
             //makes the player have the crop
-            player.GetComponent<PlayerController>().holdingItem = c;
-            player.GetComponent<PlayerController>().itemName = c.name;
-            player.GetComponent<PlayerController>().isTouching = true;
-            player.GetComponent<PlayerController>().isHolding = true;
+            script.holdingItem = c;
+            script.itemName = c.name;
+            script.isTouching = true;
+            script.isHolding = true;
             seedTime = 0;
 
         }
@@ -100,9 +100,4 @@ public class BoxController : MonoBehaviour
             isTouching = false;
         }
     }
-
-
-
-
-
 }
