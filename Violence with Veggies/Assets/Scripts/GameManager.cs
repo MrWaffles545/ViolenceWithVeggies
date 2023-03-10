@@ -17,7 +17,6 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        box = GameObject.Find("SellBox");
         scoreText.text = "0";
         
     }
