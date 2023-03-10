@@ -7,6 +7,7 @@ public class SoilController : MonoBehaviour
 {
     //variables for the player
     public GameObject player;
+    private PlayerController script;
     public string playerItem;
     public bool isTouching;
 
@@ -38,12 +39,13 @@ public class SoilController : MonoBehaviour
 
     void Update()
     {
+        script = player.GetComponent<PlayerController>();
         //checks if the soil is touching a player
         if (player != null)
         {
             //assigns playerItem to what the player is holding
-            playerItem = player.GetComponent<PlayerController>().itemName;
-            Interact(player.GetComponent<PlayerController>().inputType);
+            playerItem = script.itemName;
+            Interact(script.inputType);
         }
         //if there is no player it assigns playerItem to null
         else
@@ -97,11 +99,11 @@ public class SoilController : MonoBehaviour
             {
                 Debug.Log("Planted " + playerItem);
                 //gets rid of the item the player is holding
-                Destroy(player.GetComponent<PlayerController>().holdingItem);
-                player.GetComponent<PlayerController>().holdingItem = null;
-                player.GetComponent<PlayerController>().itemName = "Hands";
-                player.GetComponent<PlayerController>().isTouching = false;
-                player.GetComponent<PlayerController>().isHolding = false;
+                Destroy(script.holdingItem);
+                script.holdingItem = null;
+                script.itemName = "Hands";
+                script.isTouching = false;
+                script.isHolding = false;
                 //assigns the crop correspondant to the seed and sets the timer number
                 if (playerItem == "Carrot Seed")
                 {
@@ -164,15 +166,15 @@ public class SoilController : MonoBehaviour
         //spawns the correct crop
         GameObject c = Instantiate(crop);
         //teleports the crop to the correct position
-        c.transform.position = player.GetComponent<PlayerController>().objectPickupPos.position;
+        c.transform.position = script.objectPickupPos.position;
         //assigns the player as the crops parent
         c.transform.SetParent(player.transform);
         //renames the crop that spawned to the correct name instead of crop + "(Clone)"
         c.name = crop.name;
         //makes the player have the crop
-        player.GetComponent<PlayerController>().holdingItem = c;
-        player.GetComponent<PlayerController>().itemName = c.name;
-        player.GetComponent<PlayerController>().isTouching = true;
-        player.GetComponent<PlayerController>().isHolding = true;
+        script.holdingItem = c;
+        script.itemName = c.name;
+        script.isTouching = true;
+        script.isHolding = true;
     }
 }
