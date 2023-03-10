@@ -1995,17 +1995,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5790781754970909114, guid: 06441c8d40aca3348a90f9ade29a9a28, type: 3}
   m_PrefabInstance: {fileID: 952251851}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &971198605 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1877358896679210769, guid: 44d20ed1a01ef574e85b9057e37abb57, type: 3}
-  m_PrefabInstance: {fileID: 925374695}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &973880875
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2783,9 +2772,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1627873782}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
+      propertyPath: endGameUI
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: scoreText
       value: 
-      objectReference: {fileID: 971198605}
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
+      propertyPath: gameTimeText
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2207981142817029101, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: m_Name
       value: GameManager
