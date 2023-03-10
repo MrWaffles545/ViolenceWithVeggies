@@ -14,13 +14,6 @@ public class GameManager : MonoBehaviour
     public int score, score2;
     public float gameTimer, gameTime;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        scoreText.text = "0";
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
