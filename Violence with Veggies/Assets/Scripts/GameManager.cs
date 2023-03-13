@@ -19,18 +19,6 @@ public class GameManager : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().buildIndex != 0)
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                if (paused)
-                {
-                    Resume();
-                }
-                else
-                {
-                    Pause();
-                }
-            }
-
             score = player.GetComponent<PlayerController>().score;
             scoreText.text = score.ToString();
 
@@ -43,7 +31,14 @@ public class GameManager : MonoBehaviour
             if (gameTime >= 0)
             {
                 gameTime -= Time.deltaTime;
-                gameTimeText.text = Mathf.RoundToInt(gameTime).ToString();
+                gameTimeText.text = Mathf.RoundToInt(gameTime / 60) + " : " + (gameTime / 60);
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    if (paused)
+                        Resume();
+                    else
+                        Pause();
+                }
             }
 
             if (gameTime <= 0)

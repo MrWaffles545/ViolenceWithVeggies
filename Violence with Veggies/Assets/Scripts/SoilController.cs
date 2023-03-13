@@ -39,7 +39,6 @@ public class SoilController : MonoBehaviour
 
     void Update()
     {
-        
         //checks if the soil is touching a player
         if (player != null)
         {
@@ -48,9 +47,6 @@ public class SoilController : MonoBehaviour
             playerItem = script.itemName;
             Interact(script.inputType);
         }
-        //if there is no player it assigns playerItem to null
-        else
-            playerItem = null;
 
         //timer for when the crop is growing in the soil
         if (stage == 3 && cropTime <= cropReady)
@@ -67,6 +63,9 @@ public class SoilController : MonoBehaviour
         {
             isTouching = false;
             bar.GetComponent<SpriteRenderer>().enabled = false;
+            if (player != null)
+                player.GetComponent<PlayerController>().speed = 7f;
+            playerItem = null;
             player = null;
         }
     }
@@ -76,10 +75,13 @@ public class SoilController : MonoBehaviour
         //flag for when the player comes in contact and assigns the player to the player variable
         if (collision.gameObject.tag == "Player")
         {
-            if (stage == 3)
-                bar.GetComponent<SpriteRenderer>().enabled = true;
             isTouching = true;
             player = collision.gameObject;
+            if (stage == 3)
+            {
+                bar.GetComponent<SpriteRenderer>().enabled = true;
+                player.GetComponent<PlayerController>().speed = 2f;
+            }
         }
     }
 
@@ -157,6 +159,7 @@ public class SoilController : MonoBehaviour
                 cropTime = 0;
                 //resets the bar and stage
                 bar.GetComponent<Transform>().localScale = new Vector2(0, .15f);
+                script.speed = 7f;
                 stage = 0;
             }
         }
