@@ -13,8 +13,7 @@ public class GameManager : MonoBehaviour
     public int score, score2;
     public float gameTime;
     public bool paused;
-
-    // Update is called once per frame
+    
     void Update()
     {
         if (SceneManager.GetActiveScene().buildIndex != 0)
@@ -31,7 +30,7 @@ public class GameManager : MonoBehaviour
             if (gameTime >= 0)
             {
                 gameTime -= Time.deltaTime;
-                gameTimeText.text = Mathf.RoundToInt(gameTime / 60) + " : " + (gameTime / 60);
+                gameTimeText.text = (Mathf.RoundToInt(gameTime)).ToString();
                 if (Input.GetKeyDown(KeyCode.Escape))
                 {
                     if (paused)
