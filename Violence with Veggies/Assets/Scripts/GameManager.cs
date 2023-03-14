@@ -12,6 +12,10 @@ public class GameManager : MonoBehaviour
     public GameObject endGameUI, pauseUI;
     public int score, score2;
     public float gameTime;
+    public int weather;
+    public float weatherTimer, weatherTimerMin, weatherTimerMax;
+    public float weatherDuration;
+    public bool weatherDone;
     public bool paused;
     
     void Update()
@@ -44,6 +48,46 @@ public class GameManager : MonoBehaviour
             {
                 Time.timeScale = 0f;
                 endGameUI.SetActive(true);
+            }
+
+            if (weatherTimer >= 0 && weather == 0)
+                weatherTimer -= Time.deltaTime;
+
+            if (weatherTimer <= 0 && weather == 0)
+            {
+                weather = Random.Range(1, 5); //1, 2, 3, and 4 (not 5)
+                Debug.Log("Weather " + weather);
+                //normal, angry sun, snow, rain
+                weatherTimer = Random.Range(weatherTimerMin, weatherTimerMax);
+            }
+
+            if (weather == 1) //angry sun
+            {
+                if (!weatherDone)
+                {
+                    for (int i = 0; i < GameObject.FindGameObjectsWithTag("Soil").Length / 2; i++)
+                    {
+                        GameObject target = GameObject.FindGameObjectsWithTag("Soil")[Random.Range(0, GameObject.FindGameObjectsWithTag("Soil").Length)];
+                        target.GetComponent<SoilController>().watered = false;
+                        target.GetComponent<SoilController>().fireSpreadDone = false;
+                        target.GetComponent<SoilController>().onFire = true;
+                        //target.SetActive(false);
+                    }
+                    weatherDone = true;
+                }
+
+                if (weatherDuration >= 0)
+                {
+                    weatherDuration -= Time.deltaTime;
+                }
+
+                if (weatherDuration <= 0)
+                {
+                    weather = 0;
+                    weatherDone = false;
+                    weatherDuration = 10f;
+                }
+                Debug.Log("FIRE!");
             }
         }
     }

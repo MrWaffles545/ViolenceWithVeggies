@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 142800934}
   - component: {fileID: 142800935}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Square (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 5790781754970909109}
   - component: {fileID: 5790781754970909108}
   - component: {fileID: 5790781754970909115}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Soil
   m_TagString: Soil
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ Transform:
   m_Children:
   - {fileID: 142800934}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5790781754970909109
 SpriteRenderer:
@@ -212,7 +212,11 @@ MonoBehaviour:
   player: {fileID: 0}
   playerItem: 
   isTouching: 0
+  gameManager: {fileID: 0}
   stage: 0
+  watered: 0
+  fireSpreadDone: 0
+  onFire: 0
   bar: {fileID: 142800933}
   crop: 0
   cropTime: 0
