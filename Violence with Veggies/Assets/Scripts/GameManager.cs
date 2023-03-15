@@ -134,6 +134,8 @@ public class GameManager : MonoBehaviour
                 }
             }
 
+            //add a distance boundary that pushes the item back to the center or add to the player controller at start ignore item box colliders
+
             if (weather > 0)
             {
                 if (weatherDuration >= 0)
