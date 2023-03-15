@@ -11,8 +11,15 @@ public class SoilController : MonoBehaviour
     public string playerItem;
     public bool isTouching;
 
+    public GameObject gameManager;
+
     //soil stage
     public int stage;
+    public bool watered;
+
+    //Fire variables
+    public bool fireSpreadDone, onFire, rain;
+    List<GameObject> fireSpreadRadius = new List<GameObject>();
 
     //growth bar
     public GameObject bar;
@@ -35,6 +42,15 @@ public class SoilController : MonoBehaviour
     {
         //makes the player target null at the start
         player = null;
+
+        gameManager = GameObject.FindGameObjectWithTag("GameController");
+
+        for (int i = 0; i < GameObject.FindGameObjectsWithTag("Soil").Length; i++)
+        {
+            GameObject target = GameObject.FindGameObjectsWithTag("Soil")[i];
+            if (target.transform.position.x - transform.position.x <= 3 && target.transform.position.y - transform.position.y <= 3)
+                fireSpreadRadius.Add(target);
+        }
     }
 
     void Update()
@@ -49,11 +65,32 @@ public class SoilController : MonoBehaviour
         }
 
         //timer for when the crop is growing in the soil
-        if (stage == 3 && cropTime <= cropReady)
+        if (watered && stage == 2 && cropTime <= cropReady)
         {
             cropTime += Time.deltaTime;
             bar.GetComponent<Transform>().localScale = new Vector2(cropTime / cropReady * 1, .15f);
         }
+
+        //Fire spread code
+        if (onFire && !fireSpreadDone && gameManager.GetComponent<GameManager>().weatherDuration <= 5)
+        {
+            GameObject target = fireSpreadRadius[Random.Range(0, fireSpreadRadius.Count / 2)];
+            target.GetComponent<SoilController>().onFire = true;
+            target.GetComponent<SoilController>().watered = false;
+            fireSpreadDone = true;
+        }
+
+        //rain water after fire code
+        if (rain && gameManager.GetComponent<GameManager>().weatherDuration <= 5)
+        {
+            watered = true;
+            fireSpreadDone = false;
+            rain = false;
+        }
+
+        //turns color (temp)
+        if (onFire || stage == -1 || rain)
+            GetComponent<SpriteRenderer>().color = new Color(1, 1, 1);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -77,9 +114,10 @@ public class SoilController : MonoBehaviour
         {
             isTouching = true;
             player = collision.gameObject;
-            if (stage == 3)
+            if (watered)
             {
-                bar.GetComponent<SpriteRenderer>().enabled = true;
+                if (stage == 2)
+                    bar.GetComponent<SpriteRenderer>().enabled = true;
                 player.GetComponent<PlayerController>().speed = 2f;
             }
         }
@@ -91,76 +129,90 @@ public class SoilController : MonoBehaviour
         //detects if the player hits the right button and is touching the player
         if (input && isTouching)
         {
-            //if the soil is stage 0 it tills it and adds 1 to stage
-            if (stage == 0 && playerItem == "Till")
+            if (!onFire)
             {
-                Debug.Log("Tilled");
-                stage++;
+                //if the soil is stage 0 it tills it and adds 1 to stage
+                if (stage == 0 && playerItem == "Till")
+                {
+                    Debug.Log("Tilled");
+                    stage++;
+                }
+                //if the soil is stage 1 it detects which seed the player interacted on it with and adds 1 to stage
+                else if (stage == 1 && (playerItem == "Carrot Seed" || playerItem == "Wheat Seed" || playerItem == "Potato Seed" || playerItem == "Turnip Seed" || playerItem == "Artichoke Seed"))
+                {
+                    Debug.Log("Planted " + playerItem);
+                    //gets rid of the item the player is holding
+                    Destroy(script.holdingItem);
+                    script.holdingItem = null;
+                    script.itemName = "Hands";
+                    script.isTouching = false;
+                    script.isHolding = false;
+                    //assigns the crop correspondant to the seed and sets the timer number
+                    if (playerItem == "Carrot Seed")
+                    {
+                        crop = 1;
+                        cropReady = 5;
+                    }
+                    else if (playerItem == "Wheat Seed")
+                    {
+                        crop = 2;
+                        cropReady = 3;
+                    }
+                    else if (playerItem == "Potato Seed")
+                    {
+                        crop = 3;
+                        cropReady = 5;
+                    }
+                    else if (playerItem == "Turnip Seed")
+                    {
+                        crop = 4;
+                        cropReady = 7;
+                    }
+                    else if (playerItem == "Artichoke Seed")
+                    {
+                        crop = 5;
+                        cropReady = 10;
+                    }
+                    stage++;
+                }
+                //if the soil is stage 2 it waters it and adds 1 to stage
+                else if (!watered && playerItem == "WaterCan")
+                {
+                    Debug.Log("Watered");
+                    watered = true;
+                }
+                //if the soil is stage 3 and the crop has grown it harvests it, gives the player the correct crop and adds 1 to stage
+                else if (watered && stage == 2 && playerItem == "Hands" && cropTime >= cropReady)
+                {
+                    Debug.Log("Harvested");
+                    //harvests the selected crop
+                    if (crop == 1)
+                        Harvest(carrot);
+                    else if (crop == 2)
+                        Harvest(wheat);
+                    else if (crop == 3)
+                        Harvest(potato);
+                    else if (crop == 4)
+                        Harvest(turnip);
+                    else if (crop == 5)
+                        Harvest(artichoke);
+                    cropTime = 0;
+                    //resets the bar and stage
+                    bar.GetComponent<Transform>().localScale = new Vector2(0, .15f);
+                    script.speed = 7f;
+                    watered = false;
+                    stage = 0;
+                }
             }
-            //if the soil is stage 1 it detects which seed the player interacted on it with and adds 1 to stage
-            else if (stage == 1 && (playerItem == "Carrot Seed" || playerItem == "Wheat Seed" || playerItem == "Potato Seed" || playerItem == "Turnip Seed" || playerItem == "Artichoke Seed"))
+
+            //fire
+            else if (onFire && playerItem == "WaterCan")
+                onFire = false;
+
+            if (stage == -1 && playerItem == "Till")
             {
-                Debug.Log("Planted " + playerItem);
-                //gets rid of the item the player is holding
-                Destroy(script.holdingItem);
-                script.holdingItem = null;
-                script.itemName = "Hands";
-                script.isTouching = false;
-                script.isHolding = false;
-                //assigns the crop correspondant to the seed and sets the timer number
-                if (playerItem == "Carrot Seed")
-                {
-                    crop = 1;
-                    cropReady = 5;
-                }
-                else if (playerItem == "Wheat Seed")
-                {
-                    crop = 2;
-                    cropReady = 3;
-                }
-                else if (playerItem == "Potato Seed")
-                {
-                    crop = 3;
-                    cropReady = 5;
-                }
-                else if (playerItem == "Turnip Seed")
-                {
-                    crop = 4;
-                    cropReady = 7;
-                }
-                else if (playerItem == "Artichoke Seed")
-                {
-                    crop = 5;
-                    cropReady = 10;
-                }
+                Debug.Log("Tilled The Snow");
                 stage++;
-            }
-            //if the soil is stage 2 it waters it and adds 1 to stage
-            else if (stage == 2 && playerItem == "WaterCan")
-            {
-                Debug.Log("Watered");
-                stage++;
-            }
-            //if the soil is stage 3 and the crop has grown it harvests it, gives the player the correct crop and adds 1 to stage
-            else if (stage == 3 && playerItem == "Hands" && cropTime >= cropReady)
-            {
-                Debug.Log("Harvested");
-                //harvests the selected crop
-                if (crop == 1)
-                    Harvest(carrot);
-                else if (crop == 2)
-                    Harvest(wheat);
-                else if (crop == 3)
-                    Harvest(potato);
-                else if (crop == 4)
-                    Harvest(turnip);
-                else if (crop == 5)
-                    Harvest(artichoke);
-                cropTime = 0;
-                //resets the bar and stage
-                bar.GetComponent<Transform>().localScale = new Vector2(0, .15f);
-                script.speed = 7f;
-                stage = 0;
             }
         }
     }

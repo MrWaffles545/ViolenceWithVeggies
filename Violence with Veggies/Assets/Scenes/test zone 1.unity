@@ -123,17 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &127891376 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1877358896679210769, guid: 44d20ed1a01ef574e85b9057e37abb57, type: 3}
-  m_PrefabInstance: {fileID: 1877358896803526817}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &588408563
 GameObject:
   m_ObjectHideFlags: 0
@@ -338,7 +327,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5264637521206834891, guid: a4cee79a8aa6e744bba269d8f3fc9994, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5264637521206834891, guid: a4cee79a8aa6e744bba269d8f3fc9994, type: 3}
       propertyPath: m_LocalPosition.x
@@ -479,6 +468,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9192160928349054840, guid: 44d20ed1a01ef574e85b9057e37abb57, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 44d20ed1a01ef574e85b9057e37abb57, type: 3}
@@ -496,7 +489,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2072611348145341834, guid: 7ac023dcdc53a1d4eac1cbfca2c6a857, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 2072611348145341834, guid: 7ac023dcdc53a1d4eac1cbfca2c6a857, type: 3}
       propertyPath: m_LocalPosition.x
@@ -597,14 +590,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1121007135}
-    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
-      propertyPath: scoreText
-      value: 
-      objectReference: {fileID: 127891376}
     - target: {fileID: 2207981142817029101, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -685,7 +670,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8767399018177417548, guid: c81d0feed1c5fe44eb50bf549ed9711b, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8767399018177417548, guid: c81d0feed1c5fe44eb50bf549ed9711b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -925,7 +910,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7083228993309340214, guid: 33beb98c19de9de4a8310694f005b29f, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 7083228993309340214, guid: 33beb98c19de9de4a8310694f005b29f, type: 3}
       propertyPath: m_LocalPosition.x
