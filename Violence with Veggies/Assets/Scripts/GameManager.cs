@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public float weatherDuration;
     public bool weatherDone;
     public bool paused;
-    
+
     void Update()
     {
         if (SceneManager.GetActiveScene().buildIndex != 0)
@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
             {
                 weather = Random.Range(1, 5); //1, 2, 3, and 4 (not 5)
                 Debug.Log("Weather " + weather);
-                //normal, angry sun, snow, rain
+                //normal, angry sun, snow, rain, windy
                 weatherTimer = Random.Range(weatherTimerMin, weatherTimerMax);
             }
 
@@ -67,15 +67,70 @@ public class GameManager : MonoBehaviour
                 {
                     for (int i = 0; i < GameObject.FindGameObjectsWithTag("Soil").Length / 2; i++)
                     {
-                        GameObject target = GameObject.FindGameObjectsWithTag("Soil")[Random.Range(0, GameObject.FindGameObjectsWithTag("Soil").Length)];
-                        target.GetComponent<SoilController>().watered = false;
-                        target.GetComponent<SoilController>().fireSpreadDone = false;
-                        target.GetComponent<SoilController>().onFire = true;
-                        //target.SetActive(false);
+                        SoilController target = GameObject.FindGameObjectsWithTag("Soil")[Random.Range(0, GameObject.FindGameObjectsWithTag("Soil").Length)].GetComponent<SoilController>();
+                        target.watered = false;
+                        target.fireSpreadDone = false;
+                        target.onFire = true;
                     }
+                    weatherDuration = 10f;
                     weatherDone = true;
                 }
+            }
 
+            if (weather == 2) //Snow
+            {
+                if (!weatherDone)
+                {
+                    for (int i = 0; i < GameObject.FindGameObjectsWithTag("Soil").Length / 2; i++)
+                    {
+                        GameObject target = GameObject.FindGameObjectsWithTag("Soil")[Random.Range(0, GameObject.FindGameObjectsWithTag("Soil").Length)];
+                        target.GetComponent<SoilController>().stage = -1;
+                    }
+                    weatherDuration = 10f;
+                    weatherDone = true;
+                }
+            }
+
+            if (weather == 3) //Rain
+            {
+                if (!weatherDone)
+                {
+                    for (int i = 0; i < GameObject.FindGameObjectsWithTag("Soil").Length; i++)
+                    {
+                        SoilController target = GameObject.FindGameObjectsWithTag("Soil")[i].GetComponent<SoilController>();
+                        if (target.onFire)
+                        {
+                            target.onFire = false;
+                            target.rain = true;
+                        }
+                        else
+                            target.watered = true;
+                    }
+                    weatherDuration = 10f;
+                    weatherDone = true;
+                }
+            }
+
+            if (weather == 4) //Windy
+            {
+                if (!weatherDone)
+                {
+                    for (int i = 0; i < GameObject.FindGameObjectsWithTag("item").Length; i++)
+                    {
+                        GameObject target = GameObject.FindGameObjectsWithTag("item")[i];
+                        Vector2 temp = target.GetComponent<Rigidbody2D>().velocity;
+                        temp.x = Random.Range(-3, 3);
+                        temp.y = Random.Range(-3, 3);
+                        if (target.transform.parent == null)
+                            target.GetComponent<Rigidbody2D>().velocity = temp;
+                    }
+                    weatherDuration = 10f;
+                    weatherDone = true;
+                }
+            }
+
+            if (weather > 0)
+            {
                 if (weatherDuration >= 0)
                 {
                     weatherDuration -= Time.deltaTime;
@@ -85,9 +140,24 @@ public class GameManager : MonoBehaviour
                 {
                     weather = 0;
                     weatherDone = false;
-                    weatherDuration = 10f;
+                    for (int i = 0; i < GameObject.FindGameObjectsWithTag("Soil").Length; i++)
+                    {
+                        SoilController target = GameObject.FindGameObjectsWithTag("Soil")[i].GetComponent<SoilController>();
+                        target.onFire = false;
+                        target.fireSpreadDone = false;
+                        target.rain = false;
+                        if (target.stage == -1)
+                            target.stage = 0;
+                    }
+                    for (int i = 0; i < GameObject.FindGameObjectsWithTag("item").Length; i++)
+                    {
+                        GameObject target = GameObject.FindGameObjectsWithTag("item")[i];
+                        Vector2 temp = target.GetComponent<Rigidbody2D>().velocity;
+                        temp.x = 0;
+                        temp.y = 0;
+                        target.GetComponent<Rigidbody2D>().velocity = temp;
+                    }
                 }
-                Debug.Log("FIRE!");
             }
         }
     }

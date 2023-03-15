@@ -18,7 +18,7 @@ public class SoilController : MonoBehaviour
     public bool watered;
 
     //Fire variables
-    public bool fireSpreadDone, onFire;
+    public bool fireSpreadDone, onFire, rain;
     List<GameObject> fireSpreadRadius = new List<GameObject>();
 
     //growth bar
@@ -71,6 +71,7 @@ public class SoilController : MonoBehaviour
             bar.GetComponent<Transform>().localScale = new Vector2(cropTime / cropReady * 1, .15f);
         }
 
+        //Fire spread code
         if (onFire && !fireSpreadDone && gameManager.GetComponent<GameManager>().weatherDuration <= 5)
         {
             GameObject target = fireSpreadRadius[Random.Range(0, fireSpreadRadius.Count / 2)];
@@ -79,7 +80,16 @@ public class SoilController : MonoBehaviour
             fireSpreadDone = true;
         }
 
-        if (onFire)
+        //rain water after fire code
+        if (rain && gameManager.GetComponent<GameManager>().weatherDuration <= 5)
+        {
+            watered = true;
+            fireSpreadDone = false;
+            rain = false;
+        }
+
+        //turns color (temp)
+        if (onFire || stage == -1 || rain)
             GetComponent<SpriteRenderer>().color = new Color(1, 1, 1);
     }
 
@@ -195,8 +205,15 @@ public class SoilController : MonoBehaviour
                 }
             }
 
+            //fire
             else if (onFire && playerItem == "WaterCan")
                 onFire = false;
+
+            if (stage == -1 && playerItem == "Till")
+            {
+                Debug.Log("Tilled The Snow");
+                stage++;
+            }
         }
     }
 

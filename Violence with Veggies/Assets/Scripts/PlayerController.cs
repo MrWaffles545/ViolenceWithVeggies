@@ -145,6 +145,7 @@ public class PlayerController : MonoBehaviour
                 //makes the item the player picked up the itemName and flags the bool isHolding
                 itemName = holdingItem.name;
                 isHolding = true;
+                holdingItem.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             }
             //drops the item the player is holding
             else
@@ -172,6 +173,7 @@ public class PlayerController : MonoBehaviour
             holdingItem.transform.SetParent(gameObject.transform);
             itemName = holdingItem.name;
             isHolding = true;
+            holdingItem.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             isTouchingOther = true;
             isTouching = true;
         }
