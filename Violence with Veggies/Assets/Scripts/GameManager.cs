@@ -72,8 +72,9 @@ public class GameManager : MonoBehaviour
                         target.fireSpreadDone = false;
                         target.onFire = true;
                     }
-                    weatherDuration = 10f;
+                    weatherDuration = 15f;
                     weatherDone = true;
+                    Debug.Log("Angry sun");
                 }
             }
 
@@ -86,8 +87,9 @@ public class GameManager : MonoBehaviour
                         GameObject target = GameObject.FindGameObjectsWithTag("Soil")[Random.Range(0, GameObject.FindGameObjectsWithTag("Soil").Length)];
                         target.GetComponent<SoilController>().stage = -1;
                     }
-                    weatherDuration = 10f;
+                    weatherDuration = 15f;
                     weatherDone = true;
+                    Debug.Log("Snow");
                 }
             }
 
@@ -106,8 +108,9 @@ public class GameManager : MonoBehaviour
                         else
                             target.watered = true;
                     }
-                    weatherDuration = 10f;
+                    weatherDuration = 15f;
                     weatherDone = true;
+                    Debug.Log("Rain");
                 }
             }
 
@@ -115,17 +118,19 @@ public class GameManager : MonoBehaviour
             {
                 if (!weatherDone)
                 {
+                    float random = Random.Range(-3, 3);
                     for (int i = 0; i < GameObject.FindGameObjectsWithTag("item").Length; i++)
                     {
                         GameObject target = GameObject.FindGameObjectsWithTag("item")[i];
                         Vector2 temp = target.GetComponent<Rigidbody2D>().velocity;
-                        temp.x = Random.Range(-3, 3);
-                        temp.y = Random.Range(-3, 3);
+                        temp.x = random;
+                        temp.y = random;
                         if (target.transform.parent == null)
                             target.GetComponent<Rigidbody2D>().velocity = temp;
                     }
-                    weatherDuration = 10f;
+                    weatherDuration = 15f;
                     weatherDone = true;
+                    Debug.Log("Windy");
                 }
             }
 
