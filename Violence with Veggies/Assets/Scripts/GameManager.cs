@@ -134,9 +134,7 @@ public class GameManager : MonoBehaviour
                 }
             }
 
-            //add a distance boundary that pushes the item back to the center
-
-            if (weather > 0)
+            if (weather > 0) //Resets the weather to normal when the weather duration timer ends
             {
                 if (weatherDuration >= 0)
                 {
