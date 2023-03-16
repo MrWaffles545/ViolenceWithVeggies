@@ -9,6 +9,9 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D myRb;
     public float speed;
 
+    //Game Manager script
+    public GameManager gameManager;
+
     //variables for the items the character picks up
     public Transform objectPickupPos;
     public GameObject holdingItem;
@@ -155,6 +158,7 @@ public class PlayerController : MonoBehaviour
                 holdingItem = null;
                 itemName = "Hands";
                 isHolding = false;
+                holdingItem.GetComponent<Rigidbody2D>().velocity = gameManager.wind;
             }
         }
         //if the player has an item already and tries to pick up another it swaps the 2 items
@@ -164,6 +168,7 @@ public class PlayerController : MonoBehaviour
             GameObject tempGameObject = holdingItem;
             //drops holdingItem
             holdingItem.transform.SetParent(null);
+            holdingItem.GetComponent<Rigidbody2D>().velocity = gameManager.wind;
             //assigns holdingItem to the otherItem
             holdingItem = otherItem;
             //finishes the swap

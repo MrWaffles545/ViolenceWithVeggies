@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public int weather;
     public float weatherTimer, weatherTimerMin, weatherTimerMax;
     public float weatherDuration;
+    public Vector2 wind;
     public bool weatherDone;
     public bool paused;
 
@@ -118,15 +119,13 @@ public class GameManager : MonoBehaviour
             {
                 if (!weatherDone)
                 {
-                    float random = Random.Range(-3, 3);
+                    wind.x = Random.Range(-3, 3);
+                    wind.y = Random.Range(-3, 3);
                     for (int i = 0; i < GameObject.FindGameObjectsWithTag("item").Length; i++)
                     {
                         GameObject target = GameObject.FindGameObjectsWithTag("item")[i];
-                        Vector2 temp = target.GetComponent<Rigidbody2D>().velocity;
-                        temp.x = random;
-                        temp.y = random;
                         if (target.transform.parent == null)
-                            target.GetComponent<Rigidbody2D>().velocity = temp;
+                            target.GetComponent<Rigidbody2D>().velocity = wind;
                     }
                     weatherDuration = 15f;
                     weatherDone = true;
@@ -145,6 +144,7 @@ public class GameManager : MonoBehaviour
                 {
                     weather = 0;
                     weatherDone = false;
+                    wind = Vector2.zero;
                     for (int i = 0; i < GameObject.FindGameObjectsWithTag("Soil").Length; i++)
                     {
                         SoilController target = GameObject.FindGameObjectsWithTag("Soil")[i].GetComponent<SoilController>();

@@ -11,7 +11,7 @@ public class SoilController : MonoBehaviour
     public string playerItem;
     public bool isTouching;
 
-    public GameObject gameManager;
+    public GameManager gameManager;
 
     //soil stage
     public int stage;
@@ -43,7 +43,7 @@ public class SoilController : MonoBehaviour
         //makes the player target null at the start
         player = null;
 
-        gameManager = GameObject.FindGameObjectWithTag("GameController");
+        gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
 
         for (int i = 0; i < GameObject.FindGameObjectsWithTag("Soil").Length; i++)
         {
@@ -72,7 +72,7 @@ public class SoilController : MonoBehaviour
         }
 
         //Fire spread code
-        if (onFire && !fireSpreadDone && gameManager.GetComponent<GameManager>().weatherDuration <= 5)
+        if (onFire && !fireSpreadDone && gameManager.weatherDuration <= 5)
         {
             GameObject target = fireSpreadRadius[Random.Range(0, fireSpreadRadius.Count / 2)];
             target.GetComponent<SoilController>().onFire = true;
@@ -81,7 +81,7 @@ public class SoilController : MonoBehaviour
         }
 
         //rain water after fire code
-        if (rain && gameManager.GetComponent<GameManager>().weatherDuration <= 5)
+        if (rain && gameManager.weatherDuration <= 5)
         {
             watered = true;
             fireSpreadDone = false;
