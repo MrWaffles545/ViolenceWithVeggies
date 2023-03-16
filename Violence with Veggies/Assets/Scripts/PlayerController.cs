@@ -43,6 +43,8 @@ public class PlayerController : MonoBehaviour
 
         //makes the item the player is holding at the start "Hands"
         itemName = "Hands";
+
+        gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
     }
 
     void Update()
