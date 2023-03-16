@@ -157,10 +157,10 @@ public class PlayerController : MonoBehaviour
             {
                 //sets the item the player was holding to have no parent object and make the player have no item it is holding
                 holdingItem.transform.SetParent(null);
+                holdingItem.GetComponent<Rigidbody2D>().velocity = gameManager.wind;
                 holdingItem = null;
                 itemName = "Hands";
                 isHolding = false;
-                holdingItem.GetComponent<Rigidbody2D>().velocity = gameManager.wind;
             }
         }
         //if the player has an item already and tries to pick up another it swaps the 2 items
