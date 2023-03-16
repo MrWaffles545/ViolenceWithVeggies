@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4546062369868231715}
   - component: {fileID: 4546062369868231714}
   - component: {fileID: -4476432559729060570}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WaterCan
   m_TagString: item
   m_Icon: {fileID: 0}
