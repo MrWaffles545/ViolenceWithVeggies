@@ -55,7 +55,7 @@ MonoBehaviour:
   score2: 0
   gameTime: 300
   weather: 0
-  weatherTimer: 20
+  weatherTimer: 99
   weatherTimerMin: 20
   weatherTimerMax: 30
   weatherDuration: 0
