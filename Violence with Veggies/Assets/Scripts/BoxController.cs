@@ -16,6 +16,7 @@ public class BoxController : MonoBehaviour
     //array containg each different seeds
     public GameObject[] seeds;
 
+    //seed ready timer and visual bar
     public float seedTime;
     public float seedReady;
     public GameObject bar;
@@ -30,6 +31,7 @@ public class BoxController : MonoBehaviour
     void Update()
     {
 
+        //gets name of held item
         if (player != null)
         {
             script = player.GetComponent<PlayerController>();
@@ -38,6 +40,7 @@ public class BoxController : MonoBehaviour
         else
             playerItem = null;
 
+        //if player interacts with box, players score will increase depending on crop
         if (isTouching && script.inputType && sellBox == true)
         {
             if (playerItem == "Wheat")
@@ -85,6 +88,7 @@ public class BoxController : MonoBehaviour
 
         }
 
+        //timer to bar convertion
         if (seedTime <= seedReady && !sellBox)
         {
             seedTime += Time.deltaTime;
@@ -92,6 +96,7 @@ public class BoxController : MonoBehaviour
         }
     }
 
+    //detects if player is in range of box
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
@@ -101,6 +106,7 @@ public class BoxController : MonoBehaviour
         }
     }
 
+    //detecs if player is not in range of box
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
