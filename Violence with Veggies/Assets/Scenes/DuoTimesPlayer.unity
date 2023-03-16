@@ -264,15 +264,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817028627, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.9687805
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817028627, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.5233912
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817028627, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.0428005
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817028627, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -968,6 +968,7 @@ GameObject:
   - component: {fileID: 721697900}
   - component: {fileID: 721697904}
   - component: {fileID: 721697903}
+  - component: {fileID: 721697905}
   m_Layer: 0
   m_Name: Fence
   m_TagString: Untagged
@@ -1621,13 +1622,28 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_AngularDrag: 0
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &721697905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 721697898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dd650f9281d105479a73de8205d2879, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 6.65
+  rangeY: 2.65
+  speed: 0.05
 --- !u!1001 &771876873
 PrefabInstance:
   m_ObjectHideFlags: 0

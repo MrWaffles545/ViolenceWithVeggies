@@ -134,7 +134,7 @@ public class GameManager : MonoBehaviour
                 }
             }
 
-            if (weather > 0)
+            if (weather > 0) //Resets the weather to normal when the weather duration timer ends
             {
                 if (weatherDuration >= 0)
                 {
