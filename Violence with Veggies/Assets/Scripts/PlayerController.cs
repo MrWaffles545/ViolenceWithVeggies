@@ -28,7 +28,13 @@ public class PlayerController : MonoBehaviour
     public Camera cam;
 
     //input type variable for other scripts
+    public bool pickupButton;
+    public bool pickupButtonRelease;
     public bool inputType;
+
+    //Hold input variables
+    public float time;
+    public bool hold;
 
     //the variable to hold the gamepad input to move
     private Vector2 move;
@@ -62,7 +68,8 @@ public class PlayerController : MonoBehaviour
                 {
                     move.x = Input.GetAxisRaw("Horizontal");
                     move.y = Input.GetAxisRaw("Vertical");
-                    Pickup(Input.GetMouseButtonDown(0));
+                    pickupButton = Input.GetMouseButtonDown(0);
+                    pickupButtonRelease = Input.GetMouseButtonUp(0);
                     inputType = Input.GetMouseButtonDown(1);
                 }
                 //if it isnt player one it uses the mouses position to move and Q to pickup/drop
@@ -71,7 +78,8 @@ public class PlayerController : MonoBehaviour
                     Vector2 mousePos = Input.mousePosition;
                     mousePos = Camera.main.ScreenToWorldPoint(mousePos);
                     transform.position = mousePos;
-                    Pickup(Input.GetKeyDown(KeyCode.Q));
+                    pickupButton = Input.GetKeyDown(KeyCode.Q);
+                    pickupButtonRelease = Input.GetKeyUp(KeyCode.Q);
                     inputType = Input.GetKeyDown(KeyCode.E);
                 }
             }
@@ -81,24 +89,44 @@ public class PlayerController : MonoBehaviour
                 //if player one it uses the left joystick to move and left trigger to pickup/drop
                 if (playerOne)
                 {
-                    if (gamepad.leftTrigger.wasPressedThisFrame)
-                        Pickup(gamepad.leftTrigger.wasPressedThisFrame);
+                    pickupButton = gamepad.leftTrigger.wasPressedThisFrame;
+                    pickupButtonRelease = gamepad.leftTrigger.wasReleasedThisFrame;
                     move = gamepad.leftStick.ReadValue();
                     inputType = gamepad.leftShoulder.wasPressedThisFrame;
                 }
                 //if it isnt player one is uses right joystick to move and right trigger to pickup/drop
                 else
                 {
-                    if (gamepad.rightTrigger.wasPressedThisFrame)
-                        Pickup(gamepad.rightTrigger.wasPressedThisFrame);
+                    pickupButton = gamepad.rightTrigger.wasPressedThisFrame;
+                    pickupButtonRelease = gamepad.rightTrigger.wasReleasedThisFrame;
                     move = gamepad.rightStick.ReadValue();
                     inputType = gamepad.rightShoulder.wasPressedThisFrame;
                 }
             }
-            //converts the gamepad input to velocity of the player
+            //converts the gamepad input to velocity of the player and pickup/drop/swap
             temp.x = move.x * speed;
             temp.y = move.y * speed;
             myRb.velocity = temp;
+
+            //hold code to throw or pickup/drop/swap
+            if (pickupButton)
+            {
+                if (!isHolding)
+                    Pickup();
+                else
+                    hold = true;
+            }
+            if (pickupButtonRelease && hold)
+            {
+                if (time <= 0)
+                    Throw();
+                if (time >= 0)
+                    DropSwap();
+                time = 1f;
+                hold = false;
+            }
+            if (time >= 0 && hold)
+                time -= Time.deltaTime;
         }
     }
 
@@ -116,6 +144,12 @@ public class PlayerController : MonoBehaviour
         {
             otherItem = collision.gameObject;
             isTouchingOther = true;
+        }
+        if ((playerOne && collision.gameObject.tag == "ThrownItem2") || (!playerOne && collision.gameObject.tag == "ThrownItem1"))
+        {
+            Debug.Log("Smack");
+            collision.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            collision.tag = "item";
         }
     }
 
@@ -135,36 +169,19 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void Pickup(bool click)
+    void DropSwap()
     {
         //if the player presses the assigned button from above and isnt touching anything else it activates the pickup/drop
-        if (click && isTouching && holdingItem != null && !isTouchingOther)
+        if (isTouching && holdingItem != null && !isTouchingOther && isHolding)
         {
-            //if the player isnt holding an item it picks up the nearby item
-            if (!isHolding)
-            {
-                //teleports the item to the correct position
-                holdingItem.transform.position = objectPickupPos.position;
-                //assigns the player as the parent so it doesnt move
-                holdingItem.transform.SetParent(gameObject.transform);
-                //makes the item the player picked up the itemName and flags the bool isHolding
-                itemName = holdingItem.name;
-                isHolding = true;
-                holdingItem.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            }
-            //drops the item the player is holding
-            else
-            {
-                //sets the item the player was holding to have no parent object and make the player have no item it is holding
-                holdingItem.transform.SetParent(null);
-                holdingItem.GetComponent<Rigidbody2D>().velocity = gameManager.wind;
-                holdingItem = null;
-                itemName = "Hands";
-                isHolding = false;
-            }
+            //sets the item the player was holding to have no parent object and make the player have no item it is holding
+            holdingItem.transform.SetParent(null);
+            holdingItem.GetComponent<Rigidbody2D>().velocity = gameManager.wind;
+            itemName = "Hands";
+            isHolding = false;
         }
         //if the player has an item already and tries to pick up another it swaps the 2 items
-        else if (click && holdingItem != null && isTouchingOther)
+        else if (holdingItem != null && isTouchingOther && otherItem.transform.parent == null)
         {
             //makes a temp variable to hold the holdingItem
             GameObject tempGameObject = holdingItem;
@@ -184,5 +201,44 @@ public class PlayerController : MonoBehaviour
             isTouchingOther = true;
             isTouching = true;
         }
+    }
+
+    void Pickup()
+    {
+        //if the player presses the assigned button from above and isnt touching anything else it activates the pickup/drop
+        if (isTouching && holdingItem != null && !isTouchingOther && !isHolding)
+        {
+            //if the player isnt holding an item it picks up the nearby item
+            if (holdingItem.transform.parent != null)
+            {
+                holdingItem.GetComponentInParent<PlayerController>().isHolding = false;
+                holdingItem.GetComponentInParent<PlayerController>().itemName = "Hands";
+            }
+            //teleports the item to the correct position
+            holdingItem.transform.position = objectPickupPos.position;
+            //assigns the player as the parent so it doesnt move
+            holdingItem.transform.SetParent(gameObject.transform);
+            //makes the item the player picked up the itemName and flags the bool isHolding
+            itemName = holdingItem.name;
+            isHolding = true;
+            holdingItem.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        }
+    }
+
+    void Throw()
+    {
+        Debug.Log("Throw");
+        holdingItem.transform.SetParent(null);
+        if (myRb.velocity != Vector2.zero)
+        {
+            holdingItem.GetComponent<Rigidbody2D>().velocity = (myRb.velocity * 2);
+            if (playerOne)
+                holdingItem.tag = "ThrownItem1";
+            else
+                holdingItem.tag = "ThrownItem2";
+            holdingItem = null;
+        }
+        itemName = "Hands";
+        isHolding = false;
     }
 }
