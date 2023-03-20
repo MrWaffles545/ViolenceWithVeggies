@@ -103,7 +103,7 @@ public class GameManager : MonoBehaviour
                 if (!weatherDone)
                 {
                     //picks random soil and covers them with snow
-                    for (int i = 0; i < GameObject.FindGameObjectsWithTag("Soil").Length / 3; i++)
+                    for (int i = 0; i < GameObject.FindGameObjectsWithTag("Soil").Length / 2; i++)
                     {
                         GameObject target = GameObject.FindGameObjectsWithTag("Soil")[Random.Range(0, GameObject.FindGameObjectsWithTag("Soil").Length)];
                         target.GetComponent<SoilController>().stage = -1;
