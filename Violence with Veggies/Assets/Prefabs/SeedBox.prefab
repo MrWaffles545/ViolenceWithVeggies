@@ -117,7 +117,7 @@ Transform:
   m_Children:
   - {fileID: 1710372627}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7083228993309340215
 SpriteRenderer:
@@ -209,9 +209,13 @@ MonoBehaviour:
   - {fileID: 3152657265156686967, guid: cd122951840a71848a7d768f759bf543, type: 3}
   - {fileID: 3152657265156686967, guid: cd122951840a71848a7d768f759bf543, type: 3}
   - {fileID: 3152657265156686967, guid: cd122951840a71848a7d768f759bf543, type: 3}
-  - {fileID: 6693185052938693300, guid: ae4a54c58d4c9ed41a96fefde1494a9c, type: 3}
-  - {fileID: 6693185052938693300, guid: ae4a54c58d4c9ed41a96fefde1494a9c, type: 3}
   - {fileID: 3152657265156686967, guid: cd122951840a71848a7d768f759bf543, type: 3}
+  - {fileID: 6693185052938693300, guid: ae4a54c58d4c9ed41a96fefde1494a9c, type: 3}
+  - {fileID: 6693185052938693300, guid: ae4a54c58d4c9ed41a96fefde1494a9c, type: 3}
+  - {fileID: 6693185052938693300, guid: ae4a54c58d4c9ed41a96fefde1494a9c, type: 3}
+  - {fileID: 6693185052938693300, guid: ae4a54c58d4c9ed41a96fefde1494a9c, type: 3}
+  - {fileID: 8334884313937426983, guid: c54f9624d2fbd8d4886098a2ec892b38, type: 3}
+  - {fileID: 8334884313937426983, guid: c54f9624d2fbd8d4886098a2ec892b38, type: 3}
   - {fileID: 8334884313937426983, guid: c54f9624d2fbd8d4886098a2ec892b38, type: 3}
   - {fileID: 8334884313937426983, guid: c54f9624d2fbd8d4886098a2ec892b38, type: 3}
   - {fileID: 8767399018177417537, guid: c81d0feed1c5fe44eb50bf549ed9711b, type: 3}
