@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
     //Hold input variables
     public float time;
     public bool hold;
+    public Vector2 throwDirection;
 
     //the variable to hold the gamepad input to move
     private Vector2 move;
@@ -102,11 +103,17 @@ public class PlayerController : MonoBehaviour
                     move = gamepad.rightStick.ReadValue();
                     inputType = gamepad.rightShoulder.wasPressedThisFrame;
                 }
+                //holds the last direction the player was going
+                if (myRb.velocity.x != 0)
+                    throwDirection.x = myRb.velocity.x;
+                if (myRb.velocity.y != 0)
+                    throwDirection.y = myRb.velocity.y;
             }
             //converts the gamepad input to velocity of the player and pickup/drop/swap
             temp.x = move.x * speed;
             temp.y = move.y * speed;
             myRb.velocity = temp;
+
 
             //hold code to throw or pickup/drop/swap
             if (pickupButton)
@@ -229,9 +236,9 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("Throw");
         holdingItem.transform.SetParent(null);
-        if (myRb.velocity != Vector2.zero)
+        if (throwDirection != Vector2.zero)
         {
-            holdingItem.GetComponent<Rigidbody2D>().velocity = (myRb.velocity * 2);
+            holdingItem.GetComponent<Rigidbody2D>().velocity = (throwDirection * 2);
             if (playerOne)
                 holdingItem.tag = "ThrownItem1";
             else
