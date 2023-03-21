@@ -21,6 +21,10 @@ public class TileMapController : MonoBehaviour
             //makes temp variable for velocity
             Vector2 temp = collision.GetComponent<Rigidbody2D>().velocity;
             //if the item is outside the bounds it changes the velocity to zero so it doesnt push that way anymore
+
+            //fix this line of code so it doesnt stop at the opposite side of the map relative to the wind push direction
+            //          |
+            //          V
             if (collision.transform.position.x <= -range || collision.transform.position.x >= range)
                 temp.x = 0;
             if (collision.transform.position.y <= -rangeY || collision.transform.position.y >= rangeY)

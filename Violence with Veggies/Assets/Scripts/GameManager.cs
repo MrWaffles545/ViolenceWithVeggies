@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
@@ -48,7 +49,8 @@ public class GameManager : MonoBehaviour
                 gameTime -= Time.deltaTime;
                 gameTimeText.text = (Mathf.RoundToInt(gameTime)).ToString();
                 //Pause and resume
-                if (Input.GetKeyDown(KeyCode.Escape))
+                var gamepad = Gamepad.current;
+                if (Input.GetKeyDown(KeyCode.Escape) || gamepad.startButton.wasPressedThisFrame)
                 {
                     if (paused)
                         Resume();
