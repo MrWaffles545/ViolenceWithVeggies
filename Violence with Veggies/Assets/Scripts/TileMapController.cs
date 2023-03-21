@@ -5,6 +5,14 @@ using UnityEngine;
 public class TileMapController : MonoBehaviour
 {
     public float range, rangeY, speed;
+
+    //Game Manager script
+    public GameManager gameManager;
+
+    void Start()
+    {
+        gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+    }
     
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -23,7 +31,7 @@ public class TileMapController : MonoBehaviour
         }
         if (collision.gameObject.tag == "ThrownItem2" || collision.gameObject.tag == "ThrownItem1")
         {
-            collision.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            collision.GetComponent<Rigidbody2D>().velocity = gameManager.wind;
             collision.tag = "item";
         }
     }

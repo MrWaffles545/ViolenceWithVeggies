@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
     //Hold input variables
     public float time;
     public bool hold;
-    public Vector2 throwDirection;
+    public float throwSpeedMin;
     public GameObject throwBar;
 
     //the variable to hold the gamepad input to move
@@ -104,11 +104,6 @@ public class PlayerController : MonoBehaviour
                     move = gamepad.rightStick.ReadValue();
                     inputType = gamepad.rightShoulder.wasPressedThisFrame;
                 }
-                //holds the last direction the player was going
-                if (myRb.velocity.x != 0)
-                    throwDirection.x = myRb.velocity.x;
-                if (myRb.velocity.y != 0)
-                    throwDirection.y = myRb.velocity.y;
             }
             //converts the gamepad input to velocity of the player and pickup/drop/swap
             temp.x = move.x * speed;
@@ -161,7 +156,7 @@ public class PlayerController : MonoBehaviour
         if ((playerOne && collision.gameObject.tag == "ThrownItem2") || (!playerOne && collision.gameObject.tag == "ThrownItem1"))
         {
             Debug.Log("Smack");
-            collision.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            collision.GetComponent<Rigidbody2D>().velocity = gameManager.wind;
             collision.tag = "item";
         }
     }
@@ -242,12 +237,9 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("Throw");
         holdingItem.transform.SetParent(null);
-        if (throwDirection != Vector2.zero || myRb.velocity != Vector2.zero)
+        if (myRb.velocity.x <= -throwSpeedMin || myRb.velocity.x >= throwSpeedMin || myRb.velocity.y <= -throwSpeedMin || myRb.velocity.y >= throwSpeedMin)
         {
-            if (throwDirection != Vector2.zero)
-                holdingItem.GetComponent<Rigidbody2D>().velocity = (throwDirection * 2);
-            if (myRb.velocity != Vector2.zero)
-                holdingItem.GetComponent<Rigidbody2D>().velocity = (myRb.velocity * 2);
+            holdingItem.GetComponent<Rigidbody2D>().velocity = (myRb.velocity * 2);
             if (playerOne)
                 holdingItem.tag = "ThrownItem1";
             else

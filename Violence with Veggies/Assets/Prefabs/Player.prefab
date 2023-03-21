@@ -252,7 +252,7 @@ MonoBehaviour:
   inputType: 0
   time: 1
   hold: 0
-  throwDirection: {x: 0, y: 0}
+  throwSpeedMin: 0.25
   throwBar: {fileID: 6660269753083497516}
   score: 0
 --- !u!70 &7495777357295568728
