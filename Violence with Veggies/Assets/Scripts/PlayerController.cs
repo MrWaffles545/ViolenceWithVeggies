@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
     public float time;
     public bool hold;
     public Vector2 throwDirection;
+    public GameObject throwBar;
 
     //the variable to hold the gamepad input to move
     private Vector2 move;
@@ -129,11 +130,16 @@ public class PlayerController : MonoBehaviour
                     Throw();
                 if (time >= 0)
                     DropSwap();
+                throwBar.GetComponent<SpriteRenderer>().enabled = false;
                 time = 1f;
                 hold = false;
             }
             if (time >= 0 && hold)
+            {
                 time -= Time.deltaTime;
+                throwBar.GetComponent<SpriteRenderer>().enabled = true;
+                throwBar.GetComponent<Transform>().localScale = new Vector2(time / 1, .25f);
+            }
         }
     }
 
@@ -236,9 +242,12 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("Throw");
         holdingItem.transform.SetParent(null);
-        if (throwDirection != Vector2.zero)
+        if (throwDirection != Vector2.zero || myRb.velocity != Vector2.zero)
         {
-            holdingItem.GetComponent<Rigidbody2D>().velocity = (throwDirection * 2);
+            if (throwDirection != Vector2.zero)
+                holdingItem.GetComponent<Rigidbody2D>().velocity = (throwDirection * 2);
+            if (myRb.velocity != Vector2.zero)
+                holdingItem.GetComponent<Rigidbody2D>().velocity = (myRb.velocity * 2);
             if (playerOne)
                 holdingItem.tag = "ThrownItem1";
             else
