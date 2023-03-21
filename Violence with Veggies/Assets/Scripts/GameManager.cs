@@ -49,8 +49,7 @@ public class GameManager : MonoBehaviour
                 gameTime -= Time.deltaTime;
                 gameTimeText.text = (Mathf.RoundToInt(gameTime)).ToString();
                 //Pause and resume
-                var gamepad = Gamepad.current;
-                if (Input.GetKeyDown(KeyCode.Escape) || gamepad.startButton.wasPressedThisFrame)
+                if (Input.GetKeyDown(KeyCode.Escape) || Gamepad.current.startButton.wasPressedThisFrame)
                 {
                     if (paused)
                         Resume();

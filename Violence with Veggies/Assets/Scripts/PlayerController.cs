@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     //two player variables
     public bool playerOne;
     public Camera cam;
+    public Gamepad gamepad, gamepad2;
 
     //input type variable for other scripts
     public bool pickupButton;
@@ -60,49 +61,56 @@ public class PlayerController : MonoBehaviour
         if (Time.timeScale != 0)
         {
             //Gets the gamepad controller
-            var gamepad = Gamepad.current;
+            if (Gamepad.all.Count > 0)
+                gamepad = Gamepad.all[0];
+            else
+                gamepad = null;
+            if (Gamepad.all.Count > 1)
+                gamepad2 = Gamepad.all[1];
+            else
+                gamepad2 = null;
             //if there isnt a gamepad it uses keyboard controls
             Vector2 temp = myRb.velocity;
-            if (gamepad == null)
+            if (playerOne)
             {
-                //if it is player one it uses basic controls and left click to pickup/drop
-                if (playerOne)
+                if (gamepad != null)
                 {
+                    //if it is player one is uses controller one
+                    pickupButton = gamepad.buttonEast.wasPressedThisFrame;
+                    pickupButtonRelease = gamepad.buttonEast.wasReleasedThisFrame;
+                    move = gamepad.leftStick.ReadValue();
+                    inputType = gamepad.buttonSouth.wasPressedThisFrame;
+                } 
+                else
+                {
+                    //if it is player one it uses basic controls and left click to pickup/drop
                     move.x = Input.GetAxisRaw("Horizontal");
                     move.y = Input.GetAxisRaw("Vertical");
                     pickupButton = Input.GetMouseButtonDown(0);
                     pickupButtonRelease = Input.GetMouseButtonUp(0);
                     inputType = Input.GetMouseButtonDown(1);
                 }
-                //if it isnt player one it uses the mouses position to move and Q to pickup/drop
+            }
+            else
+            {
+                //if there is a gamepad controller it uses this
+                if (gamepad2 != null)
+                {
+                    //if it isnt player one is uses the other controller
+                    pickupButton = gamepad2.buttonEast.wasPressedThisFrame;
+                    pickupButtonRelease = gamepad2.buttonEast.wasReleasedThisFrame;
+                    move = gamepad2.leftStick.ReadValue();
+                    inputType = gamepad2.buttonSouth.wasPressedThisFrame;
+                }
                 else
                 {
+                    //if it isnt player one it uses the mouses position to move and Q to pickup/drop
                     Vector2 mousePos = Input.mousePosition;
                     mousePos = Camera.main.ScreenToWorldPoint(mousePos);
                     transform.position = mousePos;
                     pickupButton = Input.GetKeyDown(KeyCode.Q);
                     pickupButtonRelease = Input.GetKeyUp(KeyCode.Q);
                     inputType = Input.GetKeyDown(KeyCode.E);
-                }
-            }
-            //if there is a gamepad controller it uses this
-            else
-            {
-                //if player one it uses the left joystick to move and left trigger to pickup/drop
-                if (playerOne)
-                {
-                    pickupButton = gamepad.leftTrigger.wasPressedThisFrame;
-                    pickupButtonRelease = gamepad.leftTrigger.wasReleasedThisFrame;
-                    move = gamepad.leftStick.ReadValue();
-                    inputType = gamepad.leftShoulder.wasPressedThisFrame;
-                }
-                //if it isnt player one is uses right joystick to move and right trigger to pickup/drop
-                else
-                {
-                    pickupButton = gamepad.rightTrigger.wasPressedThisFrame;
-                    pickupButtonRelease = gamepad.rightTrigger.wasReleasedThisFrame;
-                    move = gamepad.rightStick.ReadValue();
-                    inputType = gamepad.rightShoulder.wasPressedThisFrame;
                 }
             }
             //converts the gamepad input to velocity of the player and pickup/drop/swap
