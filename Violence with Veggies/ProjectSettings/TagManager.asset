@@ -6,6 +6,8 @@ TagManager:
   tags:
   - item
   - Soil
+  - ThrownItem1
+  - ThrownItem2
   layers:
   - Default
   - TransparentFX

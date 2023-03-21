@@ -21,5 +21,10 @@ public class TileMapController : MonoBehaviour
             //Pushes the item torwards the center if it goes out of bounds
             collision.transform.position = Vector2.MoveTowards(collision.transform.position, Vector2.zero, speed);
         }
+        if (collision.gameObject.tag == "ThrownItem2" || collision.gameObject.tag == "ThrownItem1")
+        {
+            collision.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            collision.tag = "item";
+        }
     }
 }
