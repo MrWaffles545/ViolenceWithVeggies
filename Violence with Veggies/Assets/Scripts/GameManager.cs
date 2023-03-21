@@ -64,6 +64,9 @@ public class GameManager : MonoBehaviour
             {
                 Time.timeScale = 0f;
                 endGameUI.SetActive(true);
+                PlayerPrefs.SetInt("Player1Score", score);
+                if (player2 != null)
+                    PlayerPrefs.SetInt("Player2Score", score2);
             }
 
             //Weather timer until next weather event
