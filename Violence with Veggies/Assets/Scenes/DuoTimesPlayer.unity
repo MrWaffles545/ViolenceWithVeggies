@@ -2832,6 +2832,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 157572201}
+    - target: {fileID: 5790781754970909115, guid: 06441c8d40aca3348a90f9ade29a9a28, type: 3}
+      propertyPath: goldChanceMax
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 06441c8d40aca3348a90f9ade29a9a28, type: 3}

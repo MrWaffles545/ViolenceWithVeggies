@@ -138,7 +138,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         //when the player hits an item it flags a bool and assigns that item to holdingItem
         if (collision.gameObject.tag == "item" && !isHolding)

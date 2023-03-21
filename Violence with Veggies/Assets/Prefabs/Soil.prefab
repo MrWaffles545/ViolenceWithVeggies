@@ -217,10 +217,13 @@ MonoBehaviour:
   watered: 0
   fireSpreadDone: 0
   onFire: 0
+  rain: 0
   bar: {fileID: 142800933}
   crop: 0
   cropTime: 0
   cropReady: 0
+  goldChance: 0
+  goldChanceMax: 16
   carrot: {fileID: 371438258119585862, guid: 20f32a1052054d0488d718d510505091, type: 3}
   wheat: {fileID: 371438258119585862, guid: 32f45b0670fb06043b279b5ef8e68bb1, type: 3}
   potato: {fileID: 371438258119585862, guid: 5e19d7d3e6951cb44903e72d53fee9e0, type: 3}

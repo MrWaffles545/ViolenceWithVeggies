@@ -43,22 +43,38 @@ public class BoxController : MonoBehaviour
         //if player interacts with box, players score will increase depending on crop
         if (isTouching && script.inputType && sellBox == true)
         {
-            if (playerItem == "Wheat")
+            if (playerItem == "Wheat" || playerItem == "Golden Wheat")
                 script.score++;
 
-            if (playerItem == "Carrot")
+            if (playerItem == "Carrot" || playerItem == "Golden Carrot")
                 script.score += 2;
 
-            if (playerItem == "Potato")
+            if (playerItem == "Potato" || playerItem == "Golden Potato")
                 script.score += 2;
 
-            if (playerItem == "Turnip")
+            if (playerItem == "Turnip" || playerItem == "Golden Turnip")
                 script.score += 3;
 
-            if (playerItem == "Artichoke")
+            if (playerItem == "Artichoke" || playerItem == "Golden Artichoke")
                 script.score += 4;
 
-            if (playerItem == "Carrot" || playerItem == "Wheat" || playerItem == "Potato" || playerItem == "Turnip" || playerItem == "Artichoke")
+            if (playerItem == "Golden Wheat")
+                script.score += 2;
+
+            if (playerItem == "Golden Carrot")
+                script.score += 4;
+
+            if (playerItem == "Golden Potato")
+                script.score += 4;
+
+            if (playerItem == "Golden Turnip")
+                script.score += 6;
+
+            if (playerItem == "Golden Artichoke")
+                script.score += 8;
+
+            if (playerItem == "Carrot" || playerItem == "Wheat" || playerItem == "Potato" || playerItem == "Turnip" || playerItem == "Artichoke"
+                || playerItem == "Golden Carrot" || playerItem == "Golden Wheat" || playerItem == "Golden Potato" || playerItem == "Golden Turnip" || playerItem == "Golden Artichoke")
             {
                 Destroy(script.holdingItem);
                 script.holdingItem = null;

@@ -32,6 +32,7 @@ public class SoilController : MonoBehaviour
     public float cropReady;
 
     //crop prefabs to spawn when harvested
+    public int goldChance, goldChanceMax;
     public GameObject carrot;
     public GameObject wheat;
     public GameObject potato;
@@ -227,6 +228,10 @@ public class SoilController : MonoBehaviour
         c.transform.SetParent(player.transform);
         //renames the crop that spawned to the correct name instead of crop + "(Clone)"
         c.name = crop.name;
+        //gold veggie stuff
+        goldChance = Random.Range(0, goldChanceMax);
+        if (goldChance == 0)
+            c.name = "Golden " + c.name;
         //makes the player have the crop
         script.holdingItem = c;
         script.itemName = c.name;
