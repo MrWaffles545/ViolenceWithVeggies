@@ -24,11 +24,25 @@ public class GameManager : MonoBehaviour
     public bool weatherDone;
     public Vector2 wind;
 
+    //Menu Variables
+    public bool selection;
+
     //Pause variable
     public bool paused;
 
     void Update()
     {
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            if (selection && Gamepad.current.leftStick.ReadValue().y <= -.25f)
+                selection = false;
+            if (!selection && Gamepad.current.leftStick.ReadValue().y >= .25f)
+                selection = true;
+            if (selection && Gamepad.current.buttonEast.wasPressedThisFrame)
+                LoadLevel(1);
+            if (!selection && Gamepad.current.buttonEast.wasPressedThisFrame)
+                LoadLevel(2);
+        }
         //Works if it isnt the menu scene
         if (SceneManager.GetActiveScene().buildIndex != 0)
         {
