@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
 
     //Hold input variables
     public float time;
+    public float timeToThrow;
     public bool hold;
     public float throwSpeedMin;
     public GameObject throwBar;
@@ -129,19 +130,19 @@ public class PlayerController : MonoBehaviour
             }
             if (pickupButtonRelease && hold)
             {
-                if (time <= 0)
+                if (time >= timeToThrow)
                     Throw();
-                if (time >= 0)
+                if (time <= timeToThrow)
                     DropSwap();
                 throwBar.GetComponent<SpriteRenderer>().enabled = false;
-                time = 1f;
+                time = 0;
                 hold = false;
             }
-            if (time >= 0 && hold)
+            if (time <= timeToThrow && hold)
             {
-                time -= Time.deltaTime;
+                time += Time.deltaTime;
                 throwBar.GetComponent<SpriteRenderer>().enabled = true;
-                throwBar.GetComponent<Transform>().localScale = new Vector2(time / 1, .25f);
+                throwBar.GetComponent<Transform>().localScale = new Vector2(time * 4, .25f);
             }
         }
     }
