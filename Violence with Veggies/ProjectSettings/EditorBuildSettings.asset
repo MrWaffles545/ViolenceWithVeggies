@@ -9,12 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 2f974303afd5d92408ea5f074bd7a6af
   - enabled: 1
-    path: Assets/Scenes/test zone 1.unity
-    guid: 9cd0f1a4d1f7ceb449e77a7804fb92de
+    path: Assets/Scenes/UnoTimesPlayer.unity
+    guid: 972ec8ad0dc44c5499029104e9b1c83f
   - enabled: 1
     path: Assets/Scenes/DuoTimesPlayer.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 1
-    path: Assets/Scenes/UnoTimesPlayer.unity
-    guid: 972ec8ad0dc44c5499029104e9b1c83f
+  - enabled: 0
+    path: Assets/Scenes/test zone 1.unity
+    guid: 9cd0f1a4d1f7ceb449e77a7804fb92de
   m_configObjects: {}
