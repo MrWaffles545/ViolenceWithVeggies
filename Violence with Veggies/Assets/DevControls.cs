@@ -11,6 +11,7 @@ public class DevControls : MonoBehaviour
     public bool instaTil;
     public bool instaWater;
     public bool instaGrow;
+    public bool midasTouch;
 
 
 
@@ -39,6 +40,12 @@ public class DevControls : MonoBehaviour
             for (int i = 0; i < GameObject.FindGameObjectsWithTag("Soil").Length; i++)
                 GameObject.FindGameObjectsWithTag("Soil")[i].GetComponent<SoilController>().watered = true;
             instaWater = false;
+        }
+        //makes all veggies gold
+        if (midasTouch)
+        {
+            for (int i = 0; i < GameObject.FindGameObjectsWithTag("Soil").Length; i++)
+                GameObject.FindGameObjectsWithTag("Soil")[i].GetComponent<SoilController>().goldChanceMax = 0;
         }
 
 
