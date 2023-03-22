@@ -373,6 +373,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 578653358}
   m_SourcePrefab: {fileID: 100100000, guid: 44d20ed1a01ef574e85b9057e37abb57, type: 3}
+--- !u!1 &247767351 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2090099993, guid: 44d20ed1a01ef574e85b9057e37abb57, type: 3}
+  m_PrefabInstance: {fileID: 101599632}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &283824772
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3046,6 +3051,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1627873782}
+    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
+      propertyPath: pauseUI
+      value: 
+      objectReference: {fileID: 247767351}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: gameTime
       value: 300
