@@ -9,7 +9,7 @@ using UnityEngine.InputSystem;
 public class GameManager : MonoBehaviour
 {
     //UI variables
-    public TextMeshProUGUI scoreText, scoreText2, gameTimeText;
+    public TextMeshProUGUI scoreText, scoreText2, gameTimeText, highscore;
     public GameObject player, player2;
     public GameObject endGameUI, pauseUI;
 
@@ -24,11 +24,25 @@ public class GameManager : MonoBehaviour
     public bool weatherDone;
     public Vector2 wind;
 
+    //Menu Variables
+    public bool selection;
+
     //Pause variable
     public bool paused;
 
     void Update()
     {
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            if (selection && Gamepad.current.leftStick.ReadValue().y <= -.25f)
+                selection = false;
+            if (!selection && Gamepad.current.leftStick.ReadValue().y >= .25f)
+                selection = true;
+            if (selection && Gamepad.current.buttonEast.wasPressedThisFrame)
+                LoadLevel(1);
+            if (!selection && Gamepad.current.buttonEast.wasPressedThisFrame)
+                LoadLevel(2);
+        }
         //Works if it isnt the menu scene
         if (SceneManager.GetActiveScene().buildIndex != 0)
         {
@@ -63,9 +77,11 @@ public class GameManager : MonoBehaviour
             {
                 Time.timeScale = 0f;
                 endGameUI.SetActive(true);
-                PlayerPrefs.SetInt("Player1Score", score);
-                if (player2 != null)
-                    PlayerPrefs.SetInt("Player2Score", score2);
+                if (score > PlayerPrefs.GetInt("HighScore"))
+                    PlayerPrefs.SetInt("HighScore", score);
+                if (player2 != null && score2 > PlayerPrefs.GetInt("HighScore"))
+                    PlayerPrefs.SetInt("Highscore", score2);
+                highscore.text = "High Score: " + PlayerPrefs.GetInt("HighScore");
             }
 
             //Weather timer until next weather event
@@ -217,5 +233,10 @@ public class GameManager : MonoBehaviour
         pauseUI.SetActive(true);
         Time.timeScale = 0f;
         paused = true;
+    }
+
+    public void SetHighscore(int number)
+    {
+        PlayerPrefs.SetInt("Highscore", number);
     }
 }
