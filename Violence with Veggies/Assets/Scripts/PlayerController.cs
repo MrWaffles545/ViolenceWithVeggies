@@ -23,6 +23,11 @@ public class PlayerController : MonoBehaviour
     public bool isTouching = false;
     public bool isTouchingOther = false;
 
+    //Fire variables
+    public bool onFire;
+    public float fireTimer, igniteTime, fireTime, fireCooldown;
+    public GameObject fireSoil;
+
     //two player variables
     public bool playerOne;
     public Camera cam;
@@ -144,6 +149,25 @@ public class PlayerController : MonoBehaviour
                 throwBar.GetComponent<SpriteRenderer>().enabled = true;
                 throwBar.GetComponent<Transform>().localScale = new Vector2(time * 4, .25f);
             }
+
+            //on fire code
+            if (fireTimer >= igniteTime)
+            {
+                fireTimer += Time.deltaTime;
+            }
+            //light on fire code
+            if (fireTimer >= igniteTime && fireTimer <= fireTime)
+            {
+                onFire = true;
+                //fire stuff
+            }
+            //fire cooldown stuff
+            if (onFire && fireTimer >= fireCooldown)
+            {
+                onFire = false;
+                fireTimer = 0;
+                Debug.Log("oogly boogly");
+            }
         }
     }
 
@@ -168,6 +192,11 @@ public class PlayerController : MonoBehaviour
             collision.GetComponent<Rigidbody2D>().velocity = gameManager.wind;
             collision.tag = "item";
         }
+        if (collision.tag == "Soil" && collision.GetComponent<SoilController>().onFire && fireTimer <= igniteTime && !onFire)
+        {
+            fireTimer += Time.deltaTime;
+            fireSoil = collision.gameObject;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -183,6 +212,11 @@ public class PlayerController : MonoBehaviour
         {
             otherItem = null;
             isTouchingOther = false;
+        }
+        if (collision.gameObject == fireSoil && fireSoil != null && fireTimer <= igniteTime)
+        {
+            fireTimer = 0;
+            fireSoil = null;
         }
     }
 
