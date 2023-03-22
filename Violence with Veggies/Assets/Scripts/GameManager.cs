@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 0)
+        if (SceneManager.GetActiveScene().buildIndex == 0 && Gamepad.current != null)
         {
             if (selection && Gamepad.current.leftStick.ReadValue().y <= -.25f)
                 selection = false;
@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
                 gameTime -= Time.deltaTime;
                 gameTimeText.text = (Mathf.RoundToInt(gameTime)).ToString();
                 //Pause and resume
-                if (Input.GetKeyDown(KeyCode.Escape) || Gamepad.current.startButton.wasPressedThisFrame)
+                if (Input.GetKeyDown(KeyCode.Escape) || (Gamepad.current != null && Gamepad.current.startButton.wasPressedThisFrame))
                 {
                     if (paused)
                         Resume();
