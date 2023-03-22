@@ -66,7 +66,7 @@ Transform:
   - {fileID: 7495777356422880050}
   - {fileID: 6556945684696003318}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7495777357295568733
 SpriteRenderer:
@@ -161,6 +161,12 @@ MonoBehaviour:
   itemName: Hands
   isTouching: 0
   isTouchingOther: 0
+  onFire: 0
+  fireTimer: 0
+  igniteTime: 0.5
+  fireTime: 2.5
+  fireCooldown: 3.5
+  fireSoil: {fileID: 0}
   playerOne: 1
   cam: {fileID: 0}
   pickupButton: 0

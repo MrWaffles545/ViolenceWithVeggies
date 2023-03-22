@@ -192,7 +192,7 @@ public class PlayerController : MonoBehaviour
             collision.GetComponent<Rigidbody2D>().velocity = gameManager.wind;
             collision.tag = "item";
         }
-        if (collision.tag == "Soil" && collision.GetComponent<SoilController>().onFire && fireTimer <= igniteTime && !onFire)
+        if (collision.gameObject.tag == "Soil" && collision.GetComponent<SoilController>().onFire && fireTimer <= igniteTime && !onFire)
         {
             fireTimer += Time.deltaTime;
             fireSoil = collision.gameObject;
