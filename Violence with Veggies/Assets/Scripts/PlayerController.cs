@@ -24,8 +24,8 @@ public class PlayerController : MonoBehaviour
     public bool isTouchingOther = false;
 
     //Fire variables
-    public bool onFire;
-    public float fireTimer, igniteTime, fireTime, fireCooldown;
+    public bool onFire, onFireCooldown;
+    public float fireTimer, igniteTime, fireTime, fireCooldown, fireEffectTimer, fireEffectMin, fireEffectMax, fireEffect;
     public GameObject fireSoil;
 
     //two player variables
@@ -120,10 +120,9 @@ public class PlayerController : MonoBehaviour
                 }
             }
             //converts the gamepad input to velocity of the player and pickup/drop/swap
-            temp.x = move.x * speed;
-            temp.y = move.y * speed;
+            temp.x = move.x * speed * fireEffect;
+            temp.y = move.y * speed * fireEffect;
             myRb.velocity = temp;
-
 
             //hold code to throw or pickup/drop/swap
             if (pickupButton)
@@ -156,17 +155,34 @@ public class PlayerController : MonoBehaviour
             //light on fire code
             if (fireTimer >= igniteTime && fireTimer <= fireTime)
             {
-                onFire = true;
+                if (!onFire)
+                    onFire = true;
+                if (!onFireCooldown)
+                    onFireCooldown = true;
                 //fire stuff
-                Debug.Log("on Fire");
+                //Debug.Log("on Fire");
+                if (fireEffectTimer >= 0)
+                    fireEffectTimer -= Time.deltaTime;
+                else
+                {
+                    if (fireEffect > 0)
+                        fireEffect = -1f;
+                    else if (fireEffect < 0)
+                        fireEffect = 1f;
+                    fireEffectTimer = Random.Range(fireEffectMin, fireEffectMax);
+                }
+            }
+            if (onFire && fireTimer >= fireTime)
+            {
+                fireEffect = 1f;
+                onFire = false;
             }
             //fire cooldown stuff
-            if (onFire && fireTimer >= fireCooldown)
+            if (onFireCooldown && fireTimer >= fireCooldown)
             {
-                onFire = false;
+                onFireCooldown = false;
                 fireTimer = 0;
                 fireSoil = null;
-                Debug.Log("oogly boogly");
             }
         }
     }
@@ -192,7 +208,7 @@ public class PlayerController : MonoBehaviour
             collision.GetComponent<Rigidbody2D>().velocity = gameManager.wind;
             collision.tag = "item";
         }
-        if (collision.gameObject.tag == "Soil" && collision.GetComponent<SoilController>().onFire && fireTimer <= igniteTime && !onFire)
+        if (collision.gameObject.tag == "Soil" && collision.GetComponent<SoilController>().onFire && fireTimer <= igniteTime && !onFireCooldown)
         {
             fireSoil = collision.gameObject;
         }
