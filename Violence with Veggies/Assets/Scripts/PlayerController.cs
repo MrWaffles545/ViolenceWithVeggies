@@ -151,21 +151,21 @@ public class PlayerController : MonoBehaviour
             }
 
             //on fire code
-            if (fireTimer >= igniteTime)
-            {
+            if (fireTimer <= fireCooldown && (fireSoil != null || fireTimer >= igniteTime))
                 fireTimer += Time.deltaTime;
-            }
             //light on fire code
             if (fireTimer >= igniteTime && fireTimer <= fireTime)
             {
                 onFire = true;
                 //fire stuff
+                Debug.Log("on Fire");
             }
             //fire cooldown stuff
             if (onFire && fireTimer >= fireCooldown)
             {
                 onFire = false;
                 fireTimer = 0;
+                fireSoil = null;
                 Debug.Log("oogly boogly");
             }
         }
@@ -194,7 +194,6 @@ public class PlayerController : MonoBehaviour
         }
         if (collision.gameObject.tag == "Soil" && collision.GetComponent<SoilController>().onFire && fireTimer <= igniteTime && !onFire)
         {
-            fireTimer += Time.deltaTime;
             fireSoil = collision.gameObject;
         }
     }
