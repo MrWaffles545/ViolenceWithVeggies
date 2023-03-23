@@ -39,10 +39,6 @@ public class SoilController : MonoBehaviour
     public GameObject turnip;
     public GameObject artichoke;
 
-    //Dev variable
-    public bool InstaGrow;
-    public bool InstaTil;
-    public bool InstaWater;
 
     void Start()
     {
@@ -138,7 +134,7 @@ public class SoilController : MonoBehaviour
             if (!onFire)
             {
                 //if the soil is stage 0 it tills it and adds 1 to stage
-                if (stage == 0 && playerItem == "Till" || InstaTil)
+                if (stage == 0 && playerItem == "Till")
                 {
                     Debug.Log("Tilled");
                     stage++;
@@ -182,7 +178,7 @@ public class SoilController : MonoBehaviour
                     stage++;
                 }
                 //if the soil is stage 2 it waters it and adds 1 to stage
-                else if (!watered && playerItem == "WaterCan" || InstaWater)
+                else if (!watered && playerItem == "WaterCan")
                 {
                     Debug.Log("Watered");
                     watered = true;
