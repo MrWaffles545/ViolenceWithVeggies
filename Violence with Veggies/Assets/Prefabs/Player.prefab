@@ -162,10 +162,15 @@ MonoBehaviour:
   isTouching: 0
   isTouchingOther: 0
   onFire: 0
+  onFireCooldown: 0
   fireTimer: 0
-  igniteTime: 0.5
-  fireTime: 2.5
-  fireCooldown: 3.5
+  igniteTime: 1.25
+  fireTime: 6.25
+  fireCooldown: 8.25
+  fireEffectTimer: 0
+  fireEffectMin: 0.75
+  fireEffectMax: 1.25
+  fireEffect: 1
   fireSoil: {fileID: 0}
   playerOne: 1
   cam: {fileID: 0}

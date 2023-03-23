@@ -315,6 +315,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1163848725}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
+      propertyPath: weather
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: endGameUI
       value: 
       objectReference: {fileID: 300273972}
