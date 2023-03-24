@@ -72,6 +72,9 @@ public class GameManager : MonoBehaviour
         //Works if it isnt the menu scene
         if (SceneManager.GetActiveScene().buildIndex != 0)
         {
+            if (GameObject.FindGameObjectsWithTag("item").Length > 25)
+                Destroy(GameObject.FindGameObjectsWithTag("item")[0]);
+
             //Changes the score UI accordingly
             score = player.GetComponent<PlayerController>().score;
             scoreText.text = score.ToString();
