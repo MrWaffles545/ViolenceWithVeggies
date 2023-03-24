@@ -25,23 +25,49 @@ public class GameManager : MonoBehaviour
     public Vector2 wind;
 
     //Menu Variables
-    public bool selection;
+    public bool menuSelect, gameSelect, selection;
+    public GameObject menuButtons, gameButtons, tutorialButtons;
+    public int menuStage;
 
     //Pause variable
     public bool paused;
 
     void Update()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 0 && Gamepad.current != null)
+        if (SceneManager.GetActiveScene().buildIndex == 0)
         {
-            if (selection && Gamepad.current.leftStick.ReadValue().y <= -.25f)
-                selection = false;
-            if (!selection && Gamepad.current.leftStick.ReadValue().y >= .25f)
-                selection = true;
-            if (selection && Gamepad.current.buttonEast.wasPressedThisFrame)
-                LoadLevel(1);
-            if (!selection && Gamepad.current.buttonEast.wasPressedThisFrame)
-                LoadLevel(2);
+            if (Gamepad.current != null)
+            {
+                if (selection && Gamepad.current.leftStick.ReadValue().y <= -.25f)
+                    selection = false;
+                if (!selection && Gamepad.current.leftStick.ReadValue().y >= .25f)
+                    selection = true;
+                if (menuStage == 0)
+                {
+                    if (selection && Gamepad.current.buttonEast.wasPressedThisFrame)
+                        GameSelect();
+                    if (!selection && Gamepad.current.buttonEast.wasPressedThisFrame)
+                        Tutorial();
+                }
+
+                if (menuStage == 1)
+                {
+                    if (selection && Gamepad.current.buttonEast.wasPressedThisFrame)
+                        LoadLevel(1);
+                    if (!selection && Gamepad.current.buttonEast.wasPressedThisFrame)
+                        LoadLevel(2);
+                    if (Gamepad.current.buttonSouth.wasPressedThisFrame)
+                        MenuSelect();
+                }
+
+                if (menuStage == 2)
+                {
+                    if (Gamepad.current.buttonSouth.wasPressedThisFrame)
+                        MenuSelect();
+                }
+            }
+            if ((menuStage == 1 || menuStage == 2) && Input.GetKeyDown(KeyCode.Escape))
+                MenuSelect();
         }
         //Works if it isnt the menu scene
         if (SceneManager.GetActiveScene().buildIndex != 0)
@@ -82,6 +108,8 @@ public class GameManager : MonoBehaviour
                 if (player2 != null && score2 > PlayerPrefs.GetInt("HighScore"))
                     PlayerPrefs.SetInt("Highscore", score2);
                 highscore.text = "High Score: " + PlayerPrefs.GetInt("HighScore");
+                if (Gamepad.current != null && Gamepad.current.buttonSouth.wasPressedThisFrame)
+                    LoadLevel(0);
             }
 
             //Weather timer until next weather event
@@ -238,5 +266,29 @@ public class GameManager : MonoBehaviour
     public void SetHighscore(int number)
     {
         PlayerPrefs.SetInt("Highscore", number);
+    }
+
+    public void MenuSelect()
+    {
+        menuButtons.SetActive(true);
+        gameButtons.SetActive(false);
+        tutorialButtons.SetActive(false);
+        menuStage = 0;
+    }
+
+    public void GameSelect()
+    {
+        menuButtons.SetActive(false);
+        gameButtons.SetActive(true);
+        tutorialButtons.SetActive(false);
+        menuStage = 1;
+    }
+
+    public void Tutorial()
+    {
+        menuButtons.SetActive(false);
+        gameButtons.SetActive(false);
+        tutorialButtons.SetActive(true);
+        menuStage = 2;
     }
 }
