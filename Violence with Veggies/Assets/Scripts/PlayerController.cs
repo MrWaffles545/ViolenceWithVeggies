@@ -204,7 +204,8 @@ public class PlayerController : MonoBehaviour
         }
         if ((playerOne && collision.gameObject.tag == "ThrownItem2") || (!playerOne && collision.gameObject.tag == "ThrownItem1"))
         {
-            Debug.Log("Smack");
+            if (isHolding)
+                Drop();
             collision.GetComponent<Rigidbody2D>().velocity = gameManager.wind;
             collision.tag = "item";
         }
@@ -239,13 +240,7 @@ public class PlayerController : MonoBehaviour
     {
         //if the player presses the assigned button from above and isnt touching anything else it activates the pickup/drop
         if (isTouching && holdingItem != null && !isTouchingOther && isHolding)
-        {
-            //sets the item the player was holding to have no parent object and make the player have no item it is holding
-            holdingItem.transform.SetParent(null);
-            holdingItem.GetComponent<Rigidbody2D>().velocity = gameManager.wind;
-            itemName = "Hands";
-            isHolding = false;
-        }
+            Drop();
         //if the player has an item already and tries to pick up another it swaps the 2 items
         else if (holdingItem != null && isTouchingOther && otherItem.transform.parent == null)
         {
@@ -267,6 +262,15 @@ public class PlayerController : MonoBehaviour
             isTouchingOther = true;
             isTouching = true;
         }
+    }
+
+    void Drop()
+    {
+        //sets the item the player was holding to have no parent object and make the player have no item it is holding
+        holdingItem.transform.SetParent(null);
+        holdingItem.GetComponent<Rigidbody2D>().velocity = gameManager.wind;
+        itemName = "Hands";
+        isHolding = false;
     }
 
     void Pickup()
