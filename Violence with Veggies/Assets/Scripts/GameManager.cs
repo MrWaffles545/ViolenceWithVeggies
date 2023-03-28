@@ -134,7 +134,7 @@ public class GameManager : MonoBehaviour
                 if (!weatherDone)
                 {
                     //picks random soil and lights them on fire
-                    for (int i = 0; i < GameObject.FindGameObjectsWithTag("Soil").Length / 4; i++)
+                    for (int i = 0; i < GameObject.FindGameObjectsWithTag("Soil").Length / 3; i++)
                     {
                         SoilController target = GameObject.FindGameObjectsWithTag("Soil")[Random.Range(0, GameObject.FindGameObjectsWithTag("Soil").Length)].GetComponent<SoilController>();
                         target.watered = false;

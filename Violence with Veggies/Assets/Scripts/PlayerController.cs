@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     public GameObject holdingItem;
     public bool isHolding = false;
     public string itemName;
+    public bool isDropped;
 
     //variables for the other items the character can pick up while holding one already
     private GameObject otherItem;
@@ -226,18 +227,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //when the player hits an item it flags a bool and assigns that item to holdingItem
-        if (collision.gameObject.tag == "item" && !isHolding)
-        {
-            holdingItem = collision.gameObject;
-            isTouching = true;
-        }
-        //if the player hits an item other than holdingItem it flags a different bool and assigns it to otherItem
-        else if (collision.gameObject.tag == "item" && collision.gameObject != holdingItem && isHolding)
-        {
-            otherItem = collision.gameObject;
-            isTouchingOther = true;
-        }
         if ((playerOne && collision.gameObject.tag == "ThrownItem2") || (!playerOne && collision.gameObject.tag == "ThrownItem1"))
         {
             if (isHolding)
@@ -252,6 +241,7 @@ public class PlayerController : MonoBehaviour
         //when the player exits the item it flags a bool off and assigns holdingItem to null
         if (collision.gameObject.tag == "item" && !isHolding)
         {
+            Debug.Log("e");
             holdingItem = null;
             isTouching = false;
             pickup.text = "";
@@ -261,7 +251,7 @@ public class PlayerController : MonoBehaviour
         {
             otherItem = null;
             isTouchingOther = false;
-            pickup.text = "";
+            pickup.text = "Press " + playerpickupbutton + " To Drop";
         }
         if (collision.gameObject == fireSoil && fireSoil != null && fireTimer <= igniteTime)
         {
@@ -305,6 +295,7 @@ public class PlayerController : MonoBehaviour
         holdingItem.GetComponent<Rigidbody2D>().velocity = gameManager.wind;
         itemName = "Hands";
         isHolding = false;
+        isDropped = true;
     }
 
     void Pickup()
@@ -326,7 +317,7 @@ public class PlayerController : MonoBehaviour
             itemName = holdingItem.name;
             isHolding = true;
             holdingItem.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            pickup.text = "";
+            pickup.text = "Press " + playerpickupbutton + " To Drop";
         }
     }
 
@@ -345,5 +336,6 @@ public class PlayerController : MonoBehaviour
         }
         itemName = "Hands";
         isHolding = false;
+        pickup.text = "";
     }
 }
