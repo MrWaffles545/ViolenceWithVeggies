@@ -34,7 +34,7 @@ public class BoxController : MonoBehaviour
         else if (player == null && !sellBox)
             playerItem = null;
 
-        else if (isTouching && script.inputType && !sellBox && !script.isHolding && seedTime >= seedReady)
+        if (isTouching && script.inputType && !sellBox && !script.isHolding && seedTime >= seedReady)
         {
             GameObject temp = seeds[Random.Range(0, seeds.Length)];
             //spawns the correct crop

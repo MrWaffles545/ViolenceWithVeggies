@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     public int weather;
     public float weatherTimer, weatherTimerMin, weatherTimerMax;
     public float weatherDuration;
-    public bool weatherDone;
+    public bool weatherDone, rainSecond;
     public Vector2 wind;
 
     //Menu Variables
@@ -172,7 +172,7 @@ public class GameManager : MonoBehaviour
                 if (!weatherDone)
                 {
                     //waters all the soil or puts out fire then waters after a while
-                    for (int i = 0; i < GameObject.FindGameObjectsWithTag("Soil").Length; i++)
+                    for (int i = 0; i < GameObject.FindGameObjectsWithTag("Soil").Length / 2; i++)
                     {
                         SoilController target = GameObject.FindGameObjectsWithTag("Soil")[i].GetComponent<SoilController>();
                         if (target.onFire)
@@ -186,7 +186,23 @@ public class GameManager : MonoBehaviour
                     //sets the weather duration
                     weatherDuration = 15f;
                     weatherDone = true;
+                    rainSecond = false;
                     Debug.Log("Rain");
+                }
+                if (weatherDuration <= 5 && !rainSecond)
+                {
+                    for (int i = 0; i < GameObject.FindGameObjectsWithTag("Soil").Length; i++)
+                    {
+                        SoilController target = GameObject.FindGameObjectsWithTag("Soil")[i].GetComponent<SoilController>();
+                        if (target.onFire)
+                        {
+                            target.onFire = false;
+                            target.rain = true;
+                        }
+                        else
+                            target.watered = true;
+                    }
+                    rainSecond = true;
                 }
             }
 

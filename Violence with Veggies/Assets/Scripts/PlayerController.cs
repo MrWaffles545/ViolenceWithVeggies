@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
@@ -11,6 +12,10 @@ public class PlayerController : MonoBehaviour
 
     //Game Manager script
     public GameManager gameManager;
+
+    //UI variables for the tutorial
+    public TextMeshProUGUI pickup, interact;
+    private string playerpickupbutton, playerinteractbutton;
 
     //variables for the items the character picks up
     public Transform objectPickupPos;
@@ -25,7 +30,8 @@ public class PlayerController : MonoBehaviour
 
     //Fire variables
     public bool onFire, onFireCooldown;
-    public float fireTimer, igniteTime, fireTime, fireCooldown, fireEffectTimer, fireEffectMin, fireEffectMax, fireEffect;
+    public float fireTimer, igniteTime, fireTime, fireCooldown, fireEffectTimer;
+    public float fireEffectMin, fireEffectMax, fireEffect;
     public GameObject fireSoil;
 
     //two player variables
@@ -86,7 +92,9 @@ public class PlayerController : MonoBehaviour
                     pickupButtonRelease = gamepad.buttonEast.wasReleasedThisFrame;
                     move = gamepad.leftStick.ReadValue();
                     inputType = gamepad.buttonSouth.wasPressedThisFrame;
-                } 
+                    playerpickupbutton = "The Green Button";
+                    playerinteractbutton = "The Red Button";
+                }
                 else
                 {
                     //if it is player one it uses basic controls and left click to pickup/drop
@@ -95,6 +103,8 @@ public class PlayerController : MonoBehaviour
                     pickupButton = Input.GetMouseButtonDown(0);
                     pickupButtonRelease = Input.GetMouseButtonUp(0);
                     inputType = Input.GetMouseButtonDown(1);
+                    playerpickupbutton = "Left Click";
+                    playerinteractbutton = "Right Click";
                 }
             }
             else
@@ -107,6 +117,8 @@ public class PlayerController : MonoBehaviour
                     pickupButtonRelease = gamepad2.buttonEast.wasReleasedThisFrame;
                     move = gamepad2.leftStick.ReadValue();
                     inputType = gamepad2.buttonSouth.wasPressedThisFrame;
+                    playerpickupbutton = "The Green Button";
+                    playerinteractbutton = "The Red Button";
                 }
                 else
                 {
@@ -117,6 +129,8 @@ public class PlayerController : MonoBehaviour
                     pickupButton = Input.GetKeyDown(KeyCode.Q);
                     pickupButtonRelease = Input.GetKeyUp(KeyCode.Q);
                     inputType = Input.GetKeyDown(KeyCode.E);
+                    playerpickupbutton = "Q";
+                    playerinteractbutton = "E";
                 }
             }
             //converts the gamepad input to velocity of the player and pickup/drop/swap
@@ -195,6 +209,28 @@ public class PlayerController : MonoBehaviour
         {
             holdingItem = collision.gameObject;
             isTouching = true;
+            pickup.text = "Press " + playerpickupbutton + " To Pickup";
+        }
+        //if the player hits an item other than holdingItem it flags a different bool and assigns it to otherItem
+        else if (collision.gameObject.tag == "item" && collision.gameObject != holdingItem && isHolding)
+        {
+            otherItem = collision.gameObject;
+            isTouchingOther = true;
+            pickup.text = "Press " + playerpickupbutton + " To Swap Items";
+        }
+        if (collision.gameObject.tag == "Soil" && collision.GetComponent<SoilController>().onFire && fireTimer <= igniteTime && !onFireCooldown)
+        {
+            fireSoil = collision.gameObject;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //when the player hits an item it flags a bool and assigns that item to holdingItem
+        if (collision.gameObject.tag == "item" && !isHolding)
+        {
+            holdingItem = collision.gameObject;
+            isTouching = true;
         }
         //if the player hits an item other than holdingItem it flags a different bool and assigns it to otherItem
         else if (collision.gameObject.tag == "item" && collision.gameObject != holdingItem && isHolding)
@@ -209,10 +245,6 @@ public class PlayerController : MonoBehaviour
             collision.GetComponent<Rigidbody2D>().velocity = gameManager.wind;
             collision.tag = "item";
         }
-        if (collision.gameObject.tag == "Soil" && collision.GetComponent<SoilController>().onFire && fireTimer <= igniteTime && !onFireCooldown)
-        {
-            fireSoil = collision.gameObject;
-        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -222,12 +254,14 @@ public class PlayerController : MonoBehaviour
         {
             holdingItem = null;
             isTouching = false;
+            pickup.text = "";
         }
         //when the player exits other item it flags a bool off and assigns otherItem to null
         else if (collision.gameObject == otherItem && isHolding)
         {
             otherItem = null;
             isTouchingOther = false;
+            pickup.text = "";
         }
         if (collision.gameObject == fireSoil && fireSoil != null && fireTimer <= igniteTime)
         {
@@ -292,6 +326,7 @@ public class PlayerController : MonoBehaviour
             itemName = holdingItem.name;
             isHolding = true;
             holdingItem.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            pickup.text = "";
         }
     }
 
