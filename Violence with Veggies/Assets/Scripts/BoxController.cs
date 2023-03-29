@@ -120,6 +120,7 @@ public class BoxController : MonoBehaviour
         if (collision.gameObject.tag == "Player" && !sellBox)
         {
             player = collision.gameObject;
+            player.GetComponent<PlayerController>().showInteract = true;
             isTouching = true;
         }
     }
@@ -128,6 +129,7 @@ public class BoxController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player" && !sellBox)
         {
+            player.GetComponent<PlayerController>().showInteract = false;
             player = null;
             isTouching = false;
         }
