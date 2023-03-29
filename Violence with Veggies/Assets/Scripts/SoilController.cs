@@ -91,8 +91,16 @@ public class SoilController : MonoBehaviour
         }
 
         //turns color (temp)
-        if (onFire || stage == -1 || rain)
-            GetComponent<SpriteRenderer>().color = new Color(1, 1, 1);
+        if (onFire)
+            gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+        if (stage == -1)
+            gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+        if (stage == 1)
+            gameObject.GetComponent<SpriteRenderer>().color = Color.gray;
+        if (watered)
+            gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
+        if (stage != 1 && !onFire && stage != -1 && !watered)
+            gameObject.GetComponent<SpriteRenderer>().color = Color.black;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -147,7 +155,6 @@ public class SoilController : MonoBehaviour
                 {
                     Debug.Log("Tilled");
                     stage++;
-                    gameObject.GetComponent<SpriteRenderer>().color = Color.gray;
                 }
                 //if the soil is stage 1 it detects which seed the player interacted on it with and adds 1 to stage
                 else if (stage == 1 && (playerItem == "Carrot Seed" || playerItem == "Wheat Seed" || playerItem == "Potato Seed" || playerItem == "Turnip Seed" || playerItem == "Artichoke Seed"))
@@ -192,7 +199,6 @@ public class SoilController : MonoBehaviour
                 {
                     Debug.Log("Watered");
                     watered = true;
-                    gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
                 }
                 //if the soil is stage 3 and the crop has grown it harvests it, gives the player the correct crop and adds 1 to stage
                 else if (watered && stage == 2 && playerItem == "Hands" && cropTime >= cropReady)
