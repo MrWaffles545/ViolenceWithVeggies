@@ -119,7 +119,8 @@ public class SoilController : MonoBehaviour
         {
             isTouching = true;
             player = collision.gameObject;
-            player.GetComponent<PlayerController>().showInteract = true;
+            if (stage != 0)
+                player.GetComponent<PlayerController>().showInteract = true;
             if (watered)
             {
                 if (stage == 2)
