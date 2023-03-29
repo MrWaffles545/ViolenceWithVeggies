@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
 
     //UI variables for the tutorial
     public TextMeshProUGUI pickup, interact;
+    public bool showInteract;
     private string playerpickupbutton = "E", playerinteractbutton = "E";
 
     //variables for the items the character picks up
@@ -199,6 +200,12 @@ public class PlayerController : MonoBehaviour
                 fireTimer = 0;
                 fireSoil = null;
             }
+
+            //Interact tutorial text stuff
+            if (showInteract)
+                interact.text = "Press " + playerinteractbutton + " To Interact";
+            else
+                interact.text = "";
         }
     }
 
