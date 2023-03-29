@@ -25,60 +25,16 @@ public class BoxController : MonoBehaviour
     void Update()
     {
 
-        //gets name of held item
-        if (player != null)
+        //gets name of held item if the box is a seed box
+        if (player != null && !sellBox)
         {
             script = player.GetComponent<PlayerController>();
             playerItem = script.itemName;
         }
-        else
+        else if (player == null && !sellBox)
             playerItem = null;
 
-        //if player interacts with box, players score will increase depending on crop
-        if (isTouching && script.inputType && sellBox == true)
-        {
-            if (playerItem == "Wheat" || playerItem == "Golden Wheat")
-                script.score++;
-
-            if (playerItem == "Carrot" || playerItem == "Golden Carrot")
-                script.score += 2;
-
-            if (playerItem == "Potato" || playerItem == "Golden Potato")
-                script.score += 2;
-
-            if (playerItem == "Turnip" || playerItem == "Golden Turnip")
-                script.score += 3;
-
-            if (playerItem == "Artichoke" || playerItem == "Golden Artichoke")
-                script.score += 4;
-
-            if (playerItem == "Golden Wheat")
-                script.score += 2;
-
-            if (playerItem == "Golden Carrot")
-                script.score += 4;
-
-            if (playerItem == "Golden Potato")
-                script.score += 4;
-
-            if (playerItem == "Golden Turnip")
-                script.score += 6;
-
-            if (playerItem == "Golden Artichoke")
-                script.score += 8;
-
-            if (playerItem == "Carrot" || playerItem == "Wheat" || playerItem == "Potato" || playerItem == "Turnip" || playerItem == "Artichoke"
-                || playerItem == "Golden Carrot" || playerItem == "Golden Wheat" || playerItem == "Golden Potato" || playerItem == "Golden Turnip" || playerItem == "Golden Artichoke")
-            {
-                Destroy(script.holdingItem);
-                script.holdingItem = null;
-                script.itemName = "Hands";
-                script.isTouching = false;
-                script.isHolding = false;
-            }
-        }
-
-        else if (isTouching && script.inputType && !sellBox && !script.isHolding && seedTime >= seedReady)
+        if (isTouching && script.inputType && !sellBox && !script.isHolding && seedTime >= seedReady)
         {
             GameObject temp = seeds[Random.Range(0, seeds.Length)];
             //spawns the correct crop
@@ -106,20 +62,71 @@ public class BoxController : MonoBehaviour
         }
     }
 
-    //detects if player is in range of box
+    //detects if a crops enters the trigger then sells it
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "item" && sellBox && collision.transform.parent == null)
+        {
+            PlayerController playerScore = player.GetComponent<PlayerController>();
+            if (collision.name == "Wheat")
+            {
+                playerScore.score++;
+                Destroy(collision.gameObject);
+            }
+
+            if (collision.name == "Carrot" && collision.name == "Potato")
+            {
+                playerScore.score += 2;
+                Destroy(collision.gameObject);
+            }
+
+            if (collision.name == "Turnip")
+            {
+                playerScore.score += 3;
+                Destroy(collision.gameObject);
+            }
+
+            if (collision.name == "Artichoke")
+            {
+                playerScore.score += 4;
+                Destroy(collision.gameObject);
+            }
+
+            if (collision.name == "Golden Wheat")
+            {
+                playerScore.score += 2;
+                Destroy(collision.gameObject);
+            }
+
+            if (collision.name == "Golden Carrot" && collision.name == "Golden Potato")
+            {
+                playerScore.score += 4;
+                Destroy(collision.gameObject);
+            }
+
+            if (collision.name == "Golden Turnip")
+            {
+                playerScore.score += 6;
+                Destroy(collision.gameObject);
+            }
+
+            if (collision.name == "Golden Artichoke")
+            {
+                playerScore.score += 8;
+                Destroy(collision.gameObject);
+            }
+        }
+        
+        if (collision.gameObject.tag == "Player" && !sellBox)
         {
             player = collision.gameObject;
             isTouching = true;
         }
     }
 
-    //detecs if player is not in range of box
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player" && !sellBox)
         {
             player = null;
             isTouching = false;

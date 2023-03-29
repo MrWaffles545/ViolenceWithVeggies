@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
@@ -12,11 +13,16 @@ public class PlayerController : MonoBehaviour
     //Game Manager script
     public GameManager gameManager;
 
+    //UI variables for the tutorial
+    public TextMeshProUGUI pickup, interact;
+    private string playerpickupbutton, playerinteractbutton;
+
     //variables for the items the character picks up
     public Transform objectPickupPos;
     public GameObject holdingItem;
     public bool isHolding = false;
     public string itemName;
+    public bool isDropped;
 
     //variables for the other items the character can pick up while holding one already
     private GameObject otherItem;
@@ -25,7 +31,8 @@ public class PlayerController : MonoBehaviour
 
     //Fire variables
     public bool onFire, onFireCooldown;
-    public float fireTimer, igniteTime, fireTime, fireCooldown, fireEffectTimer, fireEffectMin, fireEffectMax, fireEffect;
+    public float fireTimer, igniteTime, fireTime, fireCooldown, fireEffectTimer;
+    public float fireEffectMin, fireEffectMax, fireEffect;
     public GameObject fireSoil;
 
     //two player variables
@@ -86,7 +93,9 @@ public class PlayerController : MonoBehaviour
                     pickupButtonRelease = gamepad.buttonEast.wasReleasedThisFrame;
                     move = gamepad.leftStick.ReadValue();
                     inputType = gamepad.buttonSouth.wasPressedThisFrame;
-                } 
+                    playerpickupbutton = "The Green Button";
+                    playerinteractbutton = "The Red Button";
+                }
                 else
                 {
                     //if it is player one it uses basic controls and left click to pickup/drop
@@ -95,6 +104,8 @@ public class PlayerController : MonoBehaviour
                     pickupButton = Input.GetMouseButtonDown(0);
                     pickupButtonRelease = Input.GetMouseButtonUp(0);
                     inputType = Input.GetMouseButtonDown(1);
+                    playerpickupbutton = "Left Click";
+                    playerinteractbutton = "Right Click";
                 }
             }
             else
@@ -107,6 +118,8 @@ public class PlayerController : MonoBehaviour
                     pickupButtonRelease = gamepad2.buttonEast.wasReleasedThisFrame;
                     move = gamepad2.leftStick.ReadValue();
                     inputType = gamepad2.buttonSouth.wasPressedThisFrame;
+                    playerpickupbutton = "The Green Button";
+                    playerinteractbutton = "The Red Button";
                 }
                 else
                 {
@@ -117,6 +130,8 @@ public class PlayerController : MonoBehaviour
                     pickupButton = Input.GetKeyDown(KeyCode.Q);
                     pickupButtonRelease = Input.GetKeyUp(KeyCode.Q);
                     inputType = Input.GetKeyDown(KeyCode.E);
+                    playerpickupbutton = "Q";
+                    playerinteractbutton = "E";
                 }
             }
             //converts the gamepad input to velocity of the player and pickup/drop/swap
@@ -195,22 +210,29 @@ public class PlayerController : MonoBehaviour
         {
             holdingItem = collision.gameObject;
             isTouching = true;
+            pickup.text = "Press " + playerpickupbutton + " To Pickup";
         }
         //if the player hits an item other than holdingItem it flags a different bool and assigns it to otherItem
         else if (collision.gameObject.tag == "item" && collision.gameObject != holdingItem && isHolding)
         {
             otherItem = collision.gameObject;
             isTouchingOther = true;
-        }
-        if ((playerOne && collision.gameObject.tag == "ThrownItem2") || (!playerOne && collision.gameObject.tag == "ThrownItem1"))
-        {
-            Debug.Log("Smack");
-            collision.GetComponent<Rigidbody2D>().velocity = gameManager.wind;
-            collision.tag = "item";
+            pickup.text = "Press " + playerpickupbutton + " To Swap Items";
         }
         if (collision.gameObject.tag == "Soil" && collision.GetComponent<SoilController>().onFire && fireTimer <= igniteTime && !onFireCooldown)
         {
             fireSoil = collision.gameObject;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if ((playerOne && collision.gameObject.tag == "ThrownItem2") || (!playerOne && collision.gameObject.tag == "ThrownItem1"))
+        {
+            if (isHolding)
+                Drop();
+            collision.GetComponent<Rigidbody2D>().velocity = gameManager.wind;
+            collision.tag = "item";
         }
     }
 
@@ -219,14 +241,17 @@ public class PlayerController : MonoBehaviour
         //when the player exits the item it flags a bool off and assigns holdingItem to null
         if (collision.gameObject.tag == "item" && !isHolding)
         {
+            Debug.Log("e");
             holdingItem = null;
             isTouching = false;
+            pickup.text = "";
         }
         //when the player exits other item it flags a bool off and assigns otherItem to null
         else if (collision.gameObject == otherItem && isHolding)
         {
             otherItem = null;
             isTouchingOther = false;
+            pickup.text = "Press " + playerpickupbutton + " To Drop";
         }
         if (collision.gameObject == fireSoil && fireSoil != null && fireTimer <= igniteTime)
         {
@@ -239,13 +264,7 @@ public class PlayerController : MonoBehaviour
     {
         //if the player presses the assigned button from above and isnt touching anything else it activates the pickup/drop
         if (isTouching && holdingItem != null && !isTouchingOther && isHolding)
-        {
-            //sets the item the player was holding to have no parent object and make the player have no item it is holding
-            holdingItem.transform.SetParent(null);
-            holdingItem.GetComponent<Rigidbody2D>().velocity = gameManager.wind;
-            itemName = "Hands";
-            isHolding = false;
-        }
+            Drop();
         //if the player has an item already and tries to pick up another it swaps the 2 items
         else if (holdingItem != null && isTouchingOther && otherItem.transform.parent == null)
         {
@@ -269,6 +288,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void Drop()
+    {
+        //sets the item the player was holding to have no parent object and make the player have no item it is holding
+        holdingItem.transform.SetParent(null);
+        holdingItem.GetComponent<Rigidbody2D>().velocity = gameManager.wind;
+        itemName = "Hands";
+        isHolding = false;
+        isDropped = true;
+    }
+
     void Pickup()
     {
         //if the player presses the assigned button from above and isnt touching anything else it activates the pickup/drop
@@ -288,6 +317,7 @@ public class PlayerController : MonoBehaviour
             itemName = holdingItem.name;
             isHolding = true;
             holdingItem.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            pickup.text = "Press " + playerpickupbutton + " To Drop";
         }
     }
 
@@ -306,5 +336,6 @@ public class PlayerController : MonoBehaviour
         }
         itemName = "Hands";
         isHolding = false;
+        pickup.text = "";
     }
 }

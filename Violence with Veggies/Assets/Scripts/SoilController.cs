@@ -74,7 +74,7 @@ public class SoilController : MonoBehaviour
         }
 
         //Fire spread code
-        if (onFire && !fireSpreadDone && gameManager.weatherDuration <= 3)
+        if (onFire && !fireSpreadDone && gameManager.weatherDuration <= 5)
         {
             GameObject target = fireSpreadRadius[Random.Range(0, fireSpreadRadius.Count / 2)];
             target.GetComponent<SoilController>().onFire = true;
