@@ -2997,9 +2997,45 @@ PrefabInstance:
       propertyPath: m_Name
       value: WaterCan
       objectReference: {fileID: 0}
+    - target: {fileID: 4546062369868231714, guid: 5080bad4e7640084ca22e4df0c6eb588, type: 3}
+      propertyPath: m_Radius
+      value: 7.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 4546062369868231714, guid: 5080bad4e7640084ca22e4df0c6eb588, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4546062369868231714, guid: 5080bad4e7640084ca22e4df0c6eb588, type: 3}
+      propertyPath: m_Offset.y
+      value: 1.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 4546062369868231715, guid: 5080bad4e7640084ca22e4df0c6eb588, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8f2756f1b03a6224782af7cc46c2802d, type: 3}
+    - target: {fileID: 4546062369868231715, guid: 5080bad4e7640084ca22e4df0c6eb588, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4546062369868231715, guid: 5080bad4e7640084ca22e4df0c6eb588, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4546062369868231715, guid: 5080bad4e7640084ca22e4df0c6eb588, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4546062369868231724, guid: 5080bad4e7640084ca22e4df0c6eb588, type: 3}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4546062369868231724, guid: 5080bad4e7640084ca22e4df0c6eb588, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 4546062369868231724, guid: 5080bad4e7640084ca22e4df0c6eb588, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.04
       objectReference: {fileID: 0}
     - target: {fileID: 4546062369868231724, guid: 5080bad4e7640084ca22e4df0c6eb588, type: 3}
       propertyPath: m_LocalPosition.x
