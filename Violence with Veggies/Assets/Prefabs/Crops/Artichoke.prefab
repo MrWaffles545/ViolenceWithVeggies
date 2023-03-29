@@ -32,6 +32,18 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4253601011028222485, guid: 577a0a5232768c94285d495ea36c40a2, type: 3}
+      propertyPath: m_Radius
+      value: 5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4253601011028222485, guid: 577a0a5232768c94285d495ea36c40a2, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 4253601011028222485, guid: 577a0a5232768c94285d495ea36c40a2, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 4253601011028222486, guid: 577a0a5232768c94285d495ea36c40a2, type: 3}
       propertyPath: m_Name
       value: Artichoke
