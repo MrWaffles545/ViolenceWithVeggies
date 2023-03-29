@@ -23,7 +23,6 @@ public class PlayerController : MonoBehaviour
     public GameObject holdingItem;
     public bool isHolding = false;
     public string itemName;
-    public bool isDropped;
 
     //variables for the other items the character can pick up while holding one already
     private GameObject otherItem;
@@ -248,7 +247,6 @@ public class PlayerController : MonoBehaviour
         //when the player exits the item it flags a bool off and assigns holdingItem to null
         if (collision.gameObject.tag == "item" && !isHolding)
         {
-            Debug.Log("e");
             holdingItem = null;
             isTouching = false;
             pickup.text = "";
@@ -302,7 +300,6 @@ public class PlayerController : MonoBehaviour
         holdingItem.GetComponent<Rigidbody2D>().velocity = gameManager.wind;
         itemName = "Hands";
         isHolding = false;
-        isDropped = true;
     }
 
     void Pickup()

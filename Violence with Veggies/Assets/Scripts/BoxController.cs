@@ -120,7 +120,7 @@ public class BoxController : MonoBehaviour
         if (collision.gameObject.tag == "Player" && !sellBox)
         {
             player = collision.gameObject;
-            if (!sellBox && !script.isHolding && seedTime >= seedReady)
+            if (!sellBox && !player.GetComponent<PlayerController>().isHolding && seedTime >= seedReady)
                 player.GetComponent<PlayerController>().showInteract = true;
             isTouching = true;
         }
