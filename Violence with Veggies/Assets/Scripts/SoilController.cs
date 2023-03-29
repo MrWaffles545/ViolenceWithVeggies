@@ -122,6 +122,9 @@ public class SoilController : MonoBehaviour
             if ((stage == 0 && playerItem == "Till") || (stage == 1 && (playerItem == "Carrot Seed" || playerItem == "Wheat Seed" || playerItem == "Potato Seed" || playerItem == "Turnip Seed" || playerItem == "Artichoke Seed")) 
                 || (!watered && playerItem == "WaterCan") || (watered && stage == 2 && playerItem == "Hands" && cropTime >= cropReady))
                 player.GetComponent<PlayerController>().showInteract = true;
+            else
+                player.GetComponent<PlayerController>().showInteract = false;
+
             if (watered)
             {
                 if (stage == 2)
