@@ -65,7 +65,7 @@ public class BoxController : MonoBehaviour
     //detects if a crops enters the trigger then sells it
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "item" && sellBox && collision.transform.parent == null)
+        if ((collision.gameObject.tag == "item" || collision.gameObject.tag == "Thrownitem1" || collision.gameObject.tag == "Thrownitem2") && sellBox && collision.gameObject.transform.parent == null)
         {
             PlayerController playerScore = player.GetComponent<PlayerController>();
             if (collision.name == "Wheat")

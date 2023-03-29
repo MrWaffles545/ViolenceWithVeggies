@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
 
     //UI variables for the tutorial
     public TextMeshProUGUI pickup, interact;
-    private string playerpickupbutton, playerinteractbutton;
+    private string playerpickupbutton = "E", playerinteractbutton = "E";
 
     //variables for the items the character picks up
     public Transform objectPickupPos;

@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
         if (SceneManager.GetActiveScene().buildIndex != 0)
         {
             if (GameObject.FindGameObjectsWithTag("item").Length > 25)
-                Destroy(GameObject.FindGameObjectsWithTag("item")[0]);
+                Destroy(GameObject.FindGameObjectsWithTag("item")[3]);
 
             //Changes the score UI accordingly
             score = player.GetComponent<PlayerController>().score;
