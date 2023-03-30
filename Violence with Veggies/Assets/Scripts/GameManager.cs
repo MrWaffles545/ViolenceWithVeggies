@@ -9,13 +9,19 @@ using UnityEngine.InputSystem;
 public class GameManager : MonoBehaviour
 {
     //UI variables
-    public TextMeshProUGUI scoreText, scoreText2, gameTimeText, highscore;
+    public TextMeshProUGUI scoreText, scoreText2, gameTimeText, highscore, startTimerText;
     public GameObject player, player2;
     public GameObject endGameUI, pauseUI;
 
     //Game Variables
     public int score, score2;
     public float gameTime;
+
+    //start timer
+    public float startTimer;
+
+    //can use input
+    public bool canInput;
 
     //Weather variables
     public int weather;
@@ -36,7 +42,7 @@ public class GameManager : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
-            if (Gamepad.current != null)
+            if (Gamepad.current != null && canInput)
             {
                 if (selection && Gamepad.current.leftStick.ReadValue().y <= -.25f)
                     selection = false;
@@ -87,7 +93,7 @@ public class GameManager : MonoBehaviour
             }
 
             //Game time code
-            if (gameTime >= 0)
+            if (gameTime >= 0 && canInput)
             {
                 gameTime -= Time.deltaTime;
                 gameTimeText.text = (Mathf.RoundToInt(gameTime)).ToString();
@@ -115,6 +121,23 @@ public class GameManager : MonoBehaviour
                     LoadLevel(0);
             }
 
+            //time before game start
+            if (startTimer >= 0)
+            {
+                startTimer -= Time.deltaTime;
+                startTimerText.text = (Mathf.RoundToInt(startTimer)).ToString();
+                canInput = false;
+                
+            }
+
+            //after timer before game ends
+            if (startTimer <= 0)
+            {
+                canInput = true;
+                startTimerText.enabled = false;
+            }
+
+             
             //Weather timer until next weather event
             if (weatherTimer >= 0 && weather == 0)
                 weatherTimer -= Time.deltaTime;
