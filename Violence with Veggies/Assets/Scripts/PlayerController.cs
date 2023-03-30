@@ -93,8 +93,8 @@ public class PlayerController : MonoBehaviour
                     pickupButtonRelease = gamepad.buttonEast.wasReleasedThisFrame;
                     move = gamepad.leftStick.ReadValue();
                     inputType = gamepad.buttonSouth.wasPressedThisFrame;
-                    playerpickupbutton = "The Green Button";
-                    playerinteractbutton = "The Red Button";
+                    playerpickupbutton = "The Red Button";
+                    playerinteractbutton = "The Green Button";
                 }
                 else
                 {
@@ -118,8 +118,8 @@ public class PlayerController : MonoBehaviour
                     pickupButtonRelease = gamepad2.buttonEast.wasReleasedThisFrame;
                     move = gamepad2.leftStick.ReadValue();
                     inputType = gamepad2.buttonSouth.wasPressedThisFrame;
-                    playerpickupbutton = "The Green Button";
-                    playerinteractbutton = "The Red Button";
+                    playerpickupbutton = "The Red Button";
+                    playerinteractbutton = "The Green Button";
                 }
                 else
                 {
@@ -229,6 +229,10 @@ public class PlayerController : MonoBehaviour
         {
             fireSoil = collision.gameObject;
         }
+        if (collision.gameObject.tag == "Soil" && collision.GetComponent<SoilController>().watered)
+        {
+            speed = 2f;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -262,6 +266,11 @@ public class PlayerController : MonoBehaviour
         {
             fireTimer = 0;
             fireSoil = null;
+        }
+
+        if (collision.gameObject.tag == "Soil" && collision.GetComponent<SoilController>().watered)
+        {
+            speed = 7f;
         }
     }
 
