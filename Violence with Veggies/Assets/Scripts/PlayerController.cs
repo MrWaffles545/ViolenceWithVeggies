@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (Time.timeScale != 0)
+        if (Time.timeScale != 0 && gameManager.GetComponent<GameManager>().canInput)
         {
             //Gets the gamepad controller
             if (Gamepad.all.Count > 0)
