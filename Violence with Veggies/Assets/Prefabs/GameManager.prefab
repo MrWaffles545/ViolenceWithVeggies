@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2207981142817029100
 MonoBehaviour:
@@ -47,6 +47,7 @@ MonoBehaviour:
   scoreText: {fileID: 0}
   scoreText2: {fileID: 0}
   gameTimeText: {fileID: 0}
+  highscore: {fileID: 0}
   player: {fileID: 0}
   player2: {fileID: 0}
   endGameUI: {fileID: 0}
@@ -60,5 +61,13 @@ MonoBehaviour:
   weatherTimerMax: 30
   weatherDuration: 0
   weatherDone: 0
+  rainSecond: 0
   wind: {x: 0, y: 0}
+  menuSelect: 0
+  gameSelect: 0
+  selection: 0
+  menuButtons: {fileID: 0}
+  gameButtons: {fileID: 0}
+  tutorialButtons: {fileID: 0}
+  menuStage: 0
   paused: 0

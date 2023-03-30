@@ -6,12 +6,12 @@ using UnityEngine.InputSystem;
 public class SoilController : MonoBehaviour
 {
     //variables for the player
-    public GameObject player;
+    private GameObject player;
     private PlayerController script;
     public string playerItem;
     public bool isTouching;
 
-    public GameManager gameManager;
+    private GameManager gameManager;
 
     //soil stage
     public int stage;

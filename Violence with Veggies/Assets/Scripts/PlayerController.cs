@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     public float speed;
 
     //Game Manager script
-    public GameManager gameManager;
+    private GameManager gameManager;
 
     //UI variables for the tutorial
     public TextMeshProUGUI pickup, interact;
@@ -41,8 +41,8 @@ public class PlayerController : MonoBehaviour
     public Gamepad gamepad, gamepad2;
 
     //input type variable for other scripts
-    public bool pickupButton;
-    public bool pickupButtonRelease;
+    private bool pickupButton;
+    private bool pickupButtonRelease;
     public bool inputType;
 
     //Hold input variables

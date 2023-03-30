@@ -74,7 +74,7 @@ public class BoxController : MonoBehaviour
                 Destroy(collision.gameObject);
             }
 
-            if (collision.name == "Carrot" && collision.name == "Potato")
+            if (collision.name == "Carrot" || collision.name == "Potato")
             {
                 playerScore.score += 2;
                 Destroy(collision.gameObject);
@@ -98,7 +98,7 @@ public class BoxController : MonoBehaviour
                 Destroy(collision.gameObject);
             }
 
-            if (collision.name == "Golden Carrot" && collision.name == "Golden Potato")
+            if (collision.name == "Golden Carrot" || collision.name == "Golden Potato")
             {
                 playerScore.score += 4;
                 Destroy(collision.gameObject);
