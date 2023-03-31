@@ -96,11 +96,11 @@ public class SoilController : MonoBehaviour
         if (stage == -1)
             gameObject.GetComponent<SpriteRenderer>().color = Color.white;
         if (stage == 1)
-            gameObject.GetComponent<SpriteRenderer>().color = Color.gray;
+            gameObject.GetComponent<SpriteRenderer>().enabled = true;
         if (watered)
             gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
         if (stage != 1 && !onFire && stage != -1 && !watered)
-            gameObject.GetComponent<SpriteRenderer>().color = Color.black;
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
