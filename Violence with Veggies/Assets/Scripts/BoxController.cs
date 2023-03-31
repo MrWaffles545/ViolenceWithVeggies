@@ -50,6 +50,7 @@ public class BoxController : MonoBehaviour
             script.itemName = c.name;
             script.isTouching = true;
             script.isHolding = true;
+            script.pickup.text = "Press " + script.playerpickupbutton + " To Drop";
             seedTime = 0;
 
         }
@@ -132,7 +133,8 @@ public class BoxController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player" && !sellBox)
         {
-            player.GetComponent<PlayerController>().showInteract = false;
+            if (player.GetComponent<PlayerController>() != null)
+                player.GetComponent<PlayerController>().showInteract = false;
             player = null;
             isTouching = false;
         }
