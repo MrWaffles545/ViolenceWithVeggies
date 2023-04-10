@@ -83,20 +83,20 @@ public class GameManager : MonoBehaviour
 
             //Changes the score UI accordingly
             score = player.GetComponent<PlayerController>().score;
-            scoreText.text = score.ToString();
+            scoreText.text = "Player 1 score: " + score;
 
             //Player 2 Score UI code
             if (player2 != null)
             {
                 score2 = player2.GetComponent<PlayerController>().score;
-                scoreText2.text = score2.ToString();
+                scoreText2.text = "Player 2 score: " + score2;
             }
 
             //Game time code
             if (gameTime >= 0 && canInput)
             {
                 gameTime -= Time.deltaTime;
-                gameTimeText.text = (Mathf.RoundToInt(gameTime)).ToString();
+                gameTimeText.text = "Game Time:\n" + (Mathf.RoundToInt(gameTime));
                 //Pause and resume
                 if (Input.GetKeyDown(KeyCode.Escape) || (Gamepad.current != null && Gamepad.current.startButton.wasPressedThisFrame))
                 {

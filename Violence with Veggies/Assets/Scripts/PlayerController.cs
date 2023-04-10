@@ -53,6 +53,8 @@ public class PlayerController : MonoBehaviour
     public GameObject throwBar;
 
     //Stun
+    public float stunTimer;
+    public bool stunned;
 
     //the variable to hold the gamepad input to move
     private Vector2 move;
@@ -136,38 +138,45 @@ public class PlayerController : MonoBehaviour
                     playerinteractbutton = "E";
                 }
             }
-            //converts the gamepad input to velocity of the player and pickup/drop/swap
-            temp.x = move.x * speed * fireEffect;
-            temp.y = move.y * speed * fireEffect;
-            myRb.velocity = temp;
 
-            //hold code to throw or pickup/drop/swap
-            if (pickupButton)
+            if (!stunned)
             {
-                if (!isHolding)
-                    Pickup();
-                else
-                    hold = true;
-            }
-            if (pickupButtonRelease && hold)
-            {
-                if (time >= timeToThrow)
-                    Throw();
-                if (time <= timeToThrow)
-                    DropSwap();
-                throwBar.GetComponent<SpriteRenderer>().enabled = false;
-                time = 0;
-                hold = false;
-            }
-            if (time <= timeToThrow && hold)
-            {
-                time += Time.deltaTime;
-                throwBar.GetComponent<SpriteRenderer>().enabled = true;
-                throwBar.GetComponent<Transform>().localScale = new Vector2(time * 4, .25f);
+                //converts the gamepad input to velocity of the player and pickup/drop/swap
+                temp.x = move.x * speed * fireEffect;
+                temp.y = move.y * speed * fireEffect;
+                myRb.velocity = temp;
+
+                //hold code to throw or pickup/drop/swap
+                if (pickupButton)
+                {
+                    if (!isHolding)
+                        Pickup();
+                    else
+                        hold = true;
+                }
+                if (pickupButtonRelease && hold)
+                {
+                    if (time >= timeToThrow)
+                        Throw();
+                    if (time <= timeToThrow)
+                        DropSwap();
+                    throwBar.GetComponent<SpriteRenderer>().enabled = false;
+                    time = 0;
+                    hold = false;
+                }
+                if (time <= timeToThrow && hold)
+                {
+                    time += Time.deltaTime;
+                    throwBar.GetComponent<SpriteRenderer>().enabled = true;
+                    throwBar.GetComponent<Transform>().localScale = new Vector2(time * 4, .25f);
+                }
             }
 
             //Hit stun stuff and timer
-
+            if (stunTimer >= 0)
+                stunTimer -= Time.deltaTime;
+            else if (stunTimer <= 0 && stunned)
+                stunned = false;
 
             //on fire code
             if (fireTimer <= fireCooldown && (fireSoil != null || fireTimer >= igniteTime))
@@ -231,13 +240,9 @@ public class PlayerController : MonoBehaviour
             pickup.text = "Press " + playerpickupbutton + " To Swap Items";
         }
         if (collision.gameObject.tag == "Soil" && collision.GetComponent<SoilController>().onFire && fireTimer <= igniteTime && !onFireCooldown)
-        {
             fireSoil = collision.gameObject;
-        }
         if (collision.gameObject.tag == "Soil" && collision.GetComponent<SoilController>().watered && speed != 2f)
-        {
             speed = 2f;
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -247,6 +252,8 @@ public class PlayerController : MonoBehaviour
             if (isHolding)
                 Drop();
             collision.GetComponent<Rigidbody2D>().velocity = gameManager.wind;
+            stunTimer = 2f;
+            stunned = true;
             collision.tag = "item";
         }
     }
@@ -265,7 +272,7 @@ public class PlayerController : MonoBehaviour
         {
             otherItem = null;
             isTouchingOther = false;
-            pickup.text = "Press " + playerpickupbutton + " To Drop";
+            pickup.text = "Press " + playerpickupbutton + " To Drop or Hold To Throw";
         }
         if (collision.gameObject == fireSoil && fireSoil != null && fireTimer <= igniteTime)
         {
@@ -274,9 +281,7 @@ public class PlayerController : MonoBehaviour
         }
 
         if (collision.gameObject.tag == "Soil" && collision.GetComponent<SoilController>().watered && speed != 7f)
-        {
             speed = 7f;
-        }
     }
 
     void DropSwap()
@@ -335,7 +340,7 @@ public class PlayerController : MonoBehaviour
             itemName = holdingItem.name;
             isHolding = true;
             holdingItem.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            pickup.text = "Press " + playerpickupbutton + " To Drop";
+            pickup.text = "Press " + playerpickupbutton + " To Drop or Hold To Throw";
         }
     }
 
