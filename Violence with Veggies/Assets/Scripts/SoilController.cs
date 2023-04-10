@@ -91,15 +91,15 @@ public class SoilController : MonoBehaviour
         }
 
         //turns color (temp)
-        if (onFire)
+        if (onFire && gameObject.GetComponent<SpriteRenderer>().color != Color.red)
             gameObject.GetComponent<SpriteRenderer>().color = Color.red;
-        if (stage == -1)
+        if (stage == -1 && gameObject.GetComponent<SpriteRenderer>().color != Color.white)
             gameObject.GetComponent<SpriteRenderer>().color = Color.white;
-        if (stage == 1)
+        if (stage == 1 && gameObject.GetComponent<SpriteRenderer>().enabled == false)
             gameObject.GetComponent<SpriteRenderer>().enabled = true;
-        if (watered)
+        if (watered && gameObject.GetComponent<SpriteRenderer>().color != Color.blue)
             gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
-        if (stage != 1 && !onFire && stage != -1 && !watered)
+        if (stage != 1 && !onFire && stage != -1 && !watered && gameObject.GetComponent<SpriteRenderer>().enabled == true)
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
     }
 
@@ -130,11 +130,8 @@ public class SoilController : MonoBehaviour
             else
                 player.GetComponent<PlayerController>().showInteract = false;
 
-            if (watered)
-            {
-                if (stage == 2)
-                    bar.GetComponent<SpriteRenderer>().enabled = true;
-            }
+            if (watered && stage == 2)
+                bar.GetComponent<SpriteRenderer>().enabled = true;
         }
     }
 

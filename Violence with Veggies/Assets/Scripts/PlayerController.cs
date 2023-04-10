@@ -52,6 +52,8 @@ public class PlayerController : MonoBehaviour
     public float throwSpeedMin;
     public GameObject throwBar;
 
+    //Stun
+
     //the variable to hold the gamepad input to move
     private Vector2 move;
 
@@ -164,6 +166,9 @@ public class PlayerController : MonoBehaviour
                 throwBar.GetComponent<Transform>().localScale = new Vector2(time * 4, .25f);
             }
 
+            //Hit stun stuff and timer
+
+
             //on fire code
             if (fireTimer <= fireCooldown && (fireSoil != null || fireTimer >= igniteTime))
                 fireTimer += Time.deltaTime;
@@ -201,9 +206,9 @@ public class PlayerController : MonoBehaviour
             }
 
             //Interact tutorial text stuff
-            if (showInteract)
+            if (showInteract && interact.text != "Press " + playerinteractbutton + " To Interact")
                 interact.text = "Press " + playerinteractbutton + " To Interact";
-            else
+            if (!showInteract && interact.text != "")
                 interact.text = "";
         }
     }
@@ -229,7 +234,7 @@ public class PlayerController : MonoBehaviour
         {
             fireSoil = collision.gameObject;
         }
-        if (collision.gameObject.tag == "Soil" && collision.GetComponent<SoilController>().watered)
+        if (collision.gameObject.tag == "Soil" && collision.GetComponent<SoilController>().watered && speed != 2f)
         {
             speed = 2f;
         }
@@ -268,7 +273,7 @@ public class PlayerController : MonoBehaviour
             fireSoil = null;
         }
 
-        if (collision.gameObject.tag == "Soil" && collision.GetComponent<SoilController>().watered)
+        if (collision.gameObject.tag == "Soil" && collision.GetComponent<SoilController>().watered && speed != 7f)
         {
             speed = 7f;
         }
