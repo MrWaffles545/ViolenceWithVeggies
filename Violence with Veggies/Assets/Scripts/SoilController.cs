@@ -70,7 +70,7 @@ public class SoilController : MonoBehaviour
         if (watered && stage == 2 && cropTime <= cropReady)
         {
             cropTime += Time.deltaTime;
-            bar.GetComponent<Transform>().localScale = new Vector2(cropTime / cropReady * 1, .15f);
+            bar.GetComponent<Transform>().localScale = new Vector2(cropTime / cropReady * 11.1f, 1.5f);
         }
 
         //Fire spread code
@@ -99,7 +99,7 @@ public class SoilController : MonoBehaviour
             gameObject.GetComponent<SpriteRenderer>().enabled = true;
         if (watered && gameObject.GetComponent<SpriteRenderer>().color != Color.blue)
             gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
-        if (stage != 1 && !onFire && stage != -1 && !watered && gameObject.GetComponent<SpriteRenderer>().enabled == true)
+        if (((stage != 1 && !onFire && stage != -1 && !watered) || (stage == 2)) && gameObject.GetComponent<SpriteRenderer>().enabled == true)
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
     }
 

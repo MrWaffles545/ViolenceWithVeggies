@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     //basic player variables
     private Rigidbody2D myRb;
     public float speed;
+    public Animator anim;
 
     //Game Manager script
     private GameManager gameManager;
@@ -71,6 +72,8 @@ public class PlayerController : MonoBehaviour
         itemName = "Hands";
 
         gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+
+        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -341,6 +344,7 @@ public class PlayerController : MonoBehaviour
             isHolding = true;
             holdingItem.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             pickup.text = "Press " + playerpickupbutton + " To Drop or Hold To Throw";
+            anim.SetInteger("AnimStage", 1);
         }
     }
 

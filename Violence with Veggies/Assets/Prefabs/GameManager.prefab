@@ -48,6 +48,7 @@ MonoBehaviour:
   scoreText2: {fileID: 0}
   gameTimeText: {fileID: 0}
   highscore: {fileID: 0}
+  startTimerText: {fileID: 0}
   player: {fileID: 0}
   player2: {fileID: 0}
   endGameUI: {fileID: 0}
@@ -55,9 +56,11 @@ MonoBehaviour:
   score: 0
   score2: 0
   gameTime: 300
+  startTimer: 5
+  canInput: 0
   weather: 0
   weatherTimer: 30
-  weatherTimerMin: 20
+  weatherTimerMin: 30
   weatherTimerMax: 30
   weatherDuration: 0
   weatherDone: 0
