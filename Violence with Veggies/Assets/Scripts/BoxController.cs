@@ -133,7 +133,7 @@ public class BoxController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player" && !sellBox)
         {
-            if (player.GetComponent<PlayerController>() != null)
+            if (player != null && player.GetComponent<PlayerController>() != null)
                 player.GetComponent<PlayerController>().showInteract = false;
             player = null;
             isTouching = false;

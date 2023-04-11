@@ -95,11 +95,11 @@ public class SoilController : MonoBehaviour
             gameObject.GetComponent<SpriteRenderer>().color = Color.red;
         if (stage == -1 && gameObject.GetComponent<SpriteRenderer>().color != Color.white)
             gameObject.GetComponent<SpriteRenderer>().color = Color.white;
-        if (stage == 1 && gameObject.GetComponent<SpriteRenderer>().enabled == false)
+        if ((stage == 1 || stage == 2) && gameObject.GetComponent<SpriteRenderer>().enabled == false)
             gameObject.GetComponent<SpriteRenderer>().enabled = true;
         if (watered && gameObject.GetComponent<SpriteRenderer>().color != Color.blue)
             gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
-        if (((stage != 1 && !onFire && stage != -1 && !watered) || (stage == 2)) && gameObject.GetComponent<SpriteRenderer>().enabled == true)
+        if (stage != 1 && stage != 2 && !onFire && stage != -1 && !watered && gameObject.GetComponent<SpriteRenderer>().enabled == true)
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
     }
 

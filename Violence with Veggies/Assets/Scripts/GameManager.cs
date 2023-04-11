@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     public float startTimer;
 
     //can use input
+    public float menuTimer;
     public bool canInput;
 
     //Weather variables
@@ -42,6 +43,10 @@ public class GameManager : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
+            if (!canInput && menuTimer >= 0)
+                menuTimer -= Time.deltaTime;
+            else if (!canInput && menuTimer <= 0)
+                canInput = true;
             if (Gamepad.current != null && canInput)
             {
                 if (selection && Gamepad.current.leftStick.ReadValue().y <= -.25f)
@@ -139,7 +144,7 @@ public class GameManager : MonoBehaviour
 
              
             //Weather timer until next weather event
-            if (weatherTimer >= 0 && weather == 0)
+            if (weatherTimer >= 0 && weather == 0 && canInput)
                 weatherTimer -= Time.deltaTime;
 
             //When the weather timer runs out it picks a random weather event and random time when the next one starts
@@ -324,6 +329,8 @@ public class GameManager : MonoBehaviour
         gameButtons.SetActive(true);
         tutorialButtons.SetActive(false);
         menuStage = 1;
+        canInput = false;
+        menuTimer = 1f;
     }
 
     public void Tutorial()
