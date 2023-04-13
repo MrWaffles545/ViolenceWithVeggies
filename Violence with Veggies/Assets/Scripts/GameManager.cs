@@ -53,13 +53,6 @@ public class GameManager : MonoBehaviour
                     selection = false;
                 if (!selection && Gamepad.current.leftStick.ReadValue().y >= .25f)
                     selection = true;
-                if (menuStage == 0)
-                {
-                    if (selection && Gamepad.current.buttonEast.wasPressedThisFrame)
-                        GameSelect();
-                    if (!selection && Gamepad.current.buttonEast.wasPressedThisFrame)
-                        Tutorial();
-                }
 
                 if (menuStage == 1)
                 {
@@ -69,6 +62,14 @@ public class GameManager : MonoBehaviour
                         LoadLevel(2);
                     if (Gamepad.current.buttonSouth.wasPressedThisFrame)
                         MenuSelect();
+                }
+
+                if (menuStage == 0)
+                {
+                    if (selection && Gamepad.current.buttonEast.wasPressedThisFrame)
+                        GameSelect();
+                    if (!selection && Gamepad.current.buttonEast.wasPressedThisFrame)
+                        Tutorial();
                 }
 
                 if (menuStage == 2)
@@ -132,7 +133,7 @@ public class GameManager : MonoBehaviour
                 startTimer -= Time.deltaTime;
                 startTimerText.text = (Mathf.RoundToInt(startTimer)).ToString();
                 canInput = false;
-                
+
             }
 
             //after timer before game ends
@@ -142,7 +143,7 @@ public class GameManager : MonoBehaviour
                 startTimerText.enabled = false;
             }
 
-             
+
             //Weather timer until next weather event
             if (weatherTimer >= 0 && weather == 0 && canInput)
                 weatherTimer -= Time.deltaTime;
@@ -321,6 +322,8 @@ public class GameManager : MonoBehaviour
         gameButtons.SetActive(false);
         tutorialButtons.SetActive(false);
         menuStage = 0;
+        menuTimer = .1f;
+        canInput = false;
     }
 
     public void GameSelect()
@@ -329,8 +332,8 @@ public class GameManager : MonoBehaviour
         gameButtons.SetActive(true);
         tutorialButtons.SetActive(false);
         menuStage = 1;
+        menuTimer = .1f;
         canInput = false;
-        menuTimer = 1f;
     }
 
     public void Tutorial()
@@ -339,5 +342,7 @@ public class GameManager : MonoBehaviour
         gameButtons.SetActive(false);
         tutorialButtons.SetActive(true);
         menuStage = 2;
+        menuTimer = .1f;
+        canInput = false;
     }
 }
