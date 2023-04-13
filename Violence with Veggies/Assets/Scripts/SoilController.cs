@@ -17,6 +17,9 @@ public class SoilController : MonoBehaviour
     public int stage;
     public bool watered;
 
+    //soil overlays for the soil
+    public GameObject fire, water, snow;
+
     //Fire variables
     public bool fireSpreadDone, onFire, rain;
     List<GameObject> fireSpreadRadius = new List<GameObject>();
@@ -90,16 +93,25 @@ public class SoilController : MonoBehaviour
             rain = false;
         }
 
-        //turns color (temp)
-        if (onFire && gameObject.GetComponent<SpriteRenderer>().color != Color.red)
-            gameObject.GetComponent<SpriteRenderer>().color = Color.red;
-        if (stage == -1 && gameObject.GetComponent<SpriteRenderer>().color != Color.white)
-            gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+        //turns visual accordingly
+        if (onFire && !fire.active)
+            fire.SetActive(true);
+        if (!onFire && fire.active)
+            fire.SetActive(false);
+
+        if (stage == -1 && !snow.active)
+            snow.SetActive(true);
+        if (stage != -1 && snow.active)
+            snow.SetActive(false);
+
+        if (watered && !water.active)
+            water.SetActive(true);
+        if (!watered && water.active)
+            water.SetActive(false);
+
         if ((stage == 1 || stage == 2) && gameObject.GetComponent<SpriteRenderer>().enabled == false)
             gameObject.GetComponent<SpriteRenderer>().enabled = true;
-        if (watered && gameObject.GetComponent<SpriteRenderer>().color != Color.blue)
-            gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
-        if (stage != 1 && stage != 2 && !onFire && stage != -1 && !watered && gameObject.GetComponent<SpriteRenderer>().enabled == true)
+        if (stage != 1 && stage != 2 && gameObject.GetComponent<SpriteRenderer>().enabled == true)
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
     }
 

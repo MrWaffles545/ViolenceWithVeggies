@@ -285,7 +285,7 @@ public class PlayerController : MonoBehaviour
             fireSoil = null;
         }
 
-        if (collision.gameObject.tag == "Soil" && collision.GetComponent<SoilController>().watered && speed != 7f)
+        if (collision.gameObject.tag == "Soil" && speed != 7f)
             speed = 7f;
     }
 

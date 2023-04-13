@@ -59,25 +59,25 @@ public class GameManager : MonoBehaviour
 
                 if (menuStage == 1)
                 {
-                    if (selection && Gamepad.current.buttonEast.wasPressedThisFrame)
+                    if (selection && Gamepad.current.buttonSouth.wasPressedThisFrame)
                         LoadLevel(1);
-                    if (!selection && Gamepad.current.buttonEast.wasPressedThisFrame)
+                    if (!selection && Gamepad.current.buttonSouth.wasPressedThisFrame)
                         LoadLevel(2);
-                    if (Gamepad.current.buttonSouth.wasPressedThisFrame)
+                    if (Gamepad.current.buttonEast.wasPressedThisFrame)
                         MenuSelect();
                 }
 
                 if (menuStage == 0)
                 {
-                    if (selection && Gamepad.current.buttonEast.wasPressedThisFrame)
+                    if (selection && Gamepad.current.buttonSouth.wasPressedThisFrame)
                         GameSelect();
-                    if (!selection && Gamepad.current.buttonEast.wasPressedThisFrame)
+                    if (!selection && Gamepad.current.buttonSouth.wasPressedThisFrame)
                         Tutorial();
                 }
 
                 if (menuStage == 2)
                 {
-                    if (Gamepad.current.buttonSouth.wasPressedThisFrame)
+                    if (Gamepad.current.buttonEast.wasPressedThisFrame)
                         MenuSelect();
                 }
             }
@@ -99,6 +99,21 @@ public class GameManager : MonoBehaviour
             {
                 score2 = player2.GetComponent<PlayerController>().score;
                 scoreText2.text = "Player 2 score: " + score2;
+            }
+
+            //time before game start
+            if (startTimer >= 0)
+            {
+                startTimer -= Time.deltaTime;
+                startTimerText.text = (Mathf.RoundToInt(startTimer)).ToString();
+                canInput = false;
+            }
+
+            //after timer before game ends
+            if (startTimer <= 0)
+            {
+                canInput = true;
+                startTimerText.enabled = false;
             }
 
             //Game time code
@@ -129,23 +144,6 @@ public class GameManager : MonoBehaviour
                 if (Gamepad.current != null && Gamepad.current.buttonSouth.wasPressedThisFrame)
                     LoadLevel(0);
             }
-
-            //time before game start
-            if (startTimer >= 0)
-            {
-                startTimer -= Time.deltaTime;
-                startTimerText.text = (Mathf.RoundToInt(startTimer)).ToString();
-                canInput = false;
-
-            }
-
-            //after timer before game ends
-            if (startTimer <= 0)
-            {
-                canInput = true;
-                startTimerText.enabled = false;
-            }
-
 
             //Weather timer until next weather event
             if (weatherTimer >= 0 && weather == 0 && canInput)
@@ -327,6 +325,7 @@ public class GameManager : MonoBehaviour
         menuStage = 0;
         menuTimer = .1f;
         canInput = false;
+        selection = true;
     }
 
     public void GameSelect()
@@ -337,6 +336,7 @@ public class GameManager : MonoBehaviour
         menuStage = 1;
         menuTimer = .1f;
         canInput = false;
+        selection = true;
     }
 
     public void Tutorial()
@@ -347,5 +347,6 @@ public class GameManager : MonoBehaviour
         menuStage = 2;
         menuTimer = .1f;
         canInput = false;
+        selection = true;
     }
 }
