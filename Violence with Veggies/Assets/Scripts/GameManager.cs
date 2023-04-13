@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
     //Menu Variables
     public bool menuSelect, gameSelect, selection;
     public GameObject menuButtons, gameButtons, tutorialButtons;
+    public TextMeshProUGUI highscoreText;
     public int menuStage;
 
     //Pause variable
@@ -43,6 +44,8 @@ public class GameManager : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
+            if (highscoreText.text != "HighScore:\n" + PlayerPrefs.GetInt("HighScore"))
+                highscoreText.text = "HighScore:\n" + PlayerPrefs.GetInt("HighScore");
             if (!canInput && menuTimer >= 0)
                 menuTimer -= Time.deltaTime;
             else if (!canInput && menuTimer <= 0)
@@ -121,7 +124,7 @@ public class GameManager : MonoBehaviour
                 if (score > PlayerPrefs.GetInt("HighScore"))
                     PlayerPrefs.SetInt("HighScore", score);
                 if (player2 != null && score2 > PlayerPrefs.GetInt("HighScore"))
-                    PlayerPrefs.SetInt("Highscore", score2);
+                    PlayerPrefs.SetInt("HighScore", score2);
                 highscore.text = "High Score: " + PlayerPrefs.GetInt("HighScore");
                 if (Gamepad.current != null && Gamepad.current.buttonSouth.wasPressedThisFrame)
                     LoadLevel(0);
@@ -313,7 +316,7 @@ public class GameManager : MonoBehaviour
 
     public void SetHighscore(int number)
     {
-        PlayerPrefs.SetInt("Highscore", number);
+        PlayerPrefs.SetInt("HighScore", number);
     }
 
     public void MenuSelect()
