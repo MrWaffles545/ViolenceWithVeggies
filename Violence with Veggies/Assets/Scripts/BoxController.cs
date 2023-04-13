@@ -66,7 +66,38 @@ public class BoxController : MonoBehaviour
     //detects if a crops enters the trigger then sells it
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if ((collision.gameObject.tag == "item" || collision.gameObject.tag == "Thrownitem1" || collision.gameObject.tag == "Thrownitem2") && sellBox && collision.gameObject.transform.parent == null)
+        Sell(collision.gameObject);
+        
+        if (collision.gameObject.tag == "Player" && !sellBox)
+        {
+            player = collision.gameObject;
+            if (!sellBox && !player.GetComponent<PlayerController>().isHolding && seedTime >= seedReady)
+                player.GetComponent<PlayerController>().showInteract = true;
+            else
+                player.GetComponent<PlayerController>().showInteract = false;
+            isTouching = true;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Sell(collision.gameObject);
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player" && !sellBox)
+        {
+            if (player != null && player.GetComponent<PlayerController>() != null)
+                player.GetComponent<PlayerController>().showInteract = false;
+            player = null;
+            isTouching = false;
+        }
+    }
+
+    void Sell(GameObject collision)
+    {
+        if ((collision.tag == "item" || collision.tag == "ThrownItem1" || collision.tag == "ThrownItem2") && sellBox && collision.transform.parent == null)
         {
             PlayerController playerScore = player.GetComponent<PlayerController>();
             if (collision.name == "Wheat")
@@ -116,27 +147,6 @@ public class BoxController : MonoBehaviour
                 playerScore.score += 8;
                 Destroy(collision.gameObject);
             }
-        }
-        
-        if (collision.gameObject.tag == "Player" && !sellBox)
-        {
-            player = collision.gameObject;
-            if (!sellBox && !player.GetComponent<PlayerController>().isHolding && seedTime >= seedReady)
-                player.GetComponent<PlayerController>().showInteract = true;
-            else
-                player.GetComponent<PlayerController>().showInteract = false;
-            isTouching = true;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player" && !sellBox)
-        {
-            if (player != null && player.GetComponent<PlayerController>() != null)
-                player.GetComponent<PlayerController>().showInteract = false;
-            player = null;
-            isTouching = false;
         }
     }
 }

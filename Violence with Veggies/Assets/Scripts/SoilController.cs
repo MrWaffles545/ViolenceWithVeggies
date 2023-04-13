@@ -160,6 +160,7 @@ public class SoilController : MonoBehaviour
                 {
                     Debug.Log("Tilled");
                     stage++;
+                    player.GetComponent<PlayerController>().showInteract = false;
                 }
                 //if the soil is stage 1 it detects which seed the player interacted on it with and adds 1 to stage
                 else if (stage == 1 && (playerItem == "Carrot Seed" || playerItem == "Wheat Seed" || playerItem == "Potato Seed" || playerItem == "Turnip Seed" || playerItem == "Artichoke Seed"))
@@ -171,6 +172,8 @@ public class SoilController : MonoBehaviour
                     script.itemName = "Hands";
                     script.isTouching = false;
                     script.isHolding = false;
+                    script.pickup.text = "";
+                    player.GetComponent<PlayerController>().showInteract = false;
                     //assigns the crop correspondant to the seed and sets the timer number
                     if (playerItem == "Carrot Seed")
                     {
@@ -204,6 +207,7 @@ public class SoilController : MonoBehaviour
                 {
                     Debug.Log("Watered");
                     watered = true;
+                    player.GetComponent<PlayerController>().showInteract = false;
                 }
                 //if the soil is stage 3 and the crop has grown it harvests it, gives the player the correct crop and adds 1 to stage
                 else if (watered && stage == 2 && playerItem == "Hands" && cropTime >= cropReady)
@@ -260,5 +264,7 @@ public class SoilController : MonoBehaviour
         script.itemName = c.name;
         script.isTouching = true;
         script.isHolding = true;
+        script.pickup.text = "Press " + script.playerpickupbutton + " To Drop or Hold To Throw";
+        player.GetComponent<PlayerController>().showInteract = false;
     }
 }

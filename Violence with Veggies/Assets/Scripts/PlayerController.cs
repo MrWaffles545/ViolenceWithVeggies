@@ -332,6 +332,7 @@ public class PlayerController : MonoBehaviour
         Vector3 pos = holdingItem.transform.position;
         if (isTouching && holdingItem != null && !isHolding && (pos.x - transform.position.x <= .7f && pos.y - transform.position.y <= .7f))
         {
+            anim.SetInteger("AnimStage", 1);
             //if the player isnt holding an item it picks up the nearby item
             if (holdingItem.transform.parent != null)
             {
@@ -347,7 +348,6 @@ public class PlayerController : MonoBehaviour
             isHolding = true;
             holdingItem.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             pickup.text = "Press " + playerpickupbutton + " To Drop or Hold To Throw";
-            anim.SetInteger("AnimStage", 1);
         }
     }
 
@@ -367,5 +367,6 @@ public class PlayerController : MonoBehaviour
         itemName = "Hands";
         isHolding = false;
         pickup.text = "";
+        showInteract = false;
     }
 }
