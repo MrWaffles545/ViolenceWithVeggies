@@ -221,7 +221,7 @@ public class GameManager : MonoBehaviour
                 }
                 if (weatherDuration <= 5 && !rainSecond)
                 {
-                    for (int i = 0; i < GameObject.FindGameObjectsWithTag("Soil").Length; i++)
+                    for (int i = 0; i < GameObject.FindGameObjectsWithTag("Soil").Length / 2; i++)
                     {
                         SoilController target = GameObject.FindGameObjectsWithTag("Soil")[i].GetComponent<SoilController>();
                         if (target.onFire)

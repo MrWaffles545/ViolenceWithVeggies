@@ -136,7 +136,7 @@ public class SoilController : MonoBehaviour
         {
             isTouching = true;
             player = collision.gameObject;
-            if ((stage == 0 && playerItem == "Till") || (stage == 1 && (playerItem == "Carrot Seed" || playerItem == "Wheat Seed" || playerItem == "Potato Seed" || playerItem == "Turnip Seed" || playerItem == "Artichoke Seed")) 
+            if (((stage == -1 || stage == 0) && playerItem == "Till") || (stage == 1 && (playerItem == "Carrot Seed" || playerItem == "Wheat Seed" || playerItem == "Potato Seed" || playerItem == "Turnip Seed" || playerItem == "Artichoke Seed")) 
                 || (!watered && playerItem == "WaterCan") || (watered && stage == 2 && playerItem == "Hands" && cropTime >= cropReady))
                 player.GetComponent<PlayerController>().showInteract = true;
             else
