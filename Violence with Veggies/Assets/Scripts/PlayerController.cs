@@ -329,7 +329,8 @@ public class PlayerController : MonoBehaviour
     void Pickup()
     {
         //if the player presses the assigned button from above and isnt touching anything else it activates the pickup/drop
-        if (isTouching && holdingItem != null && !isHolding)
+        Vector3 pos = holdingItem.transform.position;
+        if (isTouching && holdingItem != null && !isHolding && (pos.x - transform.position.x <= .7f && pos.y - transform.position.y <= .7f))
         {
             //if the player isnt holding an item it picks up the nearby item
             if (holdingItem.transform.parent != null)
