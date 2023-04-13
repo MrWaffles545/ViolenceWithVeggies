@@ -250,14 +250,16 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //stun code
         if ((playerOne && collision.gameObject.tag == "ThrownItem2") || (!playerOne && collision.gameObject.tag == "ThrownItem1"))
         {
+            collision.GetComponent<Rigidbody2D>().velocity = gameManager.wind;
+            collision.tag = "item";
+            stunned = true;
+            stunTimer = 2f;
+            myRb.velocity = Vector2.zero;
             if (isHolding)
                 Drop();
-            collision.GetComponent<Rigidbody2D>().velocity = gameManager.wind;
-            stunTimer = 2f;
-            stunned = true;
-            collision.tag = "item";
         }
     }
 
