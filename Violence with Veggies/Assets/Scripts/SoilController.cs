@@ -121,7 +121,7 @@ public class SoilController : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             isTouching = false;
-            bar.GetComponent<SpriteRenderer>().enabled = false;
+            //bar.GetComponent<SpriteRenderer>().enabled = false;
             if (player != null)
                 player.GetComponent<PlayerController>().showInteract = false;
             playerItem = null;
@@ -142,7 +142,7 @@ public class SoilController : MonoBehaviour
             else
                 player.GetComponent<PlayerController>().showInteract = false;
 
-            if (watered && stage == 2)
+            if (watered && stage == 2 && !bar.GetComponent<SpriteRenderer>().enabled)
                 bar.GetComponent<SpriteRenderer>().enabled = true;
         }
     }
