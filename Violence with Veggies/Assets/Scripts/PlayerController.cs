@@ -329,25 +329,28 @@ public class PlayerController : MonoBehaviour
     void Pickup()
     {
         //if the player presses the assigned button from above and isnt touching anything else it activates the pickup/drop
-        Vector3 pos = holdingItem.transform.position;
-        if (isTouching && holdingItem != null && !isHolding && (pos.x - transform.position.x <= .7f && pos.y - transform.position.y <= .7f))
+        if (holdingItem != null)
         {
-            anim.SetInteger("AnimStage", 1);
-            //if the player isnt holding an item it picks up the nearby item
-            if (holdingItem.transform.parent != null)
+            Vector3 pos = holdingItem.transform.position;
+            if (isTouching && !isHolding && (pos.x - transform.position.x <= .7f && pos.y - transform.position.y <= .7f))
             {
-                holdingItem.GetComponentInParent<PlayerController>().isHolding = false;
-                holdingItem.GetComponentInParent<PlayerController>().itemName = "Hands";
+                anim.SetInteger("AnimStage", 1);
+                //if the player isnt holding an item it picks up the nearby item
+                if (holdingItem.transform.parent != null)
+                {
+                    holdingItem.GetComponentInParent<PlayerController>().isHolding = false;
+                    holdingItem.GetComponentInParent<PlayerController>().itemName = "Hands";
+                }
+                //teleports the item to the correct position
+                holdingItem.transform.position = objectPickupPos.position;
+                //assigns the player as the parent so it doesnt move
+                holdingItem.transform.SetParent(gameObject.transform);
+                //makes the item the player picked up the itemName and flags the bool isHolding
+                itemName = holdingItem.name;
+                isHolding = true;
+                holdingItem.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                pickup.text = "Press " + playerpickupbutton + " To Drop or Hold To Throw";
             }
-            //teleports the item to the correct position
-            holdingItem.transform.position = objectPickupPos.position;
-            //assigns the player as the parent so it doesnt move
-            holdingItem.transform.SetParent(gameObject.transform);
-            //makes the item the player picked up the itemName and flags the bool isHolding
-            itemName = holdingItem.name;
-            isHolding = true;
-            holdingItem.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            pickup.text = "Press " + playerpickupbutton + " To Drop or Hold To Throw";
         }
     }
 
