@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2072611348145341834}
   - component: {fileID: 2072611348145341835}
-  - component: {fileID: 2072611348145341832}
   - component: {fileID: 2072611348145341837}
+  - component: {fileID: 3214355045890606775}
   m_Layer: 0
   m_Name: SellBox
   m_TagString: Untagged
@@ -86,22 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &2072611348145341832
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2072611348145341833}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 1
 --- !u!114 &2072611348145341837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,7 +99,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sellBox: 1
-  veggieScore: 0
   player: {fileID: 0}
   playerItem: 
   isTouching: 0
+  seeds: []
+  seedTime: 0
+  seedReady: 0
+  bar: {fileID: 0}
+--- !u!61 &3214355045890606775
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2072611348145341833}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0

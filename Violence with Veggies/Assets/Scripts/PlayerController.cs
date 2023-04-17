@@ -149,6 +149,9 @@ public class PlayerController : MonoBehaviour
                 temp.y = move.y * speed * fireEffect;
                 myRb.velocity = temp;
 
+                //Interact stuff
+                //soilthatisbeingtouched.GetComponent<SoilController>().Interact(inputType);
+
                 //hold code to throw or pickup/drop/swap
                 if (pickupButton)
                 {

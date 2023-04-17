@@ -148,7 +148,7 @@ public class SoilController : MonoBehaviour
     }
 
 
-    void Interact(bool input)
+    public void Interact(bool input)
     {
         //detects if the player hits the right button and is touching the player
         if (input && isTouching)

@@ -170,6 +170,9 @@ public class GameManager : MonoBehaviour
                         target.watered = false;
                         target.fireSpreadDone = false;
                         target.onFire = true;
+                        target.GetComponent<SoilController>().stage = 1;
+                        target.GetComponent<SoilController>().cropTime = 0f;
+                        target.GetComponent<SoilController>().bar.GetComponent<Transform>().localScale = new Vector2(0, .15f);
                     }
                     //sets the weather duration
                     weatherDuration = 15f;
@@ -188,6 +191,8 @@ public class GameManager : MonoBehaviour
                     {
                         GameObject target = GameObject.FindGameObjectsWithTag("Soil")[Random.Range(0, GameObject.FindGameObjectsWithTag("Soil").Length)];
                         target.GetComponent<SoilController>().stage = -1;
+                        target.GetComponent<SoilController>().cropTime = 0f;
+                        target.GetComponent<SoilController>().bar.GetComponent<Transform>().localScale = new Vector2(0, .15f);
                     }
                     //sets the weather duration
                     weatherDuration = 15f;
