@@ -31,6 +31,8 @@ public class GameManager : MonoBehaviour
     public bool weatherDone, rainSecond;
     public Vector2 wind;
 
+    public int warning;
+
     //Menu Variables
     public bool menuSelect, gameSelect, selection;
     public GameObject menuButtons, gameButtons, tutorialButtons;
@@ -149,13 +151,20 @@ public class GameManager : MonoBehaviour
             if (weatherTimer >= 0 && weather == 0 && canInput)
                 weatherTimer -= Time.deltaTime;
 
+            if (weatherTimer <= 2 && weather == 0 && canInput)
+            {
+                if (warning == 0)
+                    warning = Random.Range(1, 5);
+                Debug.Log("warning weather " + warning);
+            }
+
             //When the weather timer runs out it picks a random weather event and random time when the next one starts
             if (weatherTimer <= 0 && weather == 0)
             {
-                weather = Random.Range(1, 5); //1, 2, 3, and 4 (not 5)
-                Debug.Log("Weather " + weather);
-                //normal, angry sun, snow, rain, windy
-                weatherTimer = Random.Range(weatherTimerMin, weatherTimerMax);
+                    weather = warning; //1, 2, 3, and 4 (not 5)
+                    warning = 0;
+                    //normal, angry sun, snow, rain, windy
+                    weatherTimer = Random.Range(weatherTimerMin, weatherTimerMax);
             }
 
             if (weather == 1) //angry sun

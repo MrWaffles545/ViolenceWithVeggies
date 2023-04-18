@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2207981142817029100
 MonoBehaviour:
@@ -67,11 +67,14 @@ MonoBehaviour:
   weatherDone: 0
   rainSecond: 0
   wind: {x: 0, y: 0}
+  warningTimer: -0.1
+  warning: 0
   menuSelect: 0
   gameSelect: 0
   selection: 1
   menuButtons: {fileID: 0}
   gameButtons: {fileID: 0}
   tutorialButtons: {fileID: 0}
+  highscoreText: {fileID: 0}
   menuStage: 0
   paused: 0
