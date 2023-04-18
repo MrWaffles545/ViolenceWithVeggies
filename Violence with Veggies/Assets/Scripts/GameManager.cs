@@ -42,12 +42,6 @@ public class GameManager : MonoBehaviour
     //Pause variable
     public bool paused;
 
-    private void Start()
-    {
-        if (SceneManager.GetActiveScene().buildIndex == 0)
-            canInput = true;
-    }
-
     void Update()
     {
         if (SceneManager.GetActiveScene().buildIndex == 0)
@@ -137,6 +131,8 @@ public class GameManager : MonoBehaviour
                     else
                         Pause();
                 }
+                if ((Gamepad.current != null && Gamepad.current.buttonSouth.wasPressedThisFrame) && paused)
+                    LoadLevel(0);
             }
 
             //Ends the game if the time runs out
@@ -185,7 +181,8 @@ public class GameManager : MonoBehaviour
                         target.watered = false;
                         target.fireSpreadDone = false;
                         target.onFire = true;
-                        target.GetComponent<SoilController>().stage = 1;
+                        if (target.GetComponent<SoilController>().stage == 2)
+                            target.GetComponent<SoilController>().stage = 1;
                         target.GetComponent<SoilController>().cropTime = 0f;
                         target.GetComponent<SoilController>().bar.GetComponent<Transform>().localScale = new Vector2(0, .15f);
                     }
@@ -315,6 +312,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadLevel(int levelNumber)
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(levelNumber);
     }
 

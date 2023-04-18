@@ -82,6 +82,10 @@ public class SoilController : MonoBehaviour
             GameObject target = fireSpreadRadius[Random.Range(0, fireSpreadRadius.Count / 2)];
             target.GetComponent<SoilController>().onFire = true;
             target.GetComponent<SoilController>().watered = false;
+            if (target.GetComponent<SoilController>().stage == 2)
+                target.GetComponent<SoilController>().stage = 1;
+            target.GetComponent<SoilController>().cropTime = 0f;
+            target.GetComponent<SoilController>().bar.GetComponent<Transform>().localScale = new Vector2(0, .15f);
             fireSpreadDone = true;
         }
 
