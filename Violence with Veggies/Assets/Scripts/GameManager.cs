@@ -133,6 +133,8 @@ public class GameManager : MonoBehaviour
                 }
                 if ((Gamepad.current != null && Gamepad.current.buttonSouth.wasPressedThisFrame) && paused)
                     LoadLevel(0);
+                if ((Gamepad.current != null && Gamepad.current.buttonEast.wasPressedThisFrame) && paused)
+                    Resume();
             }
 
             //Ends the game if the time runs out
