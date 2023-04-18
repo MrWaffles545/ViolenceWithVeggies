@@ -42,6 +42,12 @@ public class GameManager : MonoBehaviour
     //Pause variable
     public bool paused;
 
+    private void Start()
+    {
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+            canInput = true;
+    }
+
     void Update()
     {
         if (SceneManager.GetActiveScene().buildIndex == 0)
