@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: fence
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: 7482667652216324306, guid: e515c98d466e41d458f89f3fabeb19c6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_Transform:
     e00: 1
     e01: 0
