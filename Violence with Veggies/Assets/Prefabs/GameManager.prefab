@@ -67,8 +67,12 @@ MonoBehaviour:
   weatherDone: 0
   rainSecond: 0
   wind: {x: 0, y: 0}
-  warningTimer: -0.1
   warning: 0
+  warningSigns:
+  - {fileID: 6139718689224457856, guid: 1547c4665d79c60468aa05dbb0bd8abf, type: 3}
+  - {fileID: 6932024414503616738, guid: 216aa81e6a81b884ebf0adeeb5ee234a, type: 3}
+  - {fileID: 3607094695151171363, guid: 7e225ab11c5bb5847ad9f7871d6e39f9, type: 3}
+  - {fileID: 920749973005842736, guid: 62b90c7f8ea71a74b9526916fa84cb1d, type: 3}
   menuSelect: 0
   gameSelect: 0
   selection: 1
