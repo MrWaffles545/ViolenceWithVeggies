@@ -46,6 +46,9 @@ public class PlayerController : MonoBehaviour
     private bool pickupButtonRelease;
     public bool inputType;
 
+    //Soil that is going to be interacted with
+    public GameObject soil;
+
     //Hold input variables
     public float time;
     public float timeToThrow;
@@ -150,7 +153,8 @@ public class PlayerController : MonoBehaviour
                 myRb.velocity = temp;
 
                 //Interact stuff
-                //soilthatisbeingtouched.GetComponent<SoilController>().Interact(inputType);
+                if (soil != null)
+                    soil.GetComponent<SoilController>().Interact(inputType);
 
                 //hold code to throw or pickup/drop/swap
                 if (pickupButton)
@@ -249,6 +253,9 @@ public class PlayerController : MonoBehaviour
             fireSoil = collision.gameObject;
         if (collision.gameObject.tag == "Soil" && collision.GetComponent<SoilController>().watered && speed != 2f)
             speed = 2f;
+
+        if (collision.gameObject.tag == "Soil" && soil != collision.gameObject)
+            soil = collision.gameObject;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -290,6 +297,9 @@ public class PlayerController : MonoBehaviour
 
         if (collision.gameObject.tag == "Soil" && speed != 7f)
             speed = 7f;
+
+        if (collision.gameObject.tag == "Soil" && soil != null)
+            soil = null;
     }
 
     void DropSwap()

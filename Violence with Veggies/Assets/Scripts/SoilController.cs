@@ -66,7 +66,6 @@ public class SoilController : MonoBehaviour
             script = player.GetComponent<PlayerController>();
             //assigns playerItem to what the player is holding
             playerItem = script.itemName;
-            Interact(script.inputType);
         }
 
         //timer for when the crop is growing in the soil
