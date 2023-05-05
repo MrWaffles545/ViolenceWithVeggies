@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
     //Menu Variables
     public bool menuSelect, gameSelect, selection;
     public GameObject menuButtons, gameButtons, tutorialButtons;
+    public GameObject game, tutorial, player1Select, player2Select;
     public TextMeshProUGUI highscoreText;
     public int menuStage;
 
@@ -53,6 +54,20 @@ public class GameManager : MonoBehaviour
                 menuTimer -= Time.deltaTime;
             else if (!canInput && menuTimer <= 0)
                 canInput = true;
+            if (selection)
+            {
+                game.SetActive(false);
+                player1Select.SetActive(false);
+                tutorial.SetActive(true);
+                player2Select.SetActive(true);
+            }
+            else
+            {
+                game.SetActive(true);
+                player1Select.SetActive(true);
+                tutorial.SetActive(false);
+                player2Select.SetActive(false);
+            }
             if (Gamepad.current != null && canInput)
             {
                 if (selection && Gamepad.current.leftStick.ReadValue().y <= -.25f)
