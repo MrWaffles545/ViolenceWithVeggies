@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
     public bool menuSelect, gameSelect, selection;
     public GameObject menuButtons, gameButtons, tutorialButtons;
     public GameObject game, tutorial, player1Select, player2Select;
+    public Image tutorialImage;
     public TextMeshProUGUI highscoreText;
     public int menuStage;
 
@@ -50,10 +51,10 @@ public class GameManager : MonoBehaviour
         {
             if (highscoreText.text != "HighScore:\n" + PlayerPrefs.GetInt("HighScore"))
                 highscoreText.text = "HighScore:\n" + PlayerPrefs.GetInt("HighScore");
-            if (!canInput && menuTimer >= 0)
-                menuTimer -= Time.deltaTime;
-            else if (!canInput && menuTimer <= 0)
-                canInput = true;
+            //if (!canInput && menuTimer >= 0)
+            //menuTimer -= Time.deltaTime;
+            //else if (!canInput && menuTimer <= 0)
+            //canInput = true;
             if (selection)
             {
                 game.SetActive(false);
@@ -95,12 +96,17 @@ public class GameManager : MonoBehaviour
 
                 if (menuStage == 2)
                 {
+                    tutorialImage.rectTransform.position += new Vector3(Gamepad.current.leftStick.ReadValue().x, 0, 0);
                     if (Gamepad.current.buttonEast.wasPressedThisFrame)
                         MenuSelect();
                 }
             }
             if ((menuStage == 1 || menuStage == 2) && Input.GetKeyDown(KeyCode.Escape))
                 MenuSelect();
+            if (menuStage == 2)
+            {
+                tutorialImage.rectTransform.position += new Vector3(Input.GetAxis("Horizontal"), 0, 0);
+            }
         }
         //Works if it isnt the menu scene
         if (SceneManager.GetActiveScene().buildIndex != 0)
@@ -372,7 +378,7 @@ public class GameManager : MonoBehaviour
         tutorialButtons.SetActive(false);
         menuStage = 0;
         menuTimer = .1f;
-        canInput = false;
+        //canInput = false;
         selection = true;
     }
 
@@ -383,7 +389,7 @@ public class GameManager : MonoBehaviour
         tutorialButtons.SetActive(false);
         menuStage = 1;
         menuTimer = .1f;
-        canInput = false;
+        //canInput = false;
         selection = true;
     }
 
@@ -394,7 +400,7 @@ public class GameManager : MonoBehaviour
         tutorialButtons.SetActive(true);
         menuStage = 2;
         menuTimer = .1f;
-        canInput = false;
+        //canInput = false;
         selection = true;
     }
 }
