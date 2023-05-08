@@ -115,7 +115,7 @@ TextureImporter:
         width: 466
         height: 524
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -136,7 +136,7 @@ TextureImporter:
         width: 467
         height: 539
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -157,7 +157,7 @@ TextureImporter:
         width: 431
         height: 570
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -178,7 +178,7 @@ TextureImporter:
         width: 379
         height: 546
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -199,7 +199,7 @@ TextureImporter:
         width: 443
         height: 573
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -220,7 +220,7 @@ TextureImporter:
         width: 447
         height: 546
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -241,7 +241,7 @@ TextureImporter:
         width: 409
         height: 521
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -262,7 +262,7 @@ TextureImporter:
         width: 433
         height: 563
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -270,27 +270,6 @@ TextureImporter:
       bones: []
       spriteID: caa2d5bbcb4889f4d94e84c59a866448
       internalID: -976681008
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tuns_23
-      rect:
-        serializedVersion: 2
-        x: 2655
-        y: 1208
-        width: 4
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f09c9a742b52e4a4eb828266fcd7062b
-      internalID: -1669725336
       vertices: []
       indices: 
       edges: []
@@ -304,7 +283,7 @@ TextureImporter:
         width: 382
         height: 524
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -328,8 +307,8 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       tuns_3: 237542706
-      tuns_21: 175373848
-      tuns_20: 508655898
+      tuns_6: 136845333
+      tuns_12: -113722441
       tuns_24: 1278037845
       tuns_13: -2003696555
       tuns_11: -693101608
@@ -346,12 +325,12 @@ TextureImporter:
       tuns_10: -2143824044
       tuns_14: -147452913
       tuns_16: -1672334659
-      tuns_12: -113722441
       tuns_15: -6553240
-      tuns_18: 650016391
+      tuns_20: 508655898
+      tuns_21: 175373848
       tuns_0: 1931829843
-      tuns_6: 136845333
       tuns_8: -971888212
+      tuns_18: 650016391
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 
