@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     public Vector2 wind;
 
     public int warning;
-    public GameObject[] warningSigns;
+    public GameObject warningSign;
 
     //Menu Variables
     public bool menuSelect, gameSelect, selection;
@@ -183,7 +183,7 @@ public class GameManager : MonoBehaviour
                     if (warning == 0)
                     {
                         warning = Random.Range(1, 5);
-                        GameObject sign = Instantiate(warningSigns[warning - 1], new Vector2(9.997f, 3), Quaternion.identity);
+                        GameObject sign = Instantiate(warningSign, new Vector2(9.997f, 3), Quaternion.identity);
                         sign.GetComponent<Rigidbody2D>().velocity = Vector2.left * 14;
                         Destroy(sign, 2f);
                     }

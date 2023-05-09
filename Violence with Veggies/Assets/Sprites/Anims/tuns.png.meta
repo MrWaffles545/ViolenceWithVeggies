@@ -307,8 +307,8 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       tuns_3: 237542706
-      tuns_6: 136845333
-      tuns_12: -113722441
+      tuns_8: -971888212
+      tuns_20: 508655898
       tuns_24: 1278037845
       tuns_13: -2003696555
       tuns_11: -693101608
@@ -325,12 +325,12 @@ TextureImporter:
       tuns_10: -2143824044
       tuns_14: -147452913
       tuns_16: -1672334659
+      tuns_12: -113722441
       tuns_15: -6553240
-      tuns_20: 508655898
-      tuns_21: 175373848
-      tuns_0: 1931829843
-      tuns_8: -971888212
       tuns_18: 650016391
+      tuns_0: 1931829843
+      tuns_6: 136845333
+      tuns_21: 175373848
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 
