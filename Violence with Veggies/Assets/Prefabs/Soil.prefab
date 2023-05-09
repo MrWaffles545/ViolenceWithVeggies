@@ -450,7 +450,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 11, y: 11}
+  m_Size: {x: 7.55, y: 7.47}
   m_EdgeRadius: 0
 --- !u!114 &5790781754970909115
 MonoBehaviour:
@@ -464,6 +464,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70fe27b6ff790564287663f17c0cfb7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   playerItem: 
   isTouching: 0
   stage: 0
@@ -478,10 +479,9 @@ MonoBehaviour:
   crop: 0
   cropTime: 0
   cropReady: 0
-  goldChance: 0
   goldChanceMax: 16
   carrot: {fileID: 371438258119585862, guid: 20f32a1052054d0488d718d510505091, type: 3}
-  wheat: {fileID: 371438258119585862, guid: 32f45b0670fb06043b279b5ef8e68bb1, type: 3}
+  garlic: {fileID: 371438258119585862, guid: 32f45b0670fb06043b279b5ef8e68bb1, type: 3}
   potato: {fileID: 371438258119585862, guid: 5e19d7d3e6951cb44903e72d53fee9e0, type: 3}
   turnip: {fileID: 371438258119585862, guid: f8530c45af79cfe49a0c3e42896f57d2, type: 3}
-  artichoke: {fileID: 371438258119585862, guid: bd8b49fecba8ef74e9c49de00b4bb34c, type: 3}
+  gus: {fileID: 371438258119585862, guid: bd8b49fecba8ef74e9c49de00b4bb34c, type: 3}

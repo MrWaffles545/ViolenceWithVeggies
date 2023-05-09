@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class SoilController : MonoBehaviour
 {
     //variables for the player
-    private GameObject player;
+    public GameObject player;
     private PlayerController script;
     public string playerItem;
     public bool isTouching;
@@ -36,11 +36,7 @@ public class SoilController : MonoBehaviour
 
     //crop prefabs to spawn when harvested
     public int goldChanceMax;
-    public GameObject carrot;
-    public GameObject wheat;
-    public GameObject potato;
-    public GameObject turnip;
-    public GameObject artichoke;
+    public GameObject carrot, garlic, potato, turnip, gus;
 
 
     void Start()
@@ -139,7 +135,7 @@ public class SoilController : MonoBehaviour
         {
             isTouching = true;
             player = collision.gameObject;
-            if (((stage == -1 || stage == 0) && playerItem == "Till") || (stage == 1 && (playerItem == "Carrot Seed" || playerItem == "Wheat Seed" || playerItem == "Potato Seed" || playerItem == "Turnip Seed" || playerItem == "Artichoke Seed")) 
+            if (((stage == -1 || stage == 0) && playerItem == "Till") || (stage == 1 && (playerItem == "Carrot Seed" || playerItem == "Garlic Bulb" || playerItem == "Potato Seed" || playerItem == "Turnip Seed" || playerItem == "Gus Seed")) 
                 || (!watered && playerItem == "WaterCan") || (watered && stage == 2 && playerItem == "Hands" && cropTime >= cropReady))
                 player.GetComponent<PlayerController>().showInteract = true;
             else
@@ -164,9 +160,10 @@ public class SoilController : MonoBehaviour
                     Debug.Log("Tilled");
                     stage++;
                     player.GetComponent<PlayerController>().showInteract = false;
+                    player.GetComponent<PlayerController>().anim.Play("Till");
                 }
                 //if the soil is stage 1 it detects which seed the player interacted on it with and adds 1 to stage
-                else if (stage == 1 && (playerItem == "Carrot Seed" || playerItem == "Wheat Seed" || playerItem == "Potato Seed" || playerItem == "Turnip Seed" || playerItem == "Artichoke Seed"))
+                else if (stage == 1 && (playerItem == "Carrot Seed" || playerItem == "Garlic Bulb" || playerItem == "Potato Seed" || playerItem == "Turnip Seed" || playerItem == "Gus Seed"))
                 {
                     Debug.Log("Planted " + playerItem);
                     //gets rid of the item the player is holding
@@ -183,22 +180,22 @@ public class SoilController : MonoBehaviour
                         crop = 1;
                         cropReady = 5;
                     }
-                    else if (playerItem == "Wheat Seed")
+                    else if (playerItem == "Garlic Bulb")
                     {
                         crop = 2;
-                        cropReady = 3;
+                        cropReady = 5;
                     }
                     else if (playerItem == "Potato Seed")
                     {
                         crop = 3;
-                        cropReady = 5;
+                        cropReady = 3;
                     }
                     else if (playerItem == "Turnip Seed")
                     {
                         crop = 4;
                         cropReady = 7;
                     }
-                    else if (playerItem == "Artichoke Seed")
+                    else if (playerItem == "Gus Seed")
                     {
                         crop = 5;
                         cropReady = 10;
@@ -220,13 +217,13 @@ public class SoilController : MonoBehaviour
                     if (crop == 1)
                         Harvest(carrot);
                     else if (crop == 2)
-                        Harvest(wheat);
+                        Harvest(garlic);
                     else if (crop == 3)
                         Harvest(potato);
                     else if (crop == 4)
                         Harvest(turnip);
                     else if (crop == 5)
-                        Harvest(artichoke);
+                        Harvest(gus);
                     cropTime = 0;
                     //resets the bar and stage
                     bar.GetComponent<Transform>().localScale = new Vector2(0, .15f);
