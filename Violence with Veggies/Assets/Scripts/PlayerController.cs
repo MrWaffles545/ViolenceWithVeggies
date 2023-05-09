@@ -156,6 +156,17 @@ public class PlayerController : MonoBehaviour
                 if (soil != null)
                     soil.GetComponent<SoilController>().Interact(inputType);
 
+                if (Input.GetKeyDown(KeyCode.N))
+                {
+                    Debug.Log("Up");
+                    anim.SetInteger("AnimStage", anim.GetInteger("AnimStage") + 1);
+                }
+                if (Input.GetKeyDown(KeyCode.M))
+                {
+                    Debug.Log("Down");
+                    anim.SetInteger("AnimStage", anim.GetInteger("AnimStage") - 1);
+                }
+
                 //hold code to throw or pickup/drop/swap
                 if (pickupButton)
                 {

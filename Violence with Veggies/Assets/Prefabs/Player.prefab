@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 7495777357295568734}
   - component: {fileID: 7495777357295568735}
   - component: {fileID: 7495777357295568728}
+  - component: {fileID: 1627873783}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -60,7 +61,7 @@ Transform:
   m_GameObject: {fileID: 7495777357295568729}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3820864, y: 0.27549472, z: 1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7495777356422880050}
@@ -109,7 +110,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: -9095717837082945937, guid: dfa66053aa76edb40b758e7dddd58b70, type: 3}
+  m_Sprite: {fileID: -8660185, guid: 194b2e057aa14c041bc73260854f3bac, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -180,6 +181,7 @@ MonoBehaviour:
   playerOne: 1
   cam: {fileID: 0}
   inputType: 0
+  soil: {fileID: 0}
   time: 0
   timeToThrow: 0.25
   hold: 0
@@ -202,8 +204,28 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 4.4, y: 6.25}
   m_Direction: 0
+--- !u!95 &1627873783
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7495777357295568729}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a8bf51205b49db9409435a4611b5940c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7665088072793779371
 GameObject:
   m_ObjectHideFlags: 0
