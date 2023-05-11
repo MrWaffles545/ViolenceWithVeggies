@@ -156,6 +156,11 @@ public class PlayerController : MonoBehaviour
                 if (soil != null)
                     soil.GetComponent<SoilController>().Interact(inputType);
 
+                if (myRb.velocity != Vector2.zero)
+                    anim.SetBool("Walking", true);
+                else
+                    anim.SetBool("Walking", false);
+
                 if (anim.GetBool("nutS"))
                     anim.SetBool("nutS", false);
 

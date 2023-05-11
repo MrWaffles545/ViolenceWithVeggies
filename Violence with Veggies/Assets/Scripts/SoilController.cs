@@ -18,7 +18,8 @@ public class SoilController : MonoBehaviour
     public bool watered;
 
     //soil overlays for the soil
-    public GameObject fire, water, snow;
+    public GameObject fire, water, snow, sprout;
+    public Sprite[] sprouts;
 
     //Fire variables
     public bool fireSpreadDone, onFire, rain;
@@ -65,10 +66,17 @@ public class SoilController : MonoBehaviour
         }
 
         //timer for when the crop is growing in the soil
-        if (watered && stage == 2 && cropTime <= cropReady)
+        if (watered && stage == 2)
         {
-            cropTime += Time.deltaTime;
-            bar.GetComponent<Transform>().localScale = new Vector2(cropTime / cropReady * 11.1f, 1.5f);
+            if (cropTime <= cropReady)
+            {
+                cropTime += Time.deltaTime;
+                bar.GetComponent<Transform>().localScale = new Vector2(cropTime / cropReady * 11.1f, 1.5f);
+                if (cropTime >= cropReady / 2)
+                    sprout.SetActive(true);
+            }
+            if (cropTime >= cropReady)
+                sprout.GetComponent<SpriteRenderer>().sprite = sprouts[crop];
         }
 
         //Fire spread code
@@ -174,6 +182,7 @@ public class SoilController : MonoBehaviour
                     script.isHolding = false;
                     script.pickup.text = "";
                     player.GetComponent<PlayerController>().showInteract = false;
+                    sprout.GetComponent<SpriteRenderer>().sprite = sprouts[0];
                     //assigns the crop correspondant to the seed and sets the timer number
                     if (playerItem == "Carrot Seed")
                     {
@@ -228,6 +237,7 @@ public class SoilController : MonoBehaviour
                     //resets the bar and stage
                     bar.GetComponent<Transform>().localScale = new Vector2(0, .15f);
                     script.speed = 7f;
+                    sprout.SetActive(false);
                     watered = false;
                     stage = 0;
                 }
