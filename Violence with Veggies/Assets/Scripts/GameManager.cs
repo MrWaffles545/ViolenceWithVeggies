@@ -45,6 +45,23 @@ public class GameManager : MonoBehaviour
     //Pause variable
     public bool paused;
 
+    //the normal yellow sun
+    public GameObject sunPrime;
+
+    //where da sun go
+    public GameObject sunPosUp;
+
+    //sun tranisition speed
+    public float tanSpeed;
+
+    //da suns sprite renderer
+    public SpriteRenderer sunRender;
+
+    //the differt suns
+    public Sprite[] daSuns;
+
+    public float step;
+
     void Update()
     {
         if (SceneManager.GetActiveScene().buildIndex == 0)
@@ -186,7 +203,10 @@ public class GameManager : MonoBehaviour
                         GameObject sign = Instantiate(warningSign, new Vector2(9.997f, 3), Quaternion.identity);
                         sign.GetComponent<Rigidbody2D>().velocity = Vector2.left * 14;
                         Destroy(sign, 2f);
+
+                        sunPosUp.transform.position = new Vector2(0, 4.3f);
                     }
+
 
                     Debug.Log("warning weather " + warning);
                 }
@@ -200,16 +220,21 @@ public class GameManager : MonoBehaviour
             {
                     weather = warning; //1, 2, 3, and 4 (not 5)
                     warning = 0;
-                    //normal, angry sun, snow, rain, windy
+                //normal, angry sun, snow, rain, windy
                     weatherTimer = Random.Range(weatherTimerMin, weatherTimerMax);
                     
             }
 
             if (weather == 1) //angry sun
             {
+                step = tanSpeed * Time.deltaTime;
+                sunPrime.transform.position = Vector3.MoveTowards(sunPrime.transform.position, sunPosUp.transform.position, step);
+
                 //only runs once
                 if (!weatherDone)
                 {
+                    
+
                     //picks random soil and lights them on fire
                     for (int i = 0; i < GameObject.FindGameObjectsWithTag("Soil").Length / 3; i++)
                     {
@@ -227,6 +252,14 @@ public class GameManager : MonoBehaviour
                     weatherDone = true;
                     Debug.Log("Angry sun");
                 }
+            }
+
+            sunPrime.transform.position = Vector3.MoveTowards(sunPrime.transform.position, sunPosUp.transform.position, step);
+
+            if (sunPrime.transform.position.y >= 4.3f && sunRender.sprite != daSuns[weather])
+            {
+                sunPosUp.transform.position = new Vector2(0, 2.814f);
+                sunRender.sprite = daSuns[weather];
             }
 
             if (weather == 2) //Snow
@@ -324,6 +357,7 @@ public class GameManager : MonoBehaviour
                     weather = 0;
                     weatherDone = false;
                     wind = Vector2.zero;
+                    sunPosUp.transform.position = new Vector2(0, 4.3f);
                     for (int i = 0; i < GameObject.FindGameObjectsWithTag("Soil").Length; i++)
                     {
                         SoilController target = GameObject.FindGameObjectsWithTag("Soil")[i].GetComponent<SoilController>();
