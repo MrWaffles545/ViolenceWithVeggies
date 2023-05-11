@@ -100,13 +100,13 @@ public class BoxController : MonoBehaviour
         if ((collision.tag == "item" || collision.tag == "ThrownItem1" || collision.tag == "ThrownItem2") && sellBox && collision.transform.parent == null)
         {
             PlayerController playerScore = player.GetComponent<PlayerController>();
-            if (collision.name == "Wheat")
+            if (collision.name == "Potato")
             {
                 playerScore.score++;
                 Destroy(collision.gameObject);
             }
 
-            if (collision.name == "Carrot" || collision.name == "Potato")
+            if (collision.name == "Carrot" || collision.name == "Garlic")
             {
                 playerScore.score += 2;
                 Destroy(collision.gameObject);
@@ -118,19 +118,19 @@ public class BoxController : MonoBehaviour
                 Destroy(collision.gameObject);
             }
 
-            if (collision.name == "Artichoke")
+            if (collision.name == "Gus")
             {
                 playerScore.score += 4;
                 Destroy(collision.gameObject);
             }
 
-            if (collision.name == "Golden Wheat")
+            if (collision.name == "Golden Potato")
             {
                 playerScore.score += 2;
                 Destroy(collision.gameObject);
             }
 
-            if (collision.name == "Golden Carrot" || collision.name == "Golden Potato")
+            if (collision.name == "Golden Carrot" || collision.name == "Golden Garlic")
             {
                 playerScore.score += 4;
                 Destroy(collision.gameObject);
@@ -142,7 +142,7 @@ public class BoxController : MonoBehaviour
                 Destroy(collision.gameObject);
             }
 
-            if (collision.name == "Golden Artichoke")
+            if (collision.name == "Golden Gus")
             {
                 playerScore.score += 8;
                 Destroy(collision.gameObject);

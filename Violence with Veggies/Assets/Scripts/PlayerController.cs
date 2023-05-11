@@ -156,16 +156,8 @@ public class PlayerController : MonoBehaviour
                 if (soil != null)
                     soil.GetComponent<SoilController>().Interact(inputType);
 
-                if (Input.GetKeyDown(KeyCode.N))
-                {
-                    Debug.Log("Up");
-                    anim.SetInteger("AnimStage", anim.GetInteger("AnimStage") + 1);
-                }
-                if (Input.GetKeyDown(KeyCode.M))
-                {
-                    Debug.Log("Down");
-                    anim.SetInteger("AnimStage", anim.GetInteger("AnimStage") - 1);
-                }
+                if (anim.GetBool("nutS"))
+                    anim.SetBool("nutS", false);
 
                 //hold code to throw or pickup/drop/swap
                 if (pickupButton)
@@ -192,6 +184,9 @@ public class PlayerController : MonoBehaviour
                     throwBar.GetComponent<Transform>().localScale = new Vector2(time * 4, .25f);
                 }
             }
+
+            else if (stunned && !anim.GetBool("nutS"))
+                anim.SetBool("nutS", true);
 
             //Hit stun stuff and timer
             if (stunTimer >= 0)
@@ -358,7 +353,7 @@ public class PlayerController : MonoBehaviour
             Vector3 pos = holdingItem.transform.position;
             if (isTouching && !isHolding && (pos.x - transform.position.x <= .7f && pos.y - transform.position.y <= .7f))
             {
-                anim.SetInteger("AnimStage", 1);
+                anim.Play("PickUp");
                 //if the player isnt holding an item it picks up the nearby item
                 if (holdingItem.transform.parent != null)
                 {
