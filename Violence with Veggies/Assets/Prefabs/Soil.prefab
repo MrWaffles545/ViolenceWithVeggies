@@ -578,3 +578,9 @@ MonoBehaviour:
   potato: {fileID: 371438258119585862, guid: 5e19d7d3e6951cb44903e72d53fee9e0, type: 3}
   turnip: {fileID: 371438258119585862, guid: f8530c45af79cfe49a0c3e42896f57d2, type: 3}
   gus: {fileID: 371438258119585862, guid: bd8b49fecba8ef74e9c49de00b4bb34c, type: 3}
+  daGold:
+  - {fileID: 21300000, guid: 01a46c171d3a9f9438ec0600a1a1c991, type: 3}
+  - {fileID: 21300000, guid: 6376bab39bcee9a41868f39c143ea819, type: 3}
+  - {fileID: 21300000, guid: 0ddf1c70a6f5288458104709818a0915, type: 3}
+  - {fileID: 21300000, guid: c5c8e7bda3400f74f90e3b237ec24f21, type: 3}
+  - {fileID: 21300000, guid: 59bf3fad0dd533f409d8b428f4c70869, type: 3}

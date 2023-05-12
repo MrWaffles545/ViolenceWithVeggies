@@ -38,6 +38,7 @@ public class SoilController : MonoBehaviour
     //crop prefabs to spawn when harvested
     public int goldChanceMax;
     public GameObject carrot, garlic, potato, turnip, gus;
+    public Sprite[] daGold;
 
 
     void Start()
@@ -255,22 +256,22 @@ public class SoilController : MonoBehaviour
         }
     }
 
-    void Harvest(GameObject crop)
+    void Harvest(GameObject veggie)
     {
         //spawns the correct crop
-        GameObject c = Instantiate(crop);
+        GameObject c = Instantiate(veggie);
         //teleports the crop to the correct position
         c.transform.position = script.objectPickupPos.position;
         //assigns the player as the crops parent
         c.transform.SetParent(player.transform);
         //renames the crop that spawned to the correct name instead of crop + "(Clone)"
-        c.name = crop.name;
+        c.name = veggie.name;
         //gold veggie stuff
         int goldChance = Random.Range(0, goldChanceMax);
         if (goldChance == 0)
         {
             c.name = "Golden " + c.name;
-            c.GetComponentsInChildren<SpriteRenderer>()[1].enabled = true;
+            c.GetComponent<SpriteRenderer>().sprite = daGold[crop - 1];
         }
         //makes the player have the crop
         script.holdingItem = c;
