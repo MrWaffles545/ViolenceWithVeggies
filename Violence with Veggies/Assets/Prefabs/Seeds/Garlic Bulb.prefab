@@ -15,26 +15,26 @@ PrefabInstance:
     - target: {fileID: 4253601011028222484, guid: 577a0a5232768c94285d495ea36c40a2, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -9095717837082945937, guid: dfa66053aa76edb40b758e7dddd58b70, type: 3}
+      objectReference: {fileID: 21300000, guid: 379d435532d2b5d4bb5ec37fdb2525a8, type: 3}
     - target: {fileID: 4253601011028222484, guid: 577a0a5232768c94285d495ea36c40a2, type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4253601011028222484, guid: 577a0a5232768c94285d495ea36c40a2, type: 3}
       propertyPath: m_Color.g
-      value: 0.64996475
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4253601011028222484, guid: 577a0a5232768c94285d495ea36c40a2, type: 3}
       propertyPath: m_Color.r
-      value: 0.754717
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4253601011028222486, guid: 577a0a5232768c94285d495ea36c40a2, type: 3}
       propertyPath: m_Name
-      value: Wheat Seed
+      value: Garlic Bulb
       objectReference: {fileID: 0}
     - target: {fileID: 4253601011028222491, guid: 577a0a5232768c94285d495ea36c40a2, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4253601011028222491, guid: 577a0a5232768c94285d495ea36c40a2, type: 3}
       propertyPath: m_LocalScale.x
@@ -46,11 +46,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4253601011028222491, guid: 577a0a5232768c94285d495ea36c40a2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.493
+      value: -18.08261
       objectReference: {fileID: 0}
     - target: {fileID: 4253601011028222491, guid: 577a0a5232768c94285d495ea36c40a2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.993
+      value: -3.711826
       objectReference: {fileID: 0}
     - target: {fileID: 4253601011028222491, guid: 577a0a5232768c94285d495ea36c40a2, type: 3}
       propertyPath: m_LocalPosition.z

@@ -435,7 +435,7 @@ PrefabInstance:
       objectReference: {fileID: 1506960014}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: daSuns.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: daSuns.Array.data[0]
@@ -449,6 +449,14 @@ PrefabInstance:
       propertyPath: daSuns.Array.data[2]
       value: 
       objectReference: {fileID: 21300000, guid: 61c36b9ddd98ec44aa18962c0b46d93e, type: 3}
+    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
+      propertyPath: daSuns.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: 77eec3f001f4f9c43ab2545f76b9fb53, type: 3}
+    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
+      propertyPath: daSuns.Array.data[4]
+      value: 
+      objectReference: {fileID: 21300000, guid: 27053135afb3f164b80e20c856497d66, type: 3}
     - target: {fileID: 2207981142817029101, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: m_Name
       value: GameManager
