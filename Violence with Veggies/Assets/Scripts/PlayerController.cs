@@ -152,6 +152,12 @@ public class PlayerController : MonoBehaviour
                 temp.y = move.y * speed * fireEffect;
                 myRb.velocity = temp;
 
+                if (myRb.velocity.x <= -0.1f)
+                    GetComponent<SpriteRenderer>().flipX = false;
+                else
+                    GetComponent<SpriteRenderer>().flipX = true;
+
+
                 //Interact stuff
                 if (soil != null)
                     soil.GetComponent<SoilController>().Interact(inputType);
