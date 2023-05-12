@@ -167,9 +167,6 @@ public class PlayerController : MonoBehaviour
                 else
                     anim.SetBool("Walking", false);
 
-                if (anim.GetBool("nutS"))
-                    anim.SetBool("nutS", false);
-
                 //hold code to throw or pickup/drop/swap
                 if (pickupButton)
                 {
@@ -196,14 +193,15 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            else if (stunned && !anim.GetBool("nutS"))
-                anim.SetBool("nutS", true);
-
             //Hit stun stuff and timer
             if (stunTimer >= 0)
                 stunTimer -= Time.deltaTime;
             else if (stunTimer <= 0 && stunned)
+            {
+                anim.SetBool("nutS", false);
+                anim.Play("Idle");
                 stunned = false;
+            }
 
             //on fire code
             if (fireTimer <= fireCooldown && (fireSoil != null || fireTimer >= igniteTime))
@@ -282,6 +280,8 @@ public class PlayerController : MonoBehaviour
         {
             collision.GetComponent<Rigidbody2D>().velocity = gameManager.wind;
             collision.tag = "item";
+            anim.SetBool("nutS", true);
+            anim.Play("nutS");
             stunned = true;
             stunTimer = 2f;
             myRb.velocity = Vector2.zero;
