@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 200
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -105,7 +105,133 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: ThrowAnimation_0
+      rect:
+        serializedVersion: 2
+        x: 1999
+        y: 1628
+        width: 495
+        height: 537
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b4b2aa90be114d4ebdda82d517c7c9b
+      internalID: 1820768509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThrowAnimation_1
+      rect:
+        serializedVersion: 2
+        x: 5024
+        y: 1629
+        width: 498
+        height: 531
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f93dc999a3d510947844255fc78d6366
+      internalID: 1746400278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThrowAnimation_2
+      rect:
+        serializedVersion: 2
+        x: 8057
+        y: 1670
+        width: 491
+        height: 531
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc1b22f7588aed546bd447d24a37fdeb
+      internalID: -875111245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThrowAnimation_3
+      rect:
+        serializedVersion: 2
+        x: 11082
+        y: 1667
+        width: 488
+        height: 541
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e8ce4395562e7f4ab24c562faf4a1c0
+      internalID: -226061148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThrowAnimation_4
+      rect:
+        serializedVersion: 2
+        x: 14105
+        y: 1675
+        width: 490
+        height: 521
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01ccdcf33748c464589d9d0ce55b2d86
+      internalID: 631366148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThrowAnimation_5
+      rect:
+        serializedVersion: 2
+        x: 17135
+        y: 1659
+        width: 486
+        height: 539
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdc22ae1e8f7b2d4a87fd3c0d8e2c17a
+      internalID: -1461153667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -116,7 +242,13 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ThrowAnimation_3: -226061148
+      ThrowAnimation_5: -1461153667
+      ThrowAnimation_4: 631366148
+      ThrowAnimation_1: 1746400278
+      ThrowAnimation_0: 1820768509
+      ThrowAnimation_2: -875111245
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 
