@@ -68,17 +68,28 @@ MonoBehaviour:
   rainSecond: 0
   wind: {x: 0, y: 0}
   warning: 0
-  warningSigns:
-  - {fileID: 6139718689224457856, guid: 1547c4665d79c60468aa05dbb0bd8abf, type: 3}
-  - {fileID: 6932024414503616738, guid: 216aa81e6a81b884ebf0adeeb5ee234a, type: 3}
-  - {fileID: 3607094695151171363, guid: 7e225ab11c5bb5847ad9f7871d6e39f9, type: 3}
-  - {fileID: 920749973005842736, guid: 62b90c7f8ea71a74b9526916fa84cb1d, type: 3}
+  warningSign: {fileID: 381413169921324569, guid: 13800f5d72c05a247ad4486528531430, type: 3}
   menuSelect: 0
   gameSelect: 0
   selection: 1
   menuButtons: {fileID: 0}
   gameButtons: {fileID: 0}
   tutorialButtons: {fileID: 0}
+  game: {fileID: 0}
+  tutorial: {fileID: 0}
+  player1Select: {fileID: 0}
+  player2Select: {fileID: 0}
+  tutorialImage: {fileID: 0}
   highscoreText: {fileID: 0}
   menuStage: 0
   paused: 0
+  sunPrime: {fileID: 0}
+  sunPosUp: {fileID: 0}
+  tanSpeed: 2
+  sunRender: {fileID: 0}
+  daSuns:
+  - {fileID: 21300000, guid: f4d323c5ed213284ca11d015fe868c18, type: 3}
+  - {fileID: 21300000, guid: be7800f54b7ba734ebab24de2a594624, type: 3}
+  - {fileID: 21300000, guid: 61c36b9ddd98ec44aa18962c0b46d93e, type: 3}
+  - {fileID: 0}
+  step: 0

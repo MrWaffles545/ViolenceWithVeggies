@@ -323,7 +323,10 @@ public class PlayerController : MonoBehaviour
     {
         //if the player presses the assigned button from above and isnt touching anything else it activates the pickup/drop
         if (isTouching && holdingItem != null && !isTouchingOther && isHolding)
+        {
+            anim.Play("Drop");
             Drop();
+        }
         //if the player has an item already and tries to pick up another it swaps the 2 items
         else if (holdingItem != null && isTouchingOther && otherItem.transform.parent == null)
         {
@@ -391,6 +394,7 @@ public class PlayerController : MonoBehaviour
         if (myRb.velocity.x <= -throwSpeedMin || myRb.velocity.x >= throwSpeedMin || myRb.velocity.y <= -throwSpeedMin || myRb.velocity.y >= throwSpeedMin)
         {
             holdingItem.GetComponent<Rigidbody2D>().velocity = (myRb.velocity * 2);
+            anim.Play("Throw");
             if (playerOne)
                 holdingItem.tag = "ThrownItem1";
             else
