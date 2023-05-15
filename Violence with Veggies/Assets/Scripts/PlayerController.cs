@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     public GameObject holdingItem;
     public bool isHolding = false;
     public string itemName;
+    public GameObject interactItem;
 
     //variables for the other items the character can pick up while holding one already
     private GameObject otherItem;
@@ -160,7 +161,16 @@ public class PlayerController : MonoBehaviour
 
                 //Interact stuff
                 if (soil != null)
+                {
                     soil.GetComponent<SoilController>().Interact(inputType);
+                    if (inputType && holdingItem != null)
+                        interactItem = holdingItem;
+                }
+
+                if ((anim.GetCurrentAnimatorStateInfo(0).IsName("Water") || anim.GetCurrentAnimatorStateInfo(0).IsName("Till")) && interactItem != null && interactItem.activeSelf)
+                    interactItem.SetActive(false);
+                else if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Water") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Till") && interactItem != null && !interactItem.activeSelf)
+                    interactItem.SetActive(true);
 
                 if (myRb.velocity != Vector2.zero)
                     anim.SetBool("Walking", true);
