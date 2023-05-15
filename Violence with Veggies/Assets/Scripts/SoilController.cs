@@ -102,19 +102,19 @@ public class SoilController : MonoBehaviour
         }
 
         //turns visual accordingly
-        if (onFire && !fire.active)
+        if (onFire && !fire.activeSelf)
             fire.SetActive(true);
-        if (!onFire && fire.active)
+        if (!onFire && fire.activeSelf)
             fire.SetActive(false);
 
-        if (stage == -1 && !snow.active)
+        if (stage == -1 && !snow.activeSelf)
             snow.SetActive(true);
-        if (stage != -1 && snow.active)
+        if (stage != -1 && snow.activeSelf)
             snow.SetActive(false);
 
-        if (watered && !water.active)
+        if (watered && !water.activeSelf)
             water.SetActive(true);
-        if (!watered && water.active)
+        if (!watered && water.activeSelf)
             water.SetActive(false);
 
         if ((stage == 1 || stage == 2) && gameObject.GetComponent<SpriteRenderer>().enabled == false)
