@@ -264,6 +264,8 @@ public class GameManager : MonoBehaviour
 
             if (weather == 2) //Snow
             {
+                step = tanSpeed * Time.deltaTime;
+                sunPrime.transform.position = Vector3.MoveTowards(sunPrime.transform.position, sunPosUp.transform.position, step);
                 //only runs once
                 if (!weatherDone)
                 {
@@ -284,6 +286,8 @@ public class GameManager : MonoBehaviour
 
             if (weather == 3) //Rain
             {
+                step = tanSpeed * Time.deltaTime;
+                sunPrime.transform.position = Vector3.MoveTowards(sunPrime.transform.position, sunPosUp.transform.position, step);
                 //only runs once
                 if (!weatherDone)
                 {
@@ -324,6 +328,8 @@ public class GameManager : MonoBehaviour
 
             if (weather == 4) //Windy
             {
+                step = tanSpeed * Time.deltaTime;
+                sunPrime.transform.position = Vector3.MoveTowards(sunPrime.transform.position, sunPosUp.transform.position, step);
                 //only runs once
                 if (!weatherDone)
                 {

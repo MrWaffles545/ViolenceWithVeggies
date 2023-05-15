@@ -218,6 +218,7 @@ public class SoilController : MonoBehaviour
                     Debug.Log("Watered");
                     watered = true;
                     player.GetComponent<PlayerController>().showInteract = false;
+                    player.GetComponent<PlayerController>().anim.Play("Water");
                 }
                 //if the soil is stage 3 and the crop has grown it harvests it, gives the player the correct crop and adds 1 to stage
                 else if (watered && stage == 2 && playerItem == "Hands" && cropTime >= cropReady)

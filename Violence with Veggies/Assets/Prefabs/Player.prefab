@@ -118,7 +118,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!50 &7495777357295568734
@@ -185,7 +185,7 @@ MonoBehaviour:
   time: 0
   timeToThrow: 0.25
   hold: 0
-  throwSpeedMin: 0.25
+  throwSpeedMin: 2.1
   throwBar: {fileID: 7665088072793779371}
   stunTimer: 0
   stunned: 0
