@@ -65,6 +65,9 @@ public class PlayerController : MonoBehaviour
     //player score variable
     public int score;
 
+    //sounds
+    public AudioSource walking;
+
     public void OnEnable()
     {
         joyStick.Enable();
@@ -170,9 +173,18 @@ public class PlayerController : MonoBehaviour
                     interactItem.SetActive(true);
 
                 if (myRb.velocity != Vector2.zero)
+                {
                     anim.SetBool("Walking", true);
+                    if(!walking.isPlaying)
+                        walking.Play(0);
+
+                }
                 else
+                {
                     anim.SetBool("Walking", false);
+                    if (walking.isPlaying)
+                        walking.Stop();
+                }
 
                 //hold code to throw or pickup/drop/swap
                 if (pickupButton.WasPressedThisFrame())
@@ -199,6 +211,7 @@ public class PlayerController : MonoBehaviour
                     throwBar.GetComponent<Transform>().localScale = new Vector2(time * 4, .25f);
                 }
             }
+
 
             //Hit stun stuff and timer
             if (stunTimer >= 0)
