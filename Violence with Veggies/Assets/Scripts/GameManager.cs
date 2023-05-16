@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     //can use input
     public float menuTimer;
     public bool canInput;
+    public InputAction joystick, pauseButton, selectButton, backButton;
 
     //Weather variables
     public int weather;
@@ -62,6 +63,14 @@ public class GameManager : MonoBehaviour
 
     public float step;
 
+    public void OnEnable()
+    {
+        joystick.Enable();
+        pauseButton.Enable();
+        selectButton.Enable();
+        backButton.Enable();
+    }
+    
     void Update()
     {
         if (SceneManager.GetActiveScene().buildIndex == 0)
@@ -86,43 +95,37 @@ public class GameManager : MonoBehaviour
                 tutorial.SetActive(false);
                 player2Select.SetActive(false);
             }
-            if (Gamepad.current != null && canInput)
+            if (canInput)
             {
-                if (selection && Gamepad.current.leftStick.ReadValue().y <= -.25f)
+                if (selection && joystick.ReadValue<Vector2>().y <= -.25f)
                     selection = false;
-                if (!selection && Gamepad.current.leftStick.ReadValue().y >= .25f)
+                if (!selection && joystick.ReadValue<Vector2>().y >= .25f)
                     selection = true;
 
                 if (menuStage == 1)
                 {
-                    if (selection && Gamepad.current.buttonSouth.wasPressedThisFrame)
+                    if (selection && selectButton.WasPressedThisFrame())
                         LoadLevel(1);
-                    if (!selection && Gamepad.current.buttonSouth.wasPressedThisFrame)
+                    if (!selection && selectButton.WasPressedThisFrame())
                         LoadLevel(2);
-                    if (Gamepad.current.buttonEast.wasPressedThisFrame)
+                    if (backButton.WasPressedThisFrame())
                         MenuSelect();
                 }
 
                 if (menuStage == 0)
                 {
-                    if (selection && Gamepad.current.buttonSouth.wasPressedThisFrame)
+                    if (selection && selectButton.WasPressedThisFrame())
                         GameSelect();
-                    if (!selection && Gamepad.current.buttonSouth.wasPressedThisFrame)
+                    if (!selection && selectButton.WasPressedThisFrame())
                         Tutorial();
                 }
 
                 if (menuStage == 2)
                 {
-                    tutorialImage.rectTransform.position += new Vector3(Gamepad.current.leftStick.ReadValue().x, 0, 0);
-                    if (Gamepad.current.buttonEast.wasPressedThisFrame)
+                    tutorialImage.rectTransform.position += new Vector3(joystick.ReadValue<Vector2>().x, 0, 0);
+                    if (backButton.WasPressedThisFrame())
                         MenuSelect();
                 }
-            }
-            if ((menuStage == 1 || menuStage == 2) && Input.GetKeyDown(KeyCode.Escape))
-                MenuSelect();
-            if (menuStage == 2)
-            {
-                tutorialImage.rectTransform.position += new Vector3(Input.GetAxis("Horizontal"), 0, 0);
             }
         }
         //Works if it isnt the menu scene
@@ -163,17 +166,17 @@ public class GameManager : MonoBehaviour
                 gameTime -= Time.deltaTime;
                 gameTimeText.text = "Game Time:\n" + (Mathf.RoundToInt(gameTime));
                 //Pause and resume
-                if (Input.GetKeyDown(KeyCode.Escape) || (Gamepad.current != null && Gamepad.current.startButton.wasPressedThisFrame))
+                if (selectButton.WasPressedThisFrame() && paused)
+                    LoadLevel(0);
+                if (backButton.WasPressedThisFrame() && paused)
+                    Resume();
+                if (pauseButton.WasPressedThisFrame())
                 {
                     if (paused)
                         Resume();
                     else
                         Pause();
                 }
-                if ((Gamepad.current != null && Gamepad.current.buttonSouth.wasPressedThisFrame) && paused)
-                    LoadLevel(0);
-                if ((Gamepad.current != null && Gamepad.current.buttonEast.wasPressedThisFrame) && paused)
-                    Resume();
             }
 
             //Ends the game if the time runs out
@@ -186,7 +189,7 @@ public class GameManager : MonoBehaviour
                 if (player2 != null && score2 > PlayerPrefs.GetInt("HighScore"))
                     PlayerPrefs.SetInt("HighScore", score2);
                 highscore.text = "High Score: " + PlayerPrefs.GetInt("HighScore");
-                if (Gamepad.current != null && Gamepad.current.buttonSouth.wasPressedThisFrame)
+                if (selectButton.WasPressedThisFrame())
                     LoadLevel(0);
             }
 
@@ -206,7 +209,6 @@ public class GameManager : MonoBehaviour
 
                         sunPosUp.transform.position = new Vector2(0, 4.3f);
                     }
-
 
                     Debug.Log("warning weather " + warning);
                 }

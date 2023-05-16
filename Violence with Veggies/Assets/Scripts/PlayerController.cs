@@ -42,10 +42,8 @@ public class PlayerController : MonoBehaviour
     public Camera cam;
     public Gamepad gamepad, gamepad2;
 
-    //input type variable for other scripts
-    private bool pickupButton;
-    private bool pickupButtonRelease;
-    public bool inputType;
+    //input type variable for player
+    public InputAction joyStick, pickupButton, interactButton;
 
     //Soil that is going to be interacted with
     public GameObject soil;
@@ -67,6 +65,13 @@ public class PlayerController : MonoBehaviour
     //player score variable
     public int score;
 
+    public void OnEnable()
+    {
+        joyStick.Enable();
+        pickupButton.Enable();
+        interactButton.Enable();
+    }
+
     void Start()
     {
         //assigns the rigidbody when the game starts
@@ -84,18 +89,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Time.timeScale != 0 && gameManager.GetComponent<GameManager>().canInput)
         {
-            //Gets the gamepad controller
-            if (Gamepad.all.Count > 0)
-                gamepad = Gamepad.all[0];
-            else
-                gamepad = null;
-            if (Gamepad.all.Count > 1)
-                gamepad2 = Gamepad.all[1];
-            else
-                gamepad2 = null;
-            //if there isnt a gamepad it uses keyboard controls
-            Vector2 temp = myRb.velocity;
-            if (playerOne)
+            /*if (playerOne)
             {
                 if (gamepad != null)
                 {
@@ -144,13 +138,16 @@ public class PlayerController : MonoBehaviour
                     playerpickupbutton = "Q";
                     playerinteractbutton = "E";
                 }
-            }
+            }*/
+
+            playerpickupbutton = "The purple Button";
+            playerinteractbutton = "The yellow Button";
 
             if (!stunned)
             {
                 //converts the gamepad input to velocity of the player and pickup/drop/swap
-                temp.x = move.x * speed * fireEffect;
-                temp.y = move.y * speed * fireEffect;
+                Vector2 temp = myRb.velocity;
+                temp = joyStick.ReadValue<Vector2>() * speed * fireEffect;
                 myRb.velocity = temp;
 
                 if (myRb.velocity.x <= -0.1f)
@@ -162,8 +159,8 @@ public class PlayerController : MonoBehaviour
                 //Interact stuff
                 if (soil != null)
                 {
-                    soil.GetComponent<SoilController>().Interact(inputType);
-                    if (inputType && holdingItem != null)
+                    soil.GetComponent<SoilController>().Interact(interactButton.WasPressedThisFrame());
+                    if (interactButton.WasPressedThisFrame() && holdingItem != null)
                         interactItem = holdingItem;
                 }
 
@@ -178,14 +175,14 @@ public class PlayerController : MonoBehaviour
                     anim.SetBool("Walking", false);
 
                 //hold code to throw or pickup/drop/swap
-                if (pickupButton)
+                if (pickupButton.WasPressedThisFrame())
                 {
                     if (!isHolding)
                         Pickup();
                     else
                         hold = true;
                 }
-                if (pickupButtonRelease && hold)
+                if (pickupButton.WasReleasedThisFrame() && hold)
                 {
                     if (time >= timeToThrow)
                         Throw();

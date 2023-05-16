@@ -103,12 +103,18 @@ public class SoilController : MonoBehaviour
 
         //turns visual accordingly
         if (onFire && !fire.activeSelf)
+        {
             fire.SetActive(true);
+            sprout.SetActive(false);
+        }
         if (!onFire && fire.activeSelf)
             fire.SetActive(false);
 
         if (stage == -1 && !snow.activeSelf)
+        {
             snow.SetActive(true);
+            sprout.SetActive(false);
+        }
         if (stage != -1 && snow.activeSelf)
             snow.SetActive(false);
 
