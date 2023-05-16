@@ -92,60 +92,6 @@ public class PlayerController : MonoBehaviour
     {
         if (Time.timeScale != 0 && gameManager.GetComponent<GameManager>().canInput)
         {
-            /*if (playerOne)
-            {
-                if (gamepad != null)
-                {
-                    //if it is player one is uses controller one
-                    pickupButton = gamepad.buttonEast.wasPressedThisFrame;
-                    pickupButtonRelease = gamepad.buttonEast.wasReleasedThisFrame;
-                    move = gamepad.leftStick.ReadValue();
-                    inputType = gamepad.buttonSouth.wasPressedThisFrame;
-                    playerpickupbutton = "The Red Button";
-                    playerinteractbutton = "The Green Button";
-                }
-                else
-                {
-                    //if it is player one it uses basic controls and left click to pickup/drop
-                    move.x = Input.GetAxisRaw("Horizontal");
-                    move.y = Input.GetAxisRaw("Vertical");
-                    pickupButton = Input.GetMouseButtonDown(0);
-                    pickupButtonRelease = Input.GetMouseButtonUp(0);
-                    inputType = Input.GetMouseButtonDown(1);
-                    playerpickupbutton = "Left Click";
-                    playerinteractbutton = "Right Click";
-                }
-            }
-            else
-            {
-                //if there is a gamepad controller it uses this
-                if (gamepad2 != null)
-                {
-                    //if it isnt player one is uses the other controller
-                    pickupButton = gamepad2.buttonEast.wasPressedThisFrame;
-                    pickupButtonRelease = gamepad2.buttonEast.wasReleasedThisFrame;
-                    move = gamepad2.leftStick.ReadValue();
-                    inputType = gamepad2.buttonSouth.wasPressedThisFrame;
-                    playerpickupbutton = "The Red Button";
-                    playerinteractbutton = "The Green Button";
-                }
-                else
-                {
-                    //if it isnt player one it uses the mouses position to move and Q to pickup/drop
-                    Vector2 mousePos = Input.mousePosition;
-                    mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-                    transform.position = mousePos;
-                    pickupButton = Input.GetKeyDown(KeyCode.Q);
-                    pickupButtonRelease = Input.GetKeyUp(KeyCode.Q);
-                    inputType = Input.GetKeyDown(KeyCode.E);
-                    playerpickupbutton = "Q";
-                    playerinteractbutton = "E";
-                }
-            }*/
-
-            playerpickupbutton = "The purple Button";
-            playerinteractbutton = "The yellow Button";
-
             if (!stunned)
             {
                 //converts the gamepad input to velocity of the player and pickup/drop/swap
@@ -177,7 +123,6 @@ public class PlayerController : MonoBehaviour
                     anim.SetBool("Walking", true);
                     if(!walking.isPlaying)
                         walking.Play(0);
-
                 }
                 else
                 {

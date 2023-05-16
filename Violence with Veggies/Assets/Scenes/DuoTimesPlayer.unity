@@ -778,6 +778,10 @@ PrefabInstance:
       value: e10ab632-156a-4c87-bd28-88841f99d5f4
       objectReference: {fileID: 0}
     - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
+      propertyPath: playerpickupbutton
+      value: Q
+      objectReference: {fileID: 0}
+    - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
       propertyPath: interactButton.m_Id
       value: 7db137a1-dd9d-41af-a874-2fe53a98c671
       objectReference: {fileID: 0}
@@ -6902,12 +6906,20 @@ PrefabInstance:
       value: 3b265457-fd81-40c1-9dd8-571869d82676
       objectReference: {fileID: 0}
     - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
+      propertyPath: playerpickupbutton
+      value: Left Click
+      objectReference: {fileID: 0}
+    - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
       propertyPath: interactButton.m_Id
       value: b8b07d77-5a08-4b91-834a-20a79938e78f
       objectReference: {fileID: 0}
     - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
       propertyPath: pickupButton.m_Name
       value: Pickup Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
+      propertyPath: playerinteractbutton
+      value: Right Click
       objectReference: {fileID: 0}
     - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
       propertyPath: interactButton.m_Name
