@@ -59,6 +59,42 @@ MonoBehaviour:
   startTimer: 5
   menuTimer: 0
   canInput: 1
+  joystick:
+    m_Name: Joystick
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 071f69a7-760b-4bb8-bd85-b56ed3fcfda7
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  pauseButton:
+    m_Name: Pause Button
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 3008c4f9-56bd-4d51-9d78-62152a6d21e0
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  selectButton:
+    m_Name: Select Button
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 8149561c-b0ae-4a78-b944-98de48a4a67c
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  backButton:
+    m_Name: Back Button
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 0267dab0-6f99-4864-aff2-ade481f07ad5
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
   weather: 0
   weatherTimer: 30
   weatherTimerMin: 30
