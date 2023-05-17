@@ -1575,7 +1575,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: backButton.m_SingletonActionBindings.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: pauseButton.m_SingletonActionBindings.Array.size
@@ -1628,6 +1628,10 @@ PrefabInstance:
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: backButton.m_SingletonActionBindings.Array.data[0].m_Id
       value: 5e92e07a-1dbb-481a-9a75-3cc45f2850a7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
+      propertyPath: backButton.m_SingletonActionBindings.Array.data[1].m_Id
+      value: 9d5868ef-303f-42a1-bb61-6d47cf52fc44
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: joystick.m_SingletonActionBindings.Array.data[0].m_Name
@@ -1754,6 +1758,10 @@ PrefabInstance:
       value: <Gamepad>/buttonEast
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
+      propertyPath: backButton.m_SingletonActionBindings.Array.data[1].m_Path
+      value: <Keyboard>/escape
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: joystick.m_SingletonActionBindings.Array.data[0].m_Action
       value: Joystick
       objectReference: {fileID: 0}
@@ -1811,6 +1819,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: backButton.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Back Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
+      propertyPath: backButton.m_SingletonActionBindings.Array.data[1].m_Action
       value: Back Button
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
