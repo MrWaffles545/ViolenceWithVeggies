@@ -44,7 +44,8 @@ public class GameManager : MonoBehaviour
     public int menuStage;
 
     //Pause variable
-    public bool paused;
+    public bool paused, pauseHold = false;
+    public float pauseTimer;
 
     //the normal yellow sun
     public GameObject sunPrime;
@@ -172,10 +173,24 @@ public class GameManager : MonoBehaviour
                     Resume();
                 if (pauseButton.WasPressedThisFrame())
                 {
+                    pauseTimer = 4f;
+                    pauseHold = true;
+                }
+                if (pauseTimer >= 0 && pauseHold)
+                    pauseTimer -= Time.deltaTime;
+                if (pauseButton.WasReleasedThisFrame() && pauseHold)
+                {
+                    pauseHold = false;
+                    pauseTimer = -.1f;
+                }
+                if (pauseTimer <= 0 && pauseHold)
+                {
                     if (paused)
                         Resume();
                     else
                         Pause();
+                    pauseHold = false;
+                    pauseTimer = -.1f;
                 }
             }
 
