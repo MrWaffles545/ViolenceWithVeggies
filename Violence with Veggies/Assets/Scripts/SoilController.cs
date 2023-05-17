@@ -252,11 +252,15 @@ public class SoilController : MonoBehaviour
 
             //fire
             else if (onFire && playerItem == "WaterCan")
+            {
                 onFire = false;
+                player.GetComponent<PlayerController>().anim.Play("Water");
+            }
 
             if (stage == -1 && playerItem == "Till")
             {
                 Debug.Log("Tilled The Snow");
+                player.GetComponent<PlayerController>().anim.Play("Till");
                 stage++;
             }
         }
