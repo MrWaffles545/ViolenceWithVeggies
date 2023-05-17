@@ -40,6 +40,8 @@ public class SoilController : MonoBehaviour
     public GameObject carrot, garlic, potato, turnip, gus;
     public Sprite[] daGold;
 
+    //sounds
+    public AudioSource waterSound, bloop, dirtSound;
 
     void Start()
     {
@@ -73,8 +75,6 @@ public class SoilController : MonoBehaviour
             {
                 cropTime += Time.deltaTime;
                 bar.GetComponent<Transform>().localScale = new Vector2(cropTime / cropReady * 11.1f, 1.5f);
-                if (cropTime >= cropReady / 2)
-                    sprout.SetActive(true);
             }
             if (cropTime >= cropReady)
                 sprout.GetComponent<SpriteRenderer>().sprite = sprouts[crop];
@@ -172,6 +172,7 @@ public class SoilController : MonoBehaviour
                 //if the soil is stage 0 it tills it and adds 1 to stage
                 if (stage == 0 && playerItem == "Till")
                 {
+                    dirtSound.Play(0);
                     Debug.Log("Tilled");
                     stage++;
                     player.GetComponent<PlayerController>().showInteract = false;
@@ -180,6 +181,7 @@ public class SoilController : MonoBehaviour
                 //if the soil is stage 1 it detects which seed the player interacted on it with and adds 1 to stage
                 else if (stage == 1 && (playerItem == "Carrot Seed" || playerItem == "Garlic Bulb" || playerItem == "Potato Seed" || playerItem == "Turnip Seed" || playerItem == "Gus Seed"))
                 {
+                    dirtSound.Play(0);
                     Debug.Log("Planted " + playerItem);
                     //gets rid of the item the player is holding
                     Destroy(script.holdingItem);
@@ -190,6 +192,7 @@ public class SoilController : MonoBehaviour
                     script.pickup.text = "";
                     player.GetComponent<PlayerController>().showInteract = false;
                     sprout.GetComponent<SpriteRenderer>().sprite = sprouts[0];
+                    sprout.SetActive(true);
                     //assigns the crop correspondant to the seed and sets the timer number
                     if (playerItem == "Carrot Seed")
                     {
@@ -222,6 +225,7 @@ public class SoilController : MonoBehaviour
                 else if (!watered && playerItem == "WaterCan")
                 {
                     Debug.Log("Watered");
+                    waterSound.Play(0);
                     watered = true;
                     player.GetComponent<PlayerController>().showInteract = false;
                     player.GetComponent<PlayerController>().anim.Play("Water");
@@ -230,6 +234,7 @@ public class SoilController : MonoBehaviour
                 else if (watered && stage == 2 && playerItem == "Hands" && cropTime >= cropReady)
                 {
                     Debug.Log("Harvested");
+                    bloop.Play(0);
                     //harvests the selected crop
                     if (crop == 1)
                         Harvest(carrot);
@@ -253,11 +258,15 @@ public class SoilController : MonoBehaviour
 
             //fire
             else if (onFire && playerItem == "WaterCan")
+            {
                 onFire = false;
+                player.GetComponent<PlayerController>().anim.Play("Water");
+            }
 
             if (stage == -1 && playerItem == "Till")
             {
                 Debug.Log("Tilled The Snow");
+                player.GetComponent<PlayerController>().anim.Play("Till");
                 stage++;
             }
         }
