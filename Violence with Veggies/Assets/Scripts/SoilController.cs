@@ -41,8 +41,7 @@ public class SoilController : MonoBehaviour
     public Sprite[] daGold;
 
     //sounds
-    public AudioSource bloop;
-    public AudioSource waterSound;
+    public AudioSource waterSound, bloop, dirtSound;
 
     void Start()
     {
@@ -173,6 +172,7 @@ public class SoilController : MonoBehaviour
                 //if the soil is stage 0 it tills it and adds 1 to stage
                 if (stage == 0 && playerItem == "Till")
                 {
+                    dirtSound.Play(0);
                     Debug.Log("Tilled");
                     stage++;
                     player.GetComponent<PlayerController>().showInteract = false;
@@ -181,6 +181,7 @@ public class SoilController : MonoBehaviour
                 //if the soil is stage 1 it detects which seed the player interacted on it with and adds 1 to stage
                 else if (stage == 1 && (playerItem == "Carrot Seed" || playerItem == "Garlic Bulb" || playerItem == "Potato Seed" || playerItem == "Turnip Seed" || playerItem == "Gus Seed"))
                 {
+                    dirtSound.Play(0);
                     Debug.Log("Planted " + playerItem);
                     //gets rid of the item the player is holding
                     Destroy(script.holdingItem);
