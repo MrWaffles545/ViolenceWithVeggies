@@ -173,7 +173,7 @@ public class GameManager : MonoBehaviour
                     Resume();
                 if (pauseButton.WasPressedThisFrame())
                 {
-                    pauseTimer = 5f;
+                    pauseTimer = 4f;
                     pauseHold = true;
                 }
                 if (pauseTimer >= 0 && pauseHold)
