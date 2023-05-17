@@ -241,7 +241,7 @@ PrefabInstance:
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: pauseUI
       value: 
-      objectReference: {fileID: 2090099993}
+      objectReference: {fileID: 221555206}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: player2
       value: 
@@ -1244,6 +1244,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 5790781754970909114, guid: 06441c8d40aca3348a90f9ade29a9a28, type: 3}
   m_PrefabInstance: {fileID: 169546987}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &221555206 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3202520031454874227, guid: 44d20ed1a01ef574e85b9057e37abb57, type: 3}
+  m_PrefabInstance: {fileID: 300273971}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &270447557
 GameObject:
@@ -9126,10 +9131,5 @@ PrefabInstance:
 --- !u!224 &2077268682 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 9192160928349054840, guid: 44d20ed1a01ef574e85b9057e37abb57, type: 3}
-  m_PrefabInstance: {fileID: 300273971}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2090099993 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2090099993, guid: 44d20ed1a01ef574e85b9057e37abb57, type: 3}
   m_PrefabInstance: {fileID: 300273971}
   m_PrefabAsset: {fileID: 0}
