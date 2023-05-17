@@ -380,6 +380,14 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1225450059, guid: 44d20ed1a01ef574e85b9057e37abb57, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: b2b91ff11243a5145b420ca7411dd724, type: 2}
+    - target: {fileID: 1225450059, guid: 44d20ed1a01ef574e85b9057e37abb57, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 7245657757337822935, guid: b2b91ff11243a5145b420ca7411dd724, type: 2}
     - target: {fileID: 1877358896293129042, guid: 44d20ed1a01ef574e85b9057e37abb57, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -472,6 +480,26 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 9192160929645109969, guid: 44d20ed1a01ef574e85b9057e37abb57, type: 3}
+      propertyPath: m_text
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 9192160929645109969, guid: 44d20ed1a01ef574e85b9057e37abb57, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: b2b91ff11243a5145b420ca7411dd724, type: 2}
+    - target: {fileID: 9192160929645109969, guid: 44d20ed1a01ef574e85b9057e37abb57, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 7245657757337822935, guid: b2b91ff11243a5145b420ca7411dd724, type: 2}
+    - target: {fileID: 9192160930348713209, guid: 44d20ed1a01ef574e85b9057e37abb57, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: b2b91ff11243a5145b420ca7411dd724, type: 2}
+    - target: {fileID: 9192160930348713209, guid: 44d20ed1a01ef574e85b9057e37abb57, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 7245657757337822935, guid: b2b91ff11243a5145b420ca7411dd724, type: 2}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 44d20ed1a01ef574e85b9057e37abb57, type: 3}
