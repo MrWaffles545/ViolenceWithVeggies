@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
     public GameObject menuButtons, gameButtons, tutorialButtons;
     public GameObject game, tutorial, player1Select, player2Select;
     public Image tutorialImage;
-    public TextMeshProUGUI highscoreText;
+    public TextMeshProUGUI highscoreText, highscoreText2;
     public int menuStage;
 
     //Pause variable
@@ -78,6 +78,9 @@ public class GameManager : MonoBehaviour
         {
             if (highscoreText.text != "HighScore:\n" + PlayerPrefs.GetInt("HighScore"))
                 highscoreText.text = "HighScore:\n" + PlayerPrefs.GetInt("HighScore");
+            if (highscoreText2.text != "HighScore:\n" + PlayerPrefs.GetInt("HighScore2"))
+                highscoreText2.text = "2 Player HighScore:\n" + PlayerPrefs.GetInt("HighScore2");
+
             //if (!canInput && menuTimer >= 0)
             //menuTimer -= Time.deltaTime;
             //else if (!canInput && menuTimer <= 0)
@@ -199,11 +202,20 @@ public class GameManager : MonoBehaviour
             {
                 Time.timeScale = 0f;
                 endGameUI.SetActive(true);
-                if (score > PlayerPrefs.GetInt("HighScore"))
-                    PlayerPrefs.SetInt("HighScore", score);
-                if (player2 != null && score2 > PlayerPrefs.GetInt("HighScore"))
-                    PlayerPrefs.SetInt("HighScore", score2);
-                highscore.text = "High Score: " + PlayerPrefs.GetInt("HighScore");
+                if (player2 != null)
+                {
+                    if (score > PlayerPrefs.GetInt("HighScore2"))
+                        PlayerPrefs.SetInt("HighScore2", score);
+                    if (score2 > PlayerPrefs.GetInt("HighScore2"))
+                        PlayerPrefs.SetInt("HighScore2", score2);
+                    highscore.text = "High Score: " + PlayerPrefs.GetInt("HighScore2");
+                }
+                else
+                {
+                    if (score > PlayerPrefs.GetInt("HighScore"))
+                        PlayerPrefs.SetInt("HighScore", score);
+                    highscore.text = "High Score: " + PlayerPrefs.GetInt("HighScore");
+                }
                 if (selectButton.WasPressedThisFrame())
                     LoadLevel(0);
             }
