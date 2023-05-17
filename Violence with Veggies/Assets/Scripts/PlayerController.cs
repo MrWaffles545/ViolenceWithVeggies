@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour
     public int score;
 
     //sounds
-    public AudioSource walking;
+    public AudioSource walking, hitSound;
 
     public void OnEnable()
     {
@@ -252,6 +252,7 @@ public class PlayerController : MonoBehaviour
             {
                 anim.SetBool("nutS", true);
                 anim.Play("nutS");
+                hitSound.Play(0);
                 stunned = true;
                 stunTimer = 2f;
                 myRb.velocity = Vector2.zero;
