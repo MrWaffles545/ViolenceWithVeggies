@@ -40,6 +40,9 @@ public class SoilController : MonoBehaviour
     public GameObject carrot, garlic, potato, turnip, gus;
     public Sprite[] daGold;
 
+    //sounds
+    public AudioSource bloop;
+    public AudioSource waterSound;
 
     void Start()
     {
@@ -221,6 +224,7 @@ public class SoilController : MonoBehaviour
                 else if (!watered && playerItem == "WaterCan")
                 {
                     Debug.Log("Watered");
+                    waterSound.Play(0);
                     watered = true;
                     player.GetComponent<PlayerController>().showInteract = false;
                     player.GetComponent<PlayerController>().anim.Play("Water");
@@ -229,6 +233,7 @@ public class SoilController : MonoBehaviour
                 else if (watered && stage == 2 && playerItem == "Hands" && cropTime >= cropReady)
                 {
                     Debug.Log("Harvested");
+                    bloop.Play(0);
                     //harvests the selected crop
                     if (crop == 1)
                         Harvest(carrot);
