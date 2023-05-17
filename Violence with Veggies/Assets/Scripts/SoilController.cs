@@ -73,8 +73,6 @@ public class SoilController : MonoBehaviour
             {
                 cropTime += Time.deltaTime;
                 bar.GetComponent<Transform>().localScale = new Vector2(cropTime / cropReady * 11.1f, 1.5f);
-                if (cropTime >= cropReady / 2)
-                    sprout.SetActive(true);
             }
             if (cropTime >= cropReady)
                 sprout.GetComponent<SpriteRenderer>().sprite = sprouts[crop];
@@ -190,6 +188,7 @@ public class SoilController : MonoBehaviour
                     script.pickup.text = "";
                     player.GetComponent<PlayerController>().showInteract = false;
                     sprout.GetComponent<SpriteRenderer>().sprite = sprouts[0];
+                    sprout.SetActive(true);
                     //assigns the crop correspondant to the seed and sets the timer number
                     if (playerItem == "Carrot Seed")
                     {

@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
     public GameObject throwBar;
 
     //Stun
-    public float stunTimer;
+    public float stunTimer, stunCooldown;
     public bool stunned;
 
     //the variable to hold the gamepad input to move
@@ -168,6 +168,9 @@ public class PlayerController : MonoBehaviour
                 stunned = false;
             }
 
+            if (stunCooldown >= 0)
+                stunCooldown -= Time.deltaTime;
+
             //on fire code
             if (fireTimer <= fireCooldown && (fireSoil != null || fireTimer >= igniteTime))
                 fireTimer += Time.deltaTime;
@@ -245,13 +248,17 @@ public class PlayerController : MonoBehaviour
         {
             collision.GetComponent<Rigidbody2D>().velocity = gameManager.wind;
             collision.tag = "item";
-            anim.SetBool("nutS", true);
-            anim.Play("nutS");
-            stunned = true;
-            stunTimer = 2f;
-            myRb.velocity = Vector2.zero;
-            if (isHolding)
-                Drop();
+            if (stunCooldown <= 0)
+            {
+                anim.SetBool("nutS", true);
+                anim.Play("nutS");
+                stunned = true;
+                stunTimer = 2f;
+                myRb.velocity = Vector2.zero;
+                if (isHolding)
+                    Drop();
+                stunCooldown = 3f;
+            }
         }
     }
 
@@ -286,6 +293,7 @@ public class PlayerController : MonoBehaviour
 
     void DropSwap()
     {
+        Vector3 pos = holdingItem.transform.position;
         //if the player presses the assigned button from above and isnt touching anything else it activates the pickup/drop
         if (isTouching && holdingItem != null && !isTouchingOther && isHolding)
         {
@@ -293,7 +301,7 @@ public class PlayerController : MonoBehaviour
             Drop();
         }
         //if the player has an item already and tries to pick up another it swaps the 2 items
-        else if (holdingItem != null && isTouchingOther && otherItem.transform.parent == null)
+        else if (holdingItem != null && isTouchingOther && otherItem.transform.parent == null && (pos.x - transform.position.x <= .7f && pos.y - transform.position.y <= .7f))
         {
             //makes a temp variable to hold the holdingItem
             GameObject tempGameObject = holdingItem;
