@@ -170,7 +170,7 @@ public class GameManager : MonoBehaviour
             if (gameTime >= 0 && canInput)
             {
                 gameTime -= Time.deltaTime;
-                gameTimeText.text = "Game Time:\n" + (Mathf.RoundToInt(gameTime));
+                gameTimeText.text = ""+(Mathf.RoundToInt(gameTime));
                 //Pause and resume
                 if (selectButton.WasPressedThisFrame() && paused)
                     LoadLevel(0);
