@@ -1530,6 +1530,10 @@ PrefabInstance:
       value: 867edbd6-8e95-49ea-82f9-74e55ce5e196
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
+      propertyPath: boxs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: joystick.m_Name
       value: Joystick
       objectReference: {fileID: 0}
@@ -1549,6 +1553,10 @@ PrefabInstance:
       propertyPath: selectButton.m_Id
       value: 22110659-b271-4ba1-85bc-896324f93891
       objectReference: {fileID: 0}
+    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
+      propertyPath: boxs.Array.data[0]
+      value: 
+      objectReference: {fileID: 1890906094}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: pauseButton.m_Name
       value: Pause Button
@@ -7623,6 +7631,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3202520031454874227, guid: 44d20ed1a01ef574e85b9057e37abb57, type: 3}
   m_PrefabInstance: {fileID: 1890906092}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1890906094 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7556115814288810626, guid: 44d20ed1a01ef574e85b9057e37abb57, type: 3}
+  m_PrefabInstance: {fileID: 1890906092}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1890906097 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9192160930032765509, guid: 44d20ed1a01ef574e85b9057e37abb57, type: 3}

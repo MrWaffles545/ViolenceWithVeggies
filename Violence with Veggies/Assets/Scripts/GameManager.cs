@@ -9,9 +9,11 @@ using UnityEngine.InputSystem;
 public class GameManager : MonoBehaviour
 {
     //UI variables
-    public TextMeshProUGUI scoreText, scoreText2, gameTimeText, highscore, startTimerText;
+    public TextMeshProUGUI scoreText, scoreText2, gameTimeText, highscore, startTimerText, playerWin;
     public GameObject player, player2;
     public GameObject endGameUI, pauseUI;
+    public Image[] boxs;
+    public Sprite full;
 
     //Game Variables
     public int score, score2;
@@ -209,12 +211,25 @@ public class GameManager : MonoBehaviour
                     if (score2 > PlayerPrefs.GetInt("HighScore2"))
                         PlayerPrefs.SetInt("HighScore2", score2);
                     highscore.text = "High Score: " + PlayerPrefs.GetInt("HighScore2");
+                    if (score > score2)
+                    {
+                        playerWin.text = "Player 1 Wins!";
+                        boxs[0].sprite = full;
+                    }
+                    if (score2 > score)
+                    {
+                        playerWin.text = "Player 2 Wins!";
+                        boxs[1].sprite = full;
+                    }
+                    if (score == score2)
+                        playerWin.text = "Tie!";
                 }
                 else
                 {
                     if (score > PlayerPrefs.GetInt("HighScore"))
                         PlayerPrefs.SetInt("HighScore", score);
                     highscore.text = "High Score: " + PlayerPrefs.GetInt("HighScore");
+                    playerWin.text = "Score: " + score;
                 }
                 if (selectButton.WasPressedThisFrame())
                     LoadLevel(0);
