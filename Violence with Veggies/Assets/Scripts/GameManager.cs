@@ -160,35 +160,7 @@ public class GameManager : MonoBehaviour
                 startTimer -= Time.deltaTime;
                 startTimerText.text = (Mathf.RoundToInt(startTimer)).ToString();
                 canInput = false;
-
-                //start timer sound                                     i know this sucks
-                if (startTimer == 5)
-                {
-                    bloop.Play(0);
-                }
-
-                if (startTimer == 4)
-                {
-                    bloop.Play(0);
-                }
-
-                if (startTimer == 3)
-                {
-                    bloop.Play(0);
-                }
-
-                if (startTimer == 2)
-                {
-                    bloop.Play(0);
-                }
-
-                if (startTimer == 1)
-                {
-                    bloop.Play(0);
-                }
             }
-
-
 
             //after timer before game ends
             if (startTimer <= 0)
@@ -458,6 +430,7 @@ public class GameManager : MonoBehaviour
                     }
                 }
             }
+
         }
     }
 
