@@ -68,6 +68,9 @@ public class PlayerController : MonoBehaviour
     //sounds
     public AudioSource walking, hitSound;
 
+    //fire
+    public GameObject fireOver;
+
     public void OnEnable()
     {
         joyStick.Enable();
@@ -178,7 +181,11 @@ public class PlayerController : MonoBehaviour
             if (fireTimer >= igniteTime && fireTimer <= fireTime)
             {
                 if (!onFire)
+                {
                     onFire = true;
+                    fireOver.SetActive(true);
+                }
+
                 if (!onFireCooldown)
                     onFireCooldown = true;
                 //fire stuff
@@ -198,6 +205,7 @@ public class PlayerController : MonoBehaviour
             {
                 fireEffect = 1f;
                 onFire = false;
+                fireOver.SetActive(false);
             }
             //fire cooldown stuff
             if (onFireCooldown && fireTimer >= fireCooldown)
