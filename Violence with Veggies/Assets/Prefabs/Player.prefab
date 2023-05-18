@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7495777356422880051}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.4519335, z: 0}
+  m_LocalPosition: {x: 0, y: 3.53, z: 0}
   m_LocalScale: {x: 2.617209, y: 3.6298337, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -67,7 +67,7 @@ Transform:
   - {fileID: 7495777356422880050}
   - {fileID: 6556945684696003318}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7495777357295568733
 SpriteRenderer:
@@ -110,12 +110,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: -8660185, guid: 194b2e057aa14c041bc73260854f3bac, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 4.01, y: 5.87}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -165,6 +165,7 @@ MonoBehaviour:
   holdingItem: {fileID: 0}
   isHolding: 0
   itemName: Hands
+  interactItem: {fileID: 0}
   isTouching: 0
   isTouchingOther: 0
   onFire: 0
@@ -180,7 +181,33 @@ MonoBehaviour:
   fireSoil: {fileID: 0}
   playerOne: 1
   cam: {fileID: 0}
-  inputType: 0
+  joyStick:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 24e5a819-3294-4913-8cc7-4a704df61f44
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  pickupButton:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: ac03c5fc-61cb-4453-9410-d2dbe59a1c4a
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  interactButton:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: a0965486-ad19-4cc9-b3ad-40fecf44a712
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
   soil: {fileID: 0}
   time: 0
   timeToThrow: 0.25
@@ -188,8 +215,11 @@ MonoBehaviour:
   throwSpeedMin: 2.1
   throwBar: {fileID: 7665088072793779371}
   stunTimer: 0
+  stunCooldown: 0
   stunned: 0
   score: 0
+  walking: {fileID: 0}
+  hitSound: {fileID: 0}
 --- !u!70 &7495777357295568728
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
