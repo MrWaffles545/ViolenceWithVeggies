@@ -460,19 +460,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: joystick.m_SingletonActionBindings.Array.size
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: backButton.m_SingletonActionBindings.Array.size
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: pauseButton.m_SingletonActionBindings.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: selectButton.m_SingletonActionBindings.Array.size
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: joystick.m_SingletonActionBindings.Array.data[0].m_Id
@@ -515,12 +515,40 @@ PrefabInstance:
       value: 163c2e23-0423-4499-97cc-71b0a014f0ae
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
+      propertyPath: joystick.m_SingletonActionBindings.Array.data[10].m_Id
+      value: 35f6a60f-3ef7-4ba4-ae80-d664bd9d54f1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
+      propertyPath: joystick.m_SingletonActionBindings.Array.data[11].m_Id
+      value: 43e1eb03-2f7c-4e01-8065-c5c1b7c2fdc0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
+      propertyPath: joystick.m_SingletonActionBindings.Array.data[12].m_Id
+      value: b13bf3d5-4c6d-4860-b2a1-c1313666ac57
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
+      propertyPath: joystick.m_SingletonActionBindings.Array.data[13].m_Id
+      value: 39400ed2-6047-4695-b9e3-46b0f82e78ca
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
+      propertyPath: joystick.m_SingletonActionBindings.Array.data[14].m_Id
+      value: f957afa2-b49a-475c-8b23-9acdd3caedb4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: backButton.m_SingletonActionBindings.Array.data[0].m_Id
       value: 397a7408-d4a7-4108-acc9-083a56c1d13b
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: backButton.m_SingletonActionBindings.Array.data[1].m_Id
       value: f2dc1edf-c616-47b1-b2ce-535bb99ccdab
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
+      propertyPath: backButton.m_SingletonActionBindings.Array.data[2].m_Id
+      value: 4d1c5907-fd52-4d05-b734-91e8d816df84
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
+      propertyPath: backButton.m_SingletonActionBindings.Array.data[3].m_Id
+      value: a66d72bb-89c4-4d91-bb4e-4b75e94e2180
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: joystick.m_SingletonActionBindings.Array.data[0].m_Name
@@ -607,6 +635,30 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
+      propertyPath: joystick.m_SingletonActionBindings.Array.data[10].m_Name
+      value: 2D Vector
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
+      propertyPath: joystick.m_SingletonActionBindings.Array.data[10].m_Path
+      value: 2DVector
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
+      propertyPath: joystick.m_SingletonActionBindings.Array.data[11].m_Name
+      value: up
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
+      propertyPath: joystick.m_SingletonActionBindings.Array.data[12].m_Name
+      value: down
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
+      propertyPath: joystick.m_SingletonActionBindings.Array.data[13].m_Name
+      value: left
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
+      propertyPath: joystick.m_SingletonActionBindings.Array.data[14].m_Name
+      value: right
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: joystick.m_SingletonActionBindings.Array.data[1].m_Flags
       value: 8
       objectReference: {fileID: 0}
@@ -651,6 +703,10 @@ PrefabInstance:
       value: fb587395-b75a-4cd9-b842-70f1ef5156b2
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
+      propertyPath: pauseButton.m_SingletonActionBindings.Array.data[2].m_Id
+      value: 26fa4247-b9fc-4170-99ed-c1d96b8f4dde
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: backButton.m_SingletonActionBindings.Array.data[0].m_Path
       value: <Gamepad>/buttonEast
       objectReference: {fileID: 0}
@@ -659,8 +715,36 @@ PrefabInstance:
       value: <Keyboard>/escape
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
+      propertyPath: backButton.m_SingletonActionBindings.Array.data[2].m_Path
+      value: <HID::Twin USB Gamepad      >/trigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
+      propertyPath: backButton.m_SingletonActionBindings.Array.data[3].m_Path
+      value: <HID::Microntek              USB Joystick          >/trigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: joystick.m_SingletonActionBindings.Array.data[0].m_Action
       value: Joystick
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
+      propertyPath: joystick.m_SingletonActionBindings.Array.data[10].m_Flags
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
+      propertyPath: joystick.m_SingletonActionBindings.Array.data[11].m_Flags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
+      propertyPath: joystick.m_SingletonActionBindings.Array.data[12].m_Flags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
+      propertyPath: joystick.m_SingletonActionBindings.Array.data[13].m_Flags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
+      propertyPath: joystick.m_SingletonActionBindings.Array.data[14].m_Flags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: joystick.m_SingletonActionBindings.Array.data[1].m_Action
@@ -707,6 +791,34 @@ PrefabInstance:
       value: c6eee704-7d8b-4be9-9ded-cde9407fc99a
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
+      propertyPath: selectButton.m_SingletonActionBindings.Array.data[2].m_Id
+      value: 5da7e1ea-6a46-48af-99ff-40f940711a3d
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
+      propertyPath: selectButton.m_SingletonActionBindings.Array.data[3].m_Id
+      value: 35d519e5-bb9f-493e-b7bf-edd9fcb55b20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
+      propertyPath: joystick.m_SingletonActionBindings.Array.data[10].m_Action
+      value: Joystick
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
+      propertyPath: joystick.m_SingletonActionBindings.Array.data[11].m_Action
+      value: Joystick
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
+      propertyPath: joystick.m_SingletonActionBindings.Array.data[12].m_Action
+      value: Joystick
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
+      propertyPath: joystick.m_SingletonActionBindings.Array.data[13].m_Action
+      value: Joystick
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
+      propertyPath: joystick.m_SingletonActionBindings.Array.data[14].m_Action
+      value: Joystick
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: pauseButton.m_SingletonActionBindings.Array.data[0].m_Path
       value: <Keyboard>/escape
       objectReference: {fileID: 0}
@@ -723,12 +835,28 @@ PrefabInstance:
       value: Back Button
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
+      propertyPath: backButton.m_SingletonActionBindings.Array.data[2].m_Action
+      value: Back Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
+      propertyPath: backButton.m_SingletonActionBindings.Array.data[3].m_Action
+      value: Back Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: selectButton.m_SingletonActionBindings.Array.data[0].m_Path
       value: <Mouse>/leftButton
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: selectButton.m_SingletonActionBindings.Array.data[1].m_Path
       value: <Gamepad>/buttonSouth
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
+      propertyPath: selectButton.m_SingletonActionBindings.Array.data[2].m_Path
+      value: <HID::Twin USB Gamepad      >/button2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
+      propertyPath: selectButton.m_SingletonActionBindings.Array.data[3].m_Path
+      value: <HID::Microntek              USB Joystick          >/button2
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: pauseButton.m_SingletonActionBindings.Array.data[0].m_Action
@@ -739,11 +867,23 @@ PrefabInstance:
       value: Pause Button
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
+      propertyPath: pauseButton.m_SingletonActionBindings.Array.data[2].m_Action
+      value: Pause Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: selectButton.m_SingletonActionBindings.Array.data[0].m_Action
       value: Select Button
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: selectButton.m_SingletonActionBindings.Array.data[1].m_Action
+      value: Select Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
+      propertyPath: selectButton.m_SingletonActionBindings.Array.data[2].m_Action
+      value: Select Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
+      propertyPath: selectButton.m_SingletonActionBindings.Array.data[3].m_Action
       value: Select Button
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817029101, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
@@ -947,11 +1087,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
       propertyPath: pickupButton.m_SingletonActionBindings.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
       propertyPath: interactButton.m_SingletonActionBindings.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
       propertyPath: joyStick.m_SingletonActionBindings.Array.data[0].m_Id
@@ -1162,12 +1302,20 @@ PrefabInstance:
       value: ef13377a-e373-47bc-ab5e-a414bd775c70
       objectReference: {fileID: 0}
     - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
+      propertyPath: pickupButton.m_SingletonActionBindings.Array.data[2].m_Id
+      value: ab54313a-2e5f-4738-b117-526c9a6bdd2b
+      objectReference: {fileID: 0}
+    - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
       propertyPath: interactButton.m_SingletonActionBindings.Array.data[0].m_Id
       value: b16c1f94-bee2-4cfc-82c4-90c7c53319c1
       objectReference: {fileID: 0}
     - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
       propertyPath: interactButton.m_SingletonActionBindings.Array.data[1].m_Id
       value: 88557a4e-61d7-4e44-bda1-37907cfd6c26
+      objectReference: {fileID: 0}
+    - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
+      propertyPath: interactButton.m_SingletonActionBindings.Array.data[2].m_Id
+      value: 430f8461-7d64-4a7f-8885-de7eaade6ac2
       objectReference: {fileID: 0}
     - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
       propertyPath: pickupButton.m_SingletonActionBindings.Array.data[0].m_Path
@@ -1178,12 +1326,20 @@ PrefabInstance:
       value: <Gamepad>/buttonNorth
       objectReference: {fileID: 0}
     - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
+      propertyPath: pickupButton.m_SingletonActionBindings.Array.data[2].m_Path
+      value: <HID::Twin USB Gamepad      >/trigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
       propertyPath: interactButton.m_SingletonActionBindings.Array.data[0].m_Path
       value: <Keyboard>/e
       objectReference: {fileID: 0}
     - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
       propertyPath: interactButton.m_SingletonActionBindings.Array.data[1].m_Path
       value: <Gamepad>/buttonWest
+      objectReference: {fileID: 0}
+    - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
+      propertyPath: interactButton.m_SingletonActionBindings.Array.data[2].m_Path
+      value: <HID::Twin USB Gamepad      >/button2
       objectReference: {fileID: 0}
     - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
       propertyPath: pickupButton.m_SingletonActionBindings.Array.data[0].m_Action
@@ -1194,11 +1350,19 @@ PrefabInstance:
       value: Pickup Button
       objectReference: {fileID: 0}
     - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
+      propertyPath: pickupButton.m_SingletonActionBindings.Array.data[2].m_Action
+      value: Pickup Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
       propertyPath: interactButton.m_SingletonActionBindings.Array.data[0].m_Action
       value: Interact Button
       objectReference: {fileID: 0}
     - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
       propertyPath: interactButton.m_SingletonActionBindings.Array.data[1].m_Action
+      value: Interact Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
+      propertyPath: interactButton.m_SingletonActionBindings.Array.data[2].m_Action
       value: Interact Button
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1538,10 +1702,34 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 312497703, guid: 44d20ed1a01ef574e85b9057e37abb57, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: b2b91ff11243a5145b420ca7411dd724, type: 2}
+    - target: {fileID: 312497703, guid: 44d20ed1a01ef574e85b9057e37abb57, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 7245657757337822935, guid: b2b91ff11243a5145b420ca7411dd724, type: 2}
     - target: {fileID: 473717048, guid: 44d20ed1a01ef574e85b9057e37abb57, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1225450059, guid: 44d20ed1a01ef574e85b9057e37abb57, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: b2b91ff11243a5145b420ca7411dd724, type: 2}
+    - target: {fileID: 1225450059, guid: 44d20ed1a01ef574e85b9057e37abb57, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 7245657757337822935, guid: b2b91ff11243a5145b420ca7411dd724, type: 2}
+    - target: {fileID: 1552526500, guid: 44d20ed1a01ef574e85b9057e37abb57, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: b2b91ff11243a5145b420ca7411dd724, type: 2}
+    - target: {fileID: 1552526500, guid: 44d20ed1a01ef574e85b9057e37abb57, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 7245657757337822935, guid: b2b91ff11243a5145b420ca7411dd724, type: 2}
     - target: {fileID: 9192160928349054840, guid: 44d20ed1a01ef574e85b9057e37abb57, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1630,6 +1818,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 9192160929645109969, guid: 44d20ed1a01ef574e85b9057e37abb57, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: b2b91ff11243a5145b420ca7411dd724, type: 2}
+    - target: {fileID: 9192160929645109969, guid: 44d20ed1a01ef574e85b9057e37abb57, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 7245657757337822935, guid: b2b91ff11243a5145b420ca7411dd724, type: 2}
+    - target: {fileID: 9192160930348713209, guid: 44d20ed1a01ef574e85b9057e37abb57, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: b2b91ff11243a5145b420ca7411dd724, type: 2}
+    - target: {fileID: 9192160930348713209, guid: 44d20ed1a01ef574e85b9057e37abb57, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 7245657757337822935, guid: b2b91ff11243a5145b420ca7411dd724, type: 2}
     m_RemovedComponents: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 9192160928349054840, guid: 44d20ed1a01ef574e85b9057e37abb57, type: 3}
@@ -1919,8 +2123,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b2b91ff11243a5145b420ca7411dd724, type: 2}
+  m_sharedMaterial: {fileID: 7245657757337822935, guid: b2b91ff11243a5145b420ca7411dd724, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -7498,11 +7702,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
       propertyPath: pickupButton.m_SingletonActionBindings.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
       propertyPath: interactButton.m_SingletonActionBindings.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
       propertyPath: joyStick.m_SingletonActionBindings.Array.data[0].m_Id
@@ -7713,12 +7917,20 @@ PrefabInstance:
       value: 4827e988-f825-40d2-b26e-befbc0fa25da
       objectReference: {fileID: 0}
     - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
+      propertyPath: pickupButton.m_SingletonActionBindings.Array.data[2].m_Id
+      value: 81e2d504-b0f0-4a14-9488-d71eb7777158
+      objectReference: {fileID: 0}
+    - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
       propertyPath: interactButton.m_SingletonActionBindings.Array.data[0].m_Id
       value: 172db487-179f-41af-8fec-b9ba0e13c0f5
       objectReference: {fileID: 0}
     - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
       propertyPath: interactButton.m_SingletonActionBindings.Array.data[1].m_Id
       value: ff77d030-c533-4957-aad8-7aafa04764fd
+      objectReference: {fileID: 0}
+    - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
+      propertyPath: interactButton.m_SingletonActionBindings.Array.data[2].m_Id
+      value: 0752d829-3903-4eb1-9349-dbdbd5072d00
       objectReference: {fileID: 0}
     - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
       propertyPath: pickupButton.m_SingletonActionBindings.Array.data[0].m_Path
@@ -7729,12 +7941,20 @@ PrefabInstance:
       value: <Gamepad>/buttonEast
       objectReference: {fileID: 0}
     - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
+      propertyPath: pickupButton.m_SingletonActionBindings.Array.data[2].m_Path
+      value: <HID::Microntek              USB Joystick          >/button2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
       propertyPath: interactButton.m_SingletonActionBindings.Array.data[0].m_Path
       value: <Mouse>/rightButton
       objectReference: {fileID: 0}
     - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
       propertyPath: interactButton.m_SingletonActionBindings.Array.data[1].m_Path
       value: <Gamepad>/buttonSouth
+      objectReference: {fileID: 0}
+    - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
+      propertyPath: interactButton.m_SingletonActionBindings.Array.data[2].m_Path
+      value: <HID::Microntek              USB Joystick          >/trigger
       objectReference: {fileID: 0}
     - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
       propertyPath: pickupButton.m_SingletonActionBindings.Array.data[0].m_Action
@@ -7745,11 +7965,19 @@ PrefabInstance:
       value: Pickup Button
       objectReference: {fileID: 0}
     - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
+      propertyPath: pickupButton.m_SingletonActionBindings.Array.data[2].m_Action
+      value: Pickup Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
       propertyPath: interactButton.m_SingletonActionBindings.Array.data[0].m_Action
       value: Interact Button
       objectReference: {fileID: 0}
     - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
       propertyPath: interactButton.m_SingletonActionBindings.Array.data[1].m_Action
+      value: Interact Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
+      propertyPath: interactButton.m_SingletonActionBindings.Array.data[2].m_Action
       value: Interact Button
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -7998,8 +8226,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b2b91ff11243a5145b420ca7411dd724, type: 2}
+  m_sharedMaterial: {fileID: 7245657757337822935, guid: b2b91ff11243a5145b420ca7411dd724, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -8346,8 +8574,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b2b91ff11243a5145b420ca7411dd724, type: 2}
+  m_sharedMaterial: {fileID: 7245657757337822935, guid: b2b91ff11243a5145b420ca7411dd724, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
