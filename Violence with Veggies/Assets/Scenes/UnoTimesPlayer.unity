@@ -672,6 +672,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5790781754970909114, guid: 06441c8d40aca3348a90f9ade29a9a28, type: 3}
   m_PrefabInstance: {fileID: 323194250}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &414064470 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6642383023409446214, guid: 44d20ed1a01ef574e85b9057e37abb57, type: 3}
+  m_PrefabInstance: {fileID: 1890906092}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &491646025
 GameObject:
   m_ObjectHideFlags: 0
@@ -1474,6 +1485,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
+      propertyPath: full
+      value: 
+      objectReference: {fileID: 21300000, guid: da802427b1b214f44afe2931f935269d, type: 3}
+    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1643528911}
@@ -1501,6 +1516,10 @@ PrefabInstance:
       propertyPath: highscore
       value: 
       objectReference: {fileID: 212270750}
+    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
+      propertyPath: playerWin
+      value: 
+      objectReference: {fileID: 414064470}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: scoreText
       value: 
