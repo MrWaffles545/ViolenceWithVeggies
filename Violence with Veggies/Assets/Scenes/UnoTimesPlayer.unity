@@ -7690,6 +7690,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 874370402}
+    - target: {fileID: 312497703, guid: 44d20ed1a01ef574e85b9057e37abb57, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: b2b91ff11243a5145b420ca7411dd724, type: 2}
+    - target: {fileID: 312497703, guid: 44d20ed1a01ef574e85b9057e37abb57, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 7245657757337822935, guid: b2b91ff11243a5145b420ca7411dd724, type: 2}
     - target: {fileID: 473717048, guid: 44d20ed1a01ef574e85b9057e37abb57, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -7698,6 +7706,26 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 874370402}
+    - target: {fileID: 1225450059, guid: 44d20ed1a01ef574e85b9057e37abb57, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: b2b91ff11243a5145b420ca7411dd724, type: 2}
+    - target: {fileID: 1225450059, guid: 44d20ed1a01ef574e85b9057e37abb57, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 7245657757337822935, guid: b2b91ff11243a5145b420ca7411dd724, type: 2}
+    - target: {fileID: 1552526500, guid: 44d20ed1a01ef574e85b9057e37abb57, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: b2b91ff11243a5145b420ca7411dd724, type: 2}
+    - target: {fileID: 1552526500, guid: 44d20ed1a01ef574e85b9057e37abb57, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 7245657757337822935, guid: b2b91ff11243a5145b420ca7411dd724, type: 2}
+    - target: {fileID: 3202520031454874227, guid: 44d20ed1a01ef574e85b9057e37abb57, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9192160928349054840, guid: 44d20ed1a01ef574e85b9057e37abb57, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -7786,10 +7814,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 9192160929645109969, guid: 44d20ed1a01ef574e85b9057e37abb57, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: b2b91ff11243a5145b420ca7411dd724, type: 2}
+    - target: {fileID: 9192160929645109969, guid: 44d20ed1a01ef574e85b9057e37abb57, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 7245657757337822935, guid: b2b91ff11243a5145b420ca7411dd724, type: 2}
     - target: {fileID: 9192160930032765509, guid: 44d20ed1a01ef574e85b9057e37abb57, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9192160930348713209, guid: 44d20ed1a01ef574e85b9057e37abb57, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: b2b91ff11243a5145b420ca7411dd724, type: 2}
+    - target: {fileID: 9192160930348713209, guid: 44d20ed1a01ef574e85b9057e37abb57, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 7245657757337822935, guid: b2b91ff11243a5145b420ca7411dd724, type: 2}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 44d20ed1a01ef574e85b9057e37abb57, type: 3}

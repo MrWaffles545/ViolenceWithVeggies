@@ -78,10 +78,10 @@ public class GameManager : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
-            if (highscoreText.text != "HighScore:\n" + PlayerPrefs.GetInt("HighScore"))
-                highscoreText.text = "HighScore:\n" + PlayerPrefs.GetInt("HighScore");
-            if (highscoreText2.text != "HighScore:\n" + PlayerPrefs.GetInt("HighScore2"))
-                highscoreText2.text = "2 Player HighScore:\n" + PlayerPrefs.GetInt("HighScore2");
+            if (highscoreText.text != "" + PlayerPrefs.GetInt("HighScore"))
+                highscoreText.text = "" + PlayerPrefs.GetInt("HighScore");
+            if (highscoreText2.text != "" + PlayerPrefs.GetInt("HighScore2"))
+                highscoreText2.text = "" + PlayerPrefs.GetInt("HighScore2");
 
             //if (!canInput && menuTimer >= 0)
             //menuTimer -= Time.deltaTime;
