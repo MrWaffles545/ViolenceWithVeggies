@@ -1654,43 +1654,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: joystick.m_SingletonActionBindings.Array.data[10].m_Id
-      value: 0d6636a5-a9f2-44c1-876b-fb896a2a5fd6
+      value: 1a6cfa2f-0993-4055-b281-0302a72d025f
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: joystick.m_SingletonActionBindings.Array.data[11].m_Id
-      value: dbe0d95f-97e8-432a-b51b-7c3ac4647ecd
+      value: 1fe19b14-3f14-4629-b41e-9b7dd355f5c2
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: joystick.m_SingletonActionBindings.Array.data[12].m_Id
-      value: e5110982-d03f-4031-a8a7-ca0d4288511a
+      value: 2655abb6-bfbb-4556-87f2-7245b83a9553
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: joystick.m_SingletonActionBindings.Array.data[13].m_Id
-      value: d7a52a3a-f338-498e-b6df-11c6c9709f2f
+      value: bec63fef-58ef-46e5-9ca5-83175a5346d8
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: joystick.m_SingletonActionBindings.Array.data[14].m_Id
-      value: 637b164e-8d02-41c1-88b6-7d5ef7310902
+      value: 834727fb-31c0-42e2-b2f7-96d9ed8c82ef
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: joystick.m_SingletonActionBindings.Array.data[15].m_Id
-      value: 532e9529-02d8-4494-9eef-d622924e5d18
+      value: 3f33ed22-51c1-4587-ac42-e09ccf5e0464
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: joystick.m_SingletonActionBindings.Array.data[16].m_Id
-      value: 20d7f8fb-4d46-4e8c-be19-add621a9647c
+      value: 80e04040-02e2-4f96-9e08-7ad4a5bb68cf
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: joystick.m_SingletonActionBindings.Array.data[17].m_Id
-      value: c5b8b5d2-1d09-4568-b2f8-64acbed1bf93
+      value: 3bc76b73-4658-42da-a2e5-655543b07537
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: joystick.m_SingletonActionBindings.Array.data[18].m_Id
-      value: 47d3a6ec-b11a-4418-9781-e09a106a6b02
+      value: 7a0a797d-df8a-475d-8b8d-1e60c0d6f94c
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: joystick.m_SingletonActionBindings.Array.data[19].m_Id
-      value: 7db1b2e6-839c-40b1-bcec-c21d7f9173d3
+      value: 32bf7d88-3e84-4d62-8bdb-49cf800b85d5
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: backButton.m_SingletonActionBindings.Array.data[0].m_Id
@@ -1786,7 +1786,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: joystick.m_SingletonActionBindings.Array.data[10].m_Name
-      value: Left Joystick
+      value: Right Joystick
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: joystick.m_SingletonActionBindings.Array.data[10].m_Path
@@ -1797,20 +1797,36 @@ PrefabInstance:
       value: up
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
+      propertyPath: joystick.m_SingletonActionBindings.Array.data[11].m_Path
+      value: <Joystick>/stick/up
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: joystick.m_SingletonActionBindings.Array.data[12].m_Name
       value: down
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
+      propertyPath: joystick.m_SingletonActionBindings.Array.data[12].m_Path
+      value: <Joystick>/stick/down
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: joystick.m_SingletonActionBindings.Array.data[13].m_Name
       value: left
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
+      propertyPath: joystick.m_SingletonActionBindings.Array.data[13].m_Path
+      value: <Joystick>/stick/left
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: joystick.m_SingletonActionBindings.Array.data[14].m_Name
       value: right
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
+      propertyPath: joystick.m_SingletonActionBindings.Array.data[14].m_Path
+      value: <Joystick>/stick/right
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: joystick.m_SingletonActionBindings.Array.data[15].m_Name
-      value: Right Joystick
+      value: Left Joystick
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: joystick.m_SingletonActionBindings.Array.data[15].m_Path
@@ -1821,16 +1837,32 @@ PrefabInstance:
       value: up
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
+      propertyPath: joystick.m_SingletonActionBindings.Array.data[16].m_Path
+      value: <Joystick>/stick/up
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: joystick.m_SingletonActionBindings.Array.data[17].m_Name
       value: down
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
+      propertyPath: joystick.m_SingletonActionBindings.Array.data[17].m_Path
+      value: <Joystick>/stick/down
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: joystick.m_SingletonActionBindings.Array.data[18].m_Name
       value: left
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
+      propertyPath: joystick.m_SingletonActionBindings.Array.data[18].m_Path
+      value: <Joystick>/stick/left
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: joystick.m_SingletonActionBindings.Array.data[19].m_Name
       value: right
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
+      propertyPath: joystick.m_SingletonActionBindings.Array.data[19].m_Path
+      value: <Joystick>/stick/right
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: joystick.m_SingletonActionBindings.Array.data[1].m_Flags
@@ -7005,23 +7037,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
       propertyPath: joyStick.m_SingletonActionBindings.Array.data[10].m_Id
-      value: 83752aae-50c4-487b-a092-dd55ab84b319
+      value: b9a871f8-0a10-45d0-aa84-c542c1eaf4da
       objectReference: {fileID: 0}
     - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
       propertyPath: joyStick.m_SingletonActionBindings.Array.data[11].m_Id
-      value: 878eed82-ca36-4b67-9d89-1856d136e6fd
+      value: 19ae4e65-b9a1-48cb-8c14-206077e9ac30
       objectReference: {fileID: 0}
     - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
       propertyPath: joyStick.m_SingletonActionBindings.Array.data[12].m_Id
-      value: 6c32c70b-fa89-4d0e-af21-bb9f0a989857
+      value: a9fbdd9f-5202-47ea-9ab0-4a7f18018c2a
       objectReference: {fileID: 0}
     - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
       propertyPath: joyStick.m_SingletonActionBindings.Array.data[13].m_Id
-      value: fc992ae7-d502-4df7-bd34-d40b1a3fa651
+      value: c63d3a39-9c57-4dc8-8cbb-903db71003ce
       objectReference: {fileID: 0}
     - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
       propertyPath: joyStick.m_SingletonActionBindings.Array.data[14].m_Id
-      value: d88d4746-dfb6-4032-8815-a9809b9f4aaf
+      value: 3febf9f9-02ea-467d-9317-d1fffef5cbe4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
+      propertyPath: joyStick.m_SingletonActionBindings.Array.data[15].m_Id
+      value: b9a871f8-0a10-45d0-aa84-c542c1eaf4da
+      objectReference: {fileID: 0}
+    - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
+      propertyPath: joyStick.m_SingletonActionBindings.Array.data[16].m_Id
+      value: 19ae4e65-b9a1-48cb-8c14-206077e9ac30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
+      propertyPath: joyStick.m_SingletonActionBindings.Array.data[17].m_Id
+      value: a9fbdd9f-5202-47ea-9ab0-4a7f18018c2a
+      objectReference: {fileID: 0}
+    - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
+      propertyPath: joyStick.m_SingletonActionBindings.Array.data[18].m_Id
+      value: c63d3a39-9c57-4dc8-8cbb-903db71003ce
+      objectReference: {fileID: 0}
+    - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
+      propertyPath: joyStick.m_SingletonActionBindings.Array.data[19].m_Id
+      value: 3febf9f9-02ea-467d-9317-d1fffef5cbe4
       objectReference: {fileID: 0}
     - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
       propertyPath: joyStick.m_SingletonActionBindings.Array.data[0].m_Name
@@ -7120,16 +7172,72 @@ PrefabInstance:
       value: up
       objectReference: {fileID: 0}
     - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
+      propertyPath: joyStick.m_SingletonActionBindings.Array.data[11].m_Path
+      value: <Joystick>/stick/up
+      objectReference: {fileID: 0}
+    - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
       propertyPath: joyStick.m_SingletonActionBindings.Array.data[12].m_Name
       value: down
+      objectReference: {fileID: 0}
+    - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
+      propertyPath: joyStick.m_SingletonActionBindings.Array.data[12].m_Path
+      value: <Joystick>/stick/down
       objectReference: {fileID: 0}
     - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
       propertyPath: joyStick.m_SingletonActionBindings.Array.data[13].m_Name
       value: left
       objectReference: {fileID: 0}
     - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
+      propertyPath: joyStick.m_SingletonActionBindings.Array.data[13].m_Path
+      value: <Joystick>/stick/left
+      objectReference: {fileID: 0}
+    - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
       propertyPath: joyStick.m_SingletonActionBindings.Array.data[14].m_Name
       value: right
+      objectReference: {fileID: 0}
+    - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
+      propertyPath: joyStick.m_SingletonActionBindings.Array.data[14].m_Path
+      value: <Joystick>/stick/right
+      objectReference: {fileID: 0}
+    - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
+      propertyPath: joyStick.m_SingletonActionBindings.Array.data[15].m_Name
+      value: Left Joystick
+      objectReference: {fileID: 0}
+    - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
+      propertyPath: joyStick.m_SingletonActionBindings.Array.data[15].m_Path
+      value: 2DVector
+      objectReference: {fileID: 0}
+    - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
+      propertyPath: joyStick.m_SingletonActionBindings.Array.data[16].m_Name
+      value: up
+      objectReference: {fileID: 0}
+    - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
+      propertyPath: joyStick.m_SingletonActionBindings.Array.data[16].m_Path
+      value: <Joystick>/stick/up
+      objectReference: {fileID: 0}
+    - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
+      propertyPath: joyStick.m_SingletonActionBindings.Array.data[17].m_Name
+      value: down
+      objectReference: {fileID: 0}
+    - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
+      propertyPath: joyStick.m_SingletonActionBindings.Array.data[17].m_Path
+      value: <Joystick>/stick/down
+      objectReference: {fileID: 0}
+    - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
+      propertyPath: joyStick.m_SingletonActionBindings.Array.data[18].m_Name
+      value: left
+      objectReference: {fileID: 0}
+    - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
+      propertyPath: joyStick.m_SingletonActionBindings.Array.data[18].m_Path
+      value: <Joystick>/stick/left
+      objectReference: {fileID: 0}
+    - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
+      propertyPath: joyStick.m_SingletonActionBindings.Array.data[19].m_Name
+      value: right
+      objectReference: {fileID: 0}
+    - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
+      propertyPath: joyStick.m_SingletonActionBindings.Array.data[19].m_Path
+      value: <Joystick>/stick/right
       objectReference: {fileID: 0}
     - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
       propertyPath: joyStick.m_SingletonActionBindings.Array.data[1].m_Flags
@@ -7189,6 +7297,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
       propertyPath: joyStick.m_SingletonActionBindings.Array.data[14].m_Flags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
+      propertyPath: joyStick.m_SingletonActionBindings.Array.data[15].m_Flags
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
+      propertyPath: joyStick.m_SingletonActionBindings.Array.data[16].m_Flags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
+      propertyPath: joyStick.m_SingletonActionBindings.Array.data[17].m_Flags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
+      propertyPath: joyStick.m_SingletonActionBindings.Array.data[18].m_Flags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
+      propertyPath: joyStick.m_SingletonActionBindings.Array.data[19].m_Flags
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
@@ -7257,6 +7385,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
       propertyPath: joyStick.m_SingletonActionBindings.Array.data[14].m_Action
+      value: Joy Stick
+      objectReference: {fileID: 0}
+    - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
+      propertyPath: joyStick.m_SingletonActionBindings.Array.data[15].m_Action
+      value: Joy Stick
+      objectReference: {fileID: 0}
+    - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
+      propertyPath: joyStick.m_SingletonActionBindings.Array.data[16].m_Action
+      value: Joy Stick
+      objectReference: {fileID: 0}
+    - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
+      propertyPath: joyStick.m_SingletonActionBindings.Array.data[17].m_Action
+      value: Joy Stick
+      objectReference: {fileID: 0}
+    - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
+      propertyPath: joyStick.m_SingletonActionBindings.Array.data[18].m_Action
+      value: Joy Stick
+      objectReference: {fileID: 0}
+    - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
+      propertyPath: joyStick.m_SingletonActionBindings.Array.data[19].m_Action
       value: Joy Stick
       objectReference: {fileID: 0}
     - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
