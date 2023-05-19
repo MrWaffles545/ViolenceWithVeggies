@@ -311,7 +311,7 @@ public class GameManager : MonoBehaviour
                         sunPosUp.transform.position = new Vector2(0, 4.3f);
                     }
 
-                    Debug.Log("warning weather " + warning);
+                    //Debug.Log("warning weather " + warning);
                 }
             }
 

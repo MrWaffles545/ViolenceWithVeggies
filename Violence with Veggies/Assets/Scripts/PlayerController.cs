@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
     private GameObject otherItem;
     public bool isTouching = false;
     public bool isTouchingOther = false;
+    private Vector2 otherpos;
 
     //Fire variables
     public bool onFire, onFireCooldown;
@@ -302,7 +303,6 @@ public class PlayerController : MonoBehaviour
 
     void DropSwap()
     {
-        Vector3 pos = holdingItem.transform.position;
         //if the player presses the assigned button from above and isnt touching anything else it activates the pickup/drop
         if (isTouching && holdingItem != null && !isTouchingOther && isHolding)
         {
@@ -310,7 +310,7 @@ public class PlayerController : MonoBehaviour
             Drop();
         }
         //if the player has an item already and tries to pick up another it swaps the 2 items
-        else if (holdingItem != null && isTouchingOther && otherItem.transform.parent == null && (pos.x - transform.position.x <= .7f && pos.y - transform.position.y <= .7f))
+        else if (holdingItem != null && isTouchingOther && otherItem.transform.parent == null && (otherItem.transform.position.x - transform.position.x <= .8f && otherItem.transform.position.y - transform.position.y <= .8f))
         {
             //makes a temp variable to hold the holdingItem
             GameObject tempGameObject = holdingItem;
