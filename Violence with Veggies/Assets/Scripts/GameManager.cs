@@ -65,7 +65,15 @@ public class GameManager : MonoBehaviour
     public Sprite[] daSuns;
 
     //sounds
-    public AudioSource bloop;
+    public AudioSource bloop, regMus, firMus, winMus, ranMus, snoMus, pop, menMus;
+
+    //music or not to music that is the question
+    public bool musOn;
+
+    //weather overlays and effects
+    public GameObject wetOver, heatOver, windOver, snowOver;
+    public GameObject rainFall, snowFall;
+    private Rigidbody2D rainBody, snowBody;
 
     public float step;
 
@@ -77,10 +85,23 @@ public class GameManager : MonoBehaviour
         backButton.Enable();
     }
     
+    void Start()
+    {
+        if (SceneManager.GetActiveScene().buildIndex != 0)
+        {
+            rainBody = rainFall.GetComponent<Rigidbody2D>();
+
+            snowBody = snowFall.GetComponent<Rigidbody2D>();
+        }
+    }
+
     void Update()
     {
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
+            if(!menMus.isPlaying)
+                menMus.Play();
+
             if (highscoreText.text != "" + PlayerPrefs.GetInt("HighScore"))
                 highscoreText.text = "" + PlayerPrefs.GetInt("HighScore");
             if (highscoreText2.text != "" + PlayerPrefs.GetInt("HighScore2"))
@@ -238,6 +259,56 @@ public class GameManager : MonoBehaviour
                     LoadLevel(0);
             }
 
+            if (firMus.isPlaying)
+                heatOver.SetActive(true);
+            else if (!firMus.isPlaying)
+                heatOver.SetActive(false);
+
+            if (weather == 2)
+                snowOver.SetActive(true);
+            else if (weather == 0)
+                snowOver.SetActive(false);
+
+            if (winMus.isPlaying)
+                windOver.SetActive(true);
+            else if (!winMus.isPlaying)
+                windOver.SetActive(false);
+
+            if (ranMus.isPlaying)
+                wetOver.SetActive(true);
+            else if (!ranMus.isPlaying)
+                wetOver.SetActive(false);
+
+            if (weather == 3)
+                rainBody.velocity = new Vector2(0f, -4f);
+
+
+            if (weather == 0)
+            {
+                rainFall.transform.position = new Vector2(0, 29);
+                snowFall.transform.position = new Vector2(0, 29);
+            }
+
+
+            if (weather == 2)
+            {
+                snowBody.velocity = new Vector2(0f, -4f);
+            }
+
+            if (startTimer >= 0f)
+            {
+                if (!pop.isPlaying && startTimer <= 0.5f)
+                    pop.Play();
+            }
+
+
+            if (startTimer >= 1)
+            {
+                //bloop sound on the game start countdown
+                if (!bloop.isPlaying && startTimer <= 5)
+                    bloop.Play();
+            }
+
             //Weather timer until next weather event
             if (weatherTimer >= 0 && weather == 0 && canInput)
             {
@@ -259,9 +330,6 @@ public class GameManager : MonoBehaviour
                 }
             }
 
-
-           
-
             //When the weather timer runs out it picks a random weather event and random time when the next one starts
             if (weatherTimer <= 0 && weather == 0)
             {
@@ -276,10 +344,13 @@ public class GameManager : MonoBehaviour
             {
                 step = tanSpeed * Time.deltaTime;
                 sunPrime.transform.position = Vector3.MoveTowards(sunPrime.transform.position, sunPosUp.transform.position, step);
+                if (!firMus.isPlaying && musOn == true)
+                    firMus.Play();
 
-                //only runs once
-                if (!weatherDone)
-                {
+
+                    //only runs once
+                    if (!weatherDone)
+                    {
                     
 
                     //picks random soil and lights them on fire
@@ -313,6 +384,9 @@ public class GameManager : MonoBehaviour
             {
                 step = tanSpeed * Time.deltaTime;
                 sunPrime.transform.position = Vector3.MoveTowards(sunPrime.transform.position, sunPosUp.transform.position, step);
+                if (!snoMus.isPlaying && musOn == true)
+                    snoMus.Play();
+
                 //only runs once
                 if (!weatherDone)
                 {
@@ -333,11 +407,15 @@ public class GameManager : MonoBehaviour
 
             if (weather == 3) //Rain
             {
+                if (!ranMus.isPlaying && musOn == true)
+                    ranMus.Play();
+
                 step = tanSpeed * Time.deltaTime;
                 sunPrime.transform.position = Vector3.MoveTowards(sunPrime.transform.position, sunPosUp.transform.position, step);
                 //only runs once
                 if (!weatherDone)
                 {
+
                     //waters all the soil or puts out fire then waters after a while
                     for (int i = 0; i < GameObject.FindGameObjectsWithTag("Soil").Length / 2; i++)
                     {
@@ -377,6 +455,9 @@ public class GameManager : MonoBehaviour
             {
                 step = tanSpeed * Time.deltaTime;
                 sunPrime.transform.position = Vector3.MoveTowards(sunPrime.transform.position, sunPosUp.transform.position, step);
+                if (!winMus.isPlaying && musOn == true)
+                    winMus.Play();
+
                 //only runs once
                 if (!weatherDone)
                 {
@@ -397,8 +478,15 @@ public class GameManager : MonoBehaviour
                 }
             }
 
+            if(weather == 0)
+            {
+                if (!regMus.isPlaying && musOn == true && weatherTimer <= 29.99f)
+                    regMus.Play();
+            }
+
             if (weather > 0) //Resets the weather to normal when the weather duration timer ends
             {
+
                 if (weatherDuration >= 0)
                 {
                     weatherDuration -= Time.deltaTime;
@@ -430,7 +518,6 @@ public class GameManager : MonoBehaviour
                     }
                 }
             }
-
         }
     }
 

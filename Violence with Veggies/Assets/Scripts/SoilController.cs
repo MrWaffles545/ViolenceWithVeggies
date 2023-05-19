@@ -41,7 +41,7 @@ public class SoilController : MonoBehaviour
     public Sprite[] daGold;
 
     //sounds
-    public AudioSource waterSound, bloop, dirtSound;
+    public AudioSource waterSound, bloop, dirtSound, goldSound;
 
     void Start()
     {
@@ -286,6 +286,9 @@ public class SoilController : MonoBehaviour
         int goldChance = Random.Range(0, goldChanceMax);
         if (goldChance == 0)
         {
+            if(!goldSound.isPlaying)
+                goldSound.Play();
+
             c.name = "Golden " + c.name;
             c.GetComponent<SpriteRenderer>().sprite = daGold[crop - 1];
         }

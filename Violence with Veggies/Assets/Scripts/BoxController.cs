@@ -21,6 +21,9 @@ public class BoxController : MonoBehaviour
     public float seedReady;
     public GameObject bar;
 
+    //sell sound
+    public AudioSource sellSound;
+
     // Update is called once per frame
     void Update()
     {
@@ -97,53 +100,63 @@ public class BoxController : MonoBehaviour
 
     void Sell(GameObject collision)
     {
+
         if ((collision.tag == "item" || collision.tag == "ThrownItem1" || collision.tag == "ThrownItem2") && sellBox && collision.transform.parent == null)
         {
+
             PlayerController playerScore = player.GetComponent<PlayerController>();
             if (collision.name == "Potato")
             {
+                sellSound.Play();
                 playerScore.score++;
                 Destroy(collision.gameObject);
             }
 
             if (collision.name == "Carrot" || collision.name == "Garlic")
             {
+                sellSound.Play();
                 playerScore.score += 2;
                 Destroy(collision.gameObject);
             }
 
             if (collision.name == "Turnip")
             {
+                sellSound.Play();
                 playerScore.score += 3;
                 Destroy(collision.gameObject);
             }
 
             if (collision.name == "Gus")
             {
+                sellSound.Play();
                 playerScore.score += 4;
                 Destroy(collision.gameObject);
             }
 
             if (collision.name == "Golden Potato")
             {
+                sellSound.Play();
                 playerScore.score += 2;
                 Destroy(collision.gameObject);
             }
 
             if (collision.name == "Golden Carrot" || collision.name == "Golden Garlic")
             {
+                sellSound.Play();
                 playerScore.score += 4;
                 Destroy(collision.gameObject);
             }
 
             if (collision.name == "Golden Turnip")
             {
+                sellSound.Play();
                 playerScore.score += 6;
                 Destroy(collision.gameObject);
             }
 
             if (collision.name == "Golden Gus")
             {
+                sellSound.Play();
                 playerScore.score += 8;
                 Destroy(collision.gameObject);
             }
