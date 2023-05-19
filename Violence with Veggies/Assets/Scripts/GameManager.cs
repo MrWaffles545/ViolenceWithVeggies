@@ -127,10 +127,13 @@ public class GameManager : MonoBehaviour
             }
             if (canInput)
             {
-                if (selection && joystick.ReadValue<Vector2>().y <= -.25f)
-                    selection = false;
-                if (!selection && joystick.ReadValue<Vector2>().y >= .25f)
-                    selection = true;
+                if (menuStage != 0)
+                {
+                    if (selection && joystick.ReadValue<Vector2>().y <= -.25f)
+                        selection = false;
+                    if (!selection && joystick.ReadValue<Vector2>().y >= .25f)
+                        selection = true;
+                }
 
                 if (menuStage == 1)
                 {
@@ -146,8 +149,8 @@ public class GameManager : MonoBehaviour
                 {
                     if (selection && selectButton.WasPressedThisFrame())
                         GameSelect();
-                    if (!selection && selectButton.WasPressedThisFrame())
-                        Tutorial();
+                    /*if (!selection && selectButton.WasPressedThisFrame())
+                        Tutorial();*/
                 }
 
                 if (menuStage == 2)
