@@ -259,41 +259,26 @@ public class GameManager : MonoBehaviour
                     LoadLevel(0);
             }
 
-            if (firMus.isPlaying)
-                heatOver.SetActive(true);
-            else if (!firMus.isPlaying)
+
+        if (weather == 0)
                 heatOver.SetActive(false);
 
-            if (weather == 2)
-                snowOver.SetActive(true);
-            else if (weather == 0)
+        if (weather == 0)
                 snowOver.SetActive(false);
 
-            if (winMus.isPlaying)
-                windOver.SetActive(true);
-            else if (!winMus.isPlaying)
+        if (weather == 0)
                 windOver.SetActive(false);
 
-            if (ranMus.isPlaying)
-                wetOver.SetActive(true);
-            else if (!ranMus.isPlaying)
+        if (weather == 0)
                 wetOver.SetActive(false);
 
-            if (weather == 3)
-                rainBody.velocity = new Vector2(0f, -4f);
-
-
-            if (weather == 0)
-            {
+        if (weather == 0 || weather == 1 || weather == 2 || weather == 4)
                 rainFall.transform.position = new Vector2(0, 29);
+
+        if (weather == 0 || weather == 1 || weather == 3|| weather == 4)
                 snowFall.transform.position = new Vector2(0, 29);
-            }
 
 
-            if (weather == 2)
-            {
-                snowBody.velocity = new Vector2(0f, -4f);
-            }
 
             if (startTimer >= 0f)
             {
@@ -342,6 +327,9 @@ public class GameManager : MonoBehaviour
 
             if (weather == 1) //angry sun
             {
+                if (weather == 1)
+                    heatOver.SetActive(true);
+
                 step = tanSpeed * Time.deltaTime;
                 sunPrime.transform.position = Vector3.MoveTowards(sunPrime.transform.position, sunPosUp.transform.position, step);
                 if (!firMus.isPlaying && musOn == true)
@@ -382,6 +370,12 @@ public class GameManager : MonoBehaviour
 
             if (weather == 2) //Snow
             {
+                if (weather == 2)
+                    snowBody.velocity = new Vector2(0f, -4f);
+
+                if (weather == 2)
+                    snowOver.SetActive(true);
+
                 step = tanSpeed * Time.deltaTime;
                 sunPrime.transform.position = Vector3.MoveTowards(sunPrime.transform.position, sunPosUp.transform.position, step);
                 if (!snoMus.isPlaying && musOn == true)
@@ -407,6 +401,12 @@ public class GameManager : MonoBehaviour
 
             if (weather == 3) //Rain
             {
+                if (weather == 3)
+                    rainBody.velocity = new Vector2(0f, -4f);
+
+                if (weather == 3)
+                    wetOver.SetActive(true);
+
                 if (!ranMus.isPlaying && musOn == true)
                     ranMus.Play();
 
@@ -453,6 +453,9 @@ public class GameManager : MonoBehaviour
 
             if (weather == 4) //Windy
             {
+                if (weather == 4)
+                    windOver.SetActive(true);
+
                 step = tanSpeed * Time.deltaTime;
                 sunPrime.transform.position = Vector3.MoveTowards(sunPrime.transform.position, sunPosUp.transform.position, step);
                 if (!winMus.isPlaying && musOn == true)
