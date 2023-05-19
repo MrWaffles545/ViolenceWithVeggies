@@ -265,8 +265,8 @@ MonoBehaviour:
   pickup: {fileID: 0}
   interact: {fileID: 0}
   showInteract: 0
-  playerpickupbutton: E
-  playerinteractbutton: E
+  playerpickupbutton: Right Button
+  playerinteractbutton: Left Button
   objectPickupPos: {fileID: 7495777356422880050}
   holdingItem: {fileID: 0}
   isHolding: 0
@@ -290,29 +290,197 @@ MonoBehaviour:
   joyStick:
     m_Name: Joy Stick
     m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 24e5a819-3294-4913-8cc7-4a704df61f44
+    m_ExpectedControlType: Vector2
+    m_Id: 81a173bb-17b7-430a-8bf3-57afa9090d55
     m_Processors: 
     m_Interactions: 
-    m_SingletonActionBindings: []
+    m_SingletonActionBindings:
+    - m_Name: 2D Vector
+      m_Id: ba3bde39-65c0-4b3c-ad8e-101e7eca763f
+      m_Path: 2DVector
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Joy Stick
+      m_Flags: 4
+    - m_Name: up
+      m_Id: 8aaed25b-b591-401e-b4c4-c98936cc7410
+      m_Path: <Keyboard>/w
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Joy Stick
+      m_Flags: 8
+    - m_Name: down
+      m_Id: 0d096f73-bfd6-452b-bc68-fdfb64ae7e3b
+      m_Path: <Keyboard>/s
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Joy Stick
+      m_Flags: 8
+    - m_Name: left
+      m_Id: 97e4fd3f-4996-442e-9275-05b41f400dc5
+      m_Path: <Keyboard>/a
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Joy Stick
+      m_Flags: 8
+    - m_Name: right
+      m_Id: c46e2776-acf4-4e7f-bdbb-e71af420f330
+      m_Path: <Keyboard>/d
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Joy Stick
+      m_Flags: 8
+    - m_Name: 2D Vector
+      m_Id: 2e597771-d565-4977-aabd-bd5971518750
+      m_Path: 2DVector
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Joy Stick
+      m_Flags: 4
+    - m_Name: up
+      m_Id: 676bfca7-f6f9-4622-b593-cfe0d865e50b
+      m_Path: <Gamepad>/leftStick/up
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Joy Stick
+      m_Flags: 8
+    - m_Name: down
+      m_Id: 903162e0-d656-4e5a-83ba-ce7ecb4029a6
+      m_Path: <Gamepad>/leftStick/down
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Joy Stick
+      m_Flags: 8
+    - m_Name: left
+      m_Id: f899205a-97db-40c6-88bb-fe5e17c29521
+      m_Path: <Gamepad>/leftStick/left
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Joy Stick
+      m_Flags: 8
+    - m_Name: right
+      m_Id: 0be9277f-69ec-495f-8465-08f12d201ef2
+      m_Path: <Gamepad>/leftStick/right
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Joy Stick
+      m_Flags: 8
+    - m_Name: Left Joystick
+      m_Id: 6bbf547c-2109-420d-b7fc-28cc1af292c6
+      m_Path: 2DVector
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Joy Stick
+      m_Flags: 4
+    - m_Name: up
+      m_Id: e695a198-b43d-4371-bac9-c1e9446c028a
+      m_Path: <Joystick>/stick/up
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Joy Stick
+      m_Flags: 8
+    - m_Name: down
+      m_Id: 53e3a8ef-1d61-4ee3-ae52-b65b52e55c99
+      m_Path: <Joystick>/stick/down
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Joy Stick
+      m_Flags: 8
+    - m_Name: left
+      m_Id: 0388fd0b-a880-45a7-a999-0c89d23820b0
+      m_Path: <Joystick>/stick/left
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Joy Stick
+      m_Flags: 8
+    - m_Name: right
+      m_Id: 9318f797-c82e-42b5-8453-6f96334f12bb
+      m_Path: <Joystick>/stick/right
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Joy Stick
+      m_Flags: 8
     m_Flags: 0
   pickupButton:
     m_Name: Pickup Button
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: ac03c5fc-61cb-4453-9410-d2dbe59a1c4a
+    m_Id: e10ab632-156a-4c87-bd28-88841f99d5f4
     m_Processors: 
     m_Interactions: 
-    m_SingletonActionBindings: []
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 654ec2d5-2a56-41e2-a4bb-6d83cc6cbdc1
+      m_Path: <Keyboard>/q
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Pickup Button
+      m_Flags: 0
+    - m_Name: 
+      m_Id: ef13377a-e373-47bc-ab5e-a414bd775c70
+      m_Path: <Gamepad>/buttonNorth
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Pickup Button
+      m_Flags: 0
+    - m_Name: 
+      m_Id: ab54313a-2e5f-4738-b117-526c9a6bdd2b
+      m_Path: <HID::Twin USB Gamepad      >/trigger
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Pickup Button
+      m_Flags: 0
     m_Flags: 0
   interactButton:
     m_Name: Interact Button
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: a0965486-ad19-4cc9-b3ad-40fecf44a712
+    m_Id: 7db137a1-dd9d-41af-a874-2fe53a98c671
     m_Processors: 
     m_Interactions: 
-    m_SingletonActionBindings: []
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: b16c1f94-bee2-4cfc-82c4-90c7c53319c1
+      m_Path: <Keyboard>/e
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Interact Button
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 88557a4e-61d7-4e44-bda1-37907cfd6c26
+      m_Path: <Gamepad>/buttonWest
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Interact Button
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 430f8461-7d64-4a7f-8885-de7eaade6ac2
+      m_Path: <HID::Twin USB Gamepad      >/button2
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Interact Button
+      m_Flags: 0
     m_Flags: 0
   soil: {fileID: 0}
   time: 0

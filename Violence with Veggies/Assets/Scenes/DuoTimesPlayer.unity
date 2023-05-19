@@ -376,7 +376,7 @@ PrefabInstance:
       objectReference: {fileID: 1937684049}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: musOn
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: firMus
@@ -544,7 +544,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: pauseButton.m_SingletonActionBindings.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: selectButton.m_SingletonActionBindings.Array.size
@@ -863,6 +863,10 @@ PrefabInstance:
       value: 904c0c9c-3c36-4657-918c-ecfbe71c8bde
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
+      propertyPath: pauseButton.m_SingletonActionBindings.Array.data[4].m_Id
+      value: f4ad2128-878a-4e26-a1a5-873529a55f87
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: backButton.m_SingletonActionBindings.Array.data[0].m_Path
       value: <Gamepad>/buttonEast
       objectReference: {fileID: 0}
@@ -1076,6 +1080,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
       propertyPath: pauseButton.m_SingletonActionBindings.Array.data[3].m_Action
+      value: Pause Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
+      propertyPath: pauseButton.m_SingletonActionBindings.Array.data[4].m_Action
       value: Pause Button
       objectReference: {fileID: 0}
     - target: {fileID: 2207981142817029100, guid: 6c1c8f5ad13b4814ba68a4d0fcd17e6a, type: 3}
@@ -1483,7 +1491,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
       propertyPath: joyStick.m_SingletonActionBindings.Array.data[11].m_Path
-      value: <Joystick>/stick/up
+      value: <HID::Twin USB Gamepad      >/stick/up
       objectReference: {fileID: 0}
     - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
       propertyPath: joyStick.m_SingletonActionBindings.Array.data[12].m_Name
@@ -1491,7 +1499,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
       propertyPath: joyStick.m_SingletonActionBindings.Array.data[12].m_Path
-      value: <Joystick>/stick/down
+      value: <HID::Twin USB Gamepad      >/stick/down
       objectReference: {fileID: 0}
     - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
       propertyPath: joyStick.m_SingletonActionBindings.Array.data[13].m_Name
@@ -1499,7 +1507,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
       propertyPath: joyStick.m_SingletonActionBindings.Array.data[13].m_Path
-      value: <Joystick>/stick/left
+      value: <HID::Twin USB Gamepad      >/stick/left
       objectReference: {fileID: 0}
     - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
       propertyPath: joyStick.m_SingletonActionBindings.Array.data[14].m_Name
@@ -1507,7 +1515,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
       propertyPath: joyStick.m_SingletonActionBindings.Array.data[14].m_Path
-      value: <Joystick>/stick/right
+      value: <HID::Twin USB Gamepad      >/stick/right
       objectReference: {fileID: 0}
     - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
       propertyPath: joyStick.m_SingletonActionBindings.Array.data[15].m_Name
@@ -2262,6 +2270,14 @@ PrefabInstance:
     - target: {fileID: 9192160928349054840, guid: 44d20ed1a01ef574e85b9057e37abb57, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9192160928349054842, guid: 44d20ed1a01ef574e85b9057e37abb57, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 9192160928349054842, guid: 44d20ed1a01ef574e85b9057e37abb57, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1800
       objectReference: {fileID: 0}
     - target: {fileID: 9192160928349054847, guid: 44d20ed1a01ef574e85b9057e37abb57, type: 3}
       propertyPath: m_Name
@@ -9600,7 +9616,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
       propertyPath: joyStick.m_SingletonActionBindings.Array.data[11].m_Path
-      value: <Joystick>/stick/up
+      value: <HID::Microntek              USB Joystick          >/stick/up
       objectReference: {fileID: 0}
     - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
       propertyPath: joyStick.m_SingletonActionBindings.Array.data[12].m_Name
@@ -9608,7 +9624,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
       propertyPath: joyStick.m_SingletonActionBindings.Array.data[12].m_Path
-      value: <Joystick>/stick/down
+      value: <HID::Microntek              USB Joystick          >/stick/down
       objectReference: {fileID: 0}
     - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
       propertyPath: joyStick.m_SingletonActionBindings.Array.data[13].m_Name
@@ -9616,7 +9632,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
       propertyPath: joyStick.m_SingletonActionBindings.Array.data[13].m_Path
-      value: <Joystick>/stick/left
+      value: <HID::Microntek              USB Joystick          >/stick/left
       objectReference: {fileID: 0}
     - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
       propertyPath: joyStick.m_SingletonActionBindings.Array.data[14].m_Name
@@ -9624,7 +9640,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
       propertyPath: joyStick.m_SingletonActionBindings.Array.data[14].m_Path
-      value: <Joystick>/stick/right
+      value: <HID::Microntek              USB Joystick          >/stick/right
       objectReference: {fileID: 0}
     - target: {fileID: 7495777357295568735, guid: ce4253e9e9cad164b96721339fc982fd, type: 3}
       propertyPath: joyStick.m_SingletonActionBindings.Array.data[15].m_Name
@@ -11498,7 +11514,7 @@ Camera:
   m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
+  m_FocalLength: 30.699223
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -11507,7 +11523,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 42.7
+  field of view: 41.7
   orthographic: 0
   orthographic size: 3.5
   m_Depth: -1
