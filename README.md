@@ -4,5 +4,8 @@ Ready, set, farm! Rush to harvest as many crops as you can before time runs out.
 GDD:
 https://docs.google.com/document/d/1EcuB7t19kin6SgI1Rz5yZscsiQyCxRbDMN7ajnN28Zk/edit#heading=h.bq8oab7yzkf6
 
+Asset List:
+https://docs.google.com/spreadsheets/d/1OvJsL8qmy9T7FIrOJUNZ_ZdmCluqtg22/edit#gid=1516483907
+
 Post Mortem:
 https://www.canva.com/design/DAFSmDDcpEk/rySBM1yhe7PsLI9wPuqpDw/edit?utm_content=DAFSmDDcpEk&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
